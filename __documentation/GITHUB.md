@@ -38,6 +38,6 @@ https://www.neonscience.org/git-setup-remote
 3. Do your work in your branch.
 4. Regularly make sure your branch is up to date with `main` by `git pull origin main`
 5. `git add .` (add your work)
-6. Commit your stuff regularly `git commit -a -m "{MY COMMIT MESSAGE}`
-7. Push your changes `git push origin {MY_BRANCH}`
+6. Commit your changes regularly `git commit -a -m "{MY COMMIT MESSAGE}`
+7. Push your modifications `git push origin {MY_BRANCH}`
 8. Create your pull request
