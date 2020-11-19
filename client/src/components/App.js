@@ -18,6 +18,8 @@ function App() {
   );
 }
 
+// the code that was here originally:
+
 // const [bacon, setBacon] = useState(null);
 
 // useEffect(() => {
