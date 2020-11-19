@@ -28,3 +28,16 @@ Once the lead merges the PR, the rest of the team can now pull your changes into
 If you happen to work in some of the same files as a teammate, you will probably have conflicts. Use the VS Code UI to navigate these and resolve them. _If you get into weird state and start to panic, see someone, say something._
 
 https://www.neonscience.org/git-setup-remote
+
+## Alternative (cloning vs forking)
+
+### Individual worflow
+
+1. `git clone {YOUR_TEAM_LEAD's REPO}`
+2. `git checkout -b {MY_BRANCH}`
+3. Do your work in your branch.
+4. Regularly make sure your branch is up to date with `main` by `git pull origin main`
+5. `git add .` (add your work)
+6. Commit your changes regularly `git commit -a -m "{MY COMMIT MESSAGE}`
+7. Push your changes `git push origin {MY_BRANCH}`
+8. Create your pull request
