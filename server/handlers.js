@@ -21,6 +21,7 @@ const getItem = (req, res) => {
   }
 };
 
+// ----------------to do
 const updateItem = (req, res) => {
   res.status(200);
 };
@@ -51,9 +52,9 @@ const getAllCategories = (req, res) => {
   res.status(200).json({ status: 200, categories: categories });
 };
 
-const companyItems = (req, res) => {
+const getItemByCompany = (req, res) => {
   const companyId = req.params.companyId;
-  res.status(200);
+  const items = items.filter((item) => item.companyId === companyId);
 };
 
 module.exports = {
