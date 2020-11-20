@@ -11,6 +11,12 @@ import { COLORS } from "../constants";
 export const Categories = () => {
   return (
     <CatDiv>
+      <ViewAllDiv>
+        <ViewAllA href="#">
+          View all <FiArrowRight />
+        </ViewAllA>
+      </ViewAllDiv>
+
       <FitnessLifestyle>
         <FitnessDiv>
           <FitnessButton>
@@ -50,13 +56,6 @@ export const Categories = () => {
           </MedicalButton>
         </MedicalDiv>
       </MedicalEntertainment>
-
-      {/* <ViewAllDiv>
-        <a href="#">
-          View all
-          <FiArrowRight />
-        </a>
-      </ViewAllDiv> */}
     </CatDiv>
   );
 };
@@ -70,8 +69,8 @@ const CatDiv = styled.div`
 const FitnessLifestyle = styled.div`
   display: flex;
   justify-content: center;
-
   align-items: center;
+
   width: 100%;
   margin-top: 3rem;
 `;
@@ -81,8 +80,8 @@ const FitnessButton = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
-
   align-items: center;
+
   width: 100%;
 `;
 
@@ -90,13 +89,19 @@ const FitnessDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 3rem;
+  transition: all 0.2s ease-in-out;
+  margin-right: 1.5rem;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const ImgDiv = styled.div`
   margin-bottom: 10px;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 `;
 
 const FitnessImg = styled.img`
@@ -108,12 +113,34 @@ const FitnessImg = styled.img`
 const FitnessText = styled.h3`
   position: absolute;
   z-index: 10;
-  color: ${COLORS.orange};
+  color: white;
   font-size: 2.5rem;
+
+  &:hover {
+    color: ${COLORS.orange};
+  }
 `;
 
+const ViewAllDiv = styled.div`
+  margin-top: 2rem;
+`;
+
+const ViewAllA = styled.a`
+  all: unset;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: ${COLORS.orange};
+  margin-left: 0;
+  &:hover {
+    color: #ff852e;
+  }
+`;
 const LifestyleButton = styled(FitnessButton)``;
-const LifestyleDiv = styled(FitnessDiv)``;
+const LifestyleDiv = styled(FitnessDiv)`
+  margin-left: 1.5rem;
+`;
 const LifestyleImg = styled(FitnessImg)``;
 const LifestyleText = styled(FitnessText)``;
 
@@ -125,8 +152,8 @@ const EntertainmentImg = styled(FitnessImg)``;
 const EntertainmentText = styled(FitnessText)``;
 
 const MedicalButton = styled(FitnessButton)``;
-const MedicalDiv = styled(FitnessDiv)``;
+const MedicalDiv = styled(FitnessDiv)`
+  margin-left: 1.5rem;
+`;
 const MedicalImg = styled(FitnessImg)``;
 const MedicalText = styled(FitnessText)``;
-
-const ViewAllDiv = styled.div``;
