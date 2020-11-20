@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { HomePage } from "./home-page/HomePage";
+import GlobalStyles from "./GlobalStyles";
 
 function App() {
   return (
     <>
       <Router>
+        <GlobalStyles />
         <div>
           <Switch>
             <Route exact path="/">
