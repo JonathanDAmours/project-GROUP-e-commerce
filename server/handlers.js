@@ -11,8 +11,8 @@ const getAllItems = (req, res) => {
 };
 
 const getItem = (req, res) => {
-  const id = req.params.id;
-  const item = items[id];
+  const _id = req.params.id;
+  const item = items[_id];
 
   if (item) {
     res.status(200).json({ status: 200, item: item });
