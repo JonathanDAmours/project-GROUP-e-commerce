@@ -9,3 +9,48 @@ const getAllItems = (req, res) => {
     data,
   });
 };
+
+const getItem = (req, res) => {
+  const id = req.params.id;
+  const item = items[id];
+
+  if (item) {
+    res.status(200).json({ status: 200, item: item });
+  } else {
+    res.status(404).json({ status: 404, message: `params sent: ${id}` });
+  }
+};
+
+const getAllCompanies = (req, res) => {
+  res.status(200).json({ status: 200, companies: companies });
+};
+
+const getCompany = (req, res) => {
+  const id = req.params.id;
+  const company = companies[id];
+
+  if (company) {
+    res.status(200).json({ status: 200, company: company });
+  } else {
+    res.status(404).json({ status: 404, message: `params sent: ${id}` });
+  }
+};
+
+const getAllCategories = (req, res) => {
+  let categories = [];
+  items.forEach((item) => {
+    if (categories.indexOf(item.category) === -1) {
+      categories.push(item.category);
+    }
+  });
+
+  res.status(200).json({ status: 200, categories: categories });
+};
+
+module.exports = {
+  getAllItems,
+  getItem,
+  getAllCompanies,
+  getCompany,
+  getAllCategories,
+};
