@@ -12,12 +12,15 @@ const getAllItems = (req, res) => {
 
 const getItem = (req, res) => {
   const _id = req.params.id;
-  const item = items[_id];
+  // const item = items[_id];
+  const item = items.find((results) => {
+    return _id === results._id;
+  });
 
   if (item) {
     res.status(200).json({ status: 200, item: item });
   } else {
-    res.status(404).json({ status: 404, message: `params sent: ${id}` });
+    res.status(404).json({ status: 404, message: `params sent: ${_id}` });
   }
 };
 
