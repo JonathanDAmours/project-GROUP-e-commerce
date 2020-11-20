@@ -19,7 +19,7 @@ top: -3px;
   width: 1rem;
   height: 1rem;
   color: #19100d;
-  margin-left: 20px;
+  margin-left: 35px;
   
 &:hover{
   color:#D45E09;
@@ -31,7 +31,7 @@ const Item = styled.a`
   color: #19100d;
   font-size: 1rem;
   text-decoration: none;
-  margin-left: 25px;
+  margin-left: 30px;
   margin-top: 22px;
 
 
