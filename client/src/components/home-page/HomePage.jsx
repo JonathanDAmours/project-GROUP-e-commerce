@@ -1,18 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-
 import { NavBar } from "../navbar/NavBar";
 import Banner from "../../assets/Banner.jpg"
 import { Categories } from "../../categories/Categories";
 
+
+
 export const HomePage = () => {
+  
   return (
-    <Wrapper>
+  <Wrapper>
       <NavBar />
       <ImgDiv>
         <BannerImg src={Banner} />
-        <Quote>Persistence can change failure <br></br>into extraordinary <Span>achievement.</Span></Quote>
+        <Quote>Persistence can change failure <br />into extraordinary <Span>achievement.</Span></Quote>
       </ImgDiv>
+
 
       <NavigationHeadersDiv>
         <NavigationHeaders>Shop by Category</NavigationHeaders>

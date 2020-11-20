@@ -1,14 +1,36 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import { NavContent } from "./NavContent";
 import DispatchLogo from "../../assets/Dispatch_Logo.png";
 
 export const NavBar = () => {
+
+    /// CONDITIONAL RENDERING FOR IPAD-MOBILE
+    const useViewport = () => {
+      const [width, setWidth] = useState(window.innerWidth);
+      const [height, setHeight] = useState(window.innerHeight);
+      useEffect(() => {
+        const handleWindowResize = () => {
+          setWidth(window.innerWidth);
+          setHeight(window.innerHeight);
+        }
+        window.addEventListener("resize", handleWindowResize);
+        return () => window.removeEventListener("resize", handleWindowResize);
+      }, []);
+      return { width, height };
+    }
+    const { width } = useViewport();
+    const mobilebreakpoint = 768;
+
+    // {width > mobilebreakpoint ? <div></div> : <div></div>}
+    ////
+
   return (
     <Bar>
+      {width > mobilebreakpoint ?  
       <Logo>
         <LogoImg src={DispatchLogo} alt="Dispatch logo" />
-      </Logo>
+      </Logo>: <div>hello</div>}
       <ContentDiv>
         <NavContent />
       </ContentDiv>
