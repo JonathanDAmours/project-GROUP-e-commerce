@@ -49,6 +49,16 @@ text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.75), 0px 4px 4px rgba(0, 0, 0, 0.5),
 color: white;
 margin: 0 40px;
 z-index:-8;
+
+@media screen and (max-width: 768px) {
+    font-size: 30px;
+    top: 260px;
+  }
+
+@media screen and (max-width: 600px) {
+    font-size: 20px;
+    top: 200px;
+  }
 `;
 
 
