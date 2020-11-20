@@ -23,6 +23,8 @@ const Bar = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  // for media, put menu in a hamburglar?
 `;
 
 //div for NavContent compontent
