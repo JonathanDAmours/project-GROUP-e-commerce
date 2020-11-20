@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { HomePage } from "./home-page/HomePage";
 import GlobalStyles from "./GlobalStyles";
 
-function App() {
+const App = () => {
   return (
     <>
       <Router>
@@ -18,7 +18,7 @@ function App() {
       </Router>
     </>
   );
-}
+};
 
 // the code that was here originally:
 
