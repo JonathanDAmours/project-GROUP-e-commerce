@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { NavBar } from "../navbar/NavBar";
 import Banner from "../../assets/Banner.jpg";
 import { Categories } from "../../categories/Categories";
+import { Brands } from "../../brands/Brands";
+import { AllItems } from "../../all-items/AllItems";
+import { Footer } from "../../footer/Footer";
 
 export const HomePage = () => {
   return (
@@ -23,13 +26,16 @@ export const HomePage = () => {
 
       <NavigationHeadersDiv>
         <NavigationHeaders>Shop by Brand</NavigationHeaders>
-        <p>brand component here</p>
+        <Brands />
       </NavigationHeadersDiv>
 
       <NavigationHeadersDiv>
-        <NavigationHeaders>Shop All Items</NavigationHeaders>
-        <p>allitems component here</p>
+        <AllItems />
       </NavigationHeadersDiv>
+
+      <div>
+        <Footer />
+      </div>
     </Wrapper>
   );
 };
@@ -78,6 +84,7 @@ const BannerImg = styled.img`
 
 const NavigationHeadersDiv = styled.div`
   margin: 2rem;
+  margin-top: 4rem;
   text-align: center;
 `;
 
