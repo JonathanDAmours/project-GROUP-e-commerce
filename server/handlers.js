@@ -21,6 +21,10 @@ const getItem = (req, res) => {
   }
 };
 
+const updateItem = (req, res) => {
+  res.status(200);
+};
+
 const getAllCompanies = (req, res) => {
   res.status(200).json({ status: 200, companies: companies });
 };
@@ -47,9 +51,15 @@ const getAllCategories = (req, res) => {
   res.status(200).json({ status: 200, categories: categories });
 };
 
+const companyItems = (req, res) => {
+  const companyId = req.params.companyId;
+  res.status(200);
+};
+
 module.exports = {
   getAllItems,
   getItem,
+  updateItem,
   getAllCompanies,
   getCompany,
   getAllCategories,
