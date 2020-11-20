@@ -7,7 +7,7 @@ import { Categories } from "../../categories/Categories";
 
 export const HomePage = () => {
   return (
-    <div>
+    <Wrapper>
       <NavBar />
       <ImgDiv>
         {/* Placeholder banner unless we like this one */}
@@ -28,9 +28,12 @@ export const HomePage = () => {
         <NavigationHeaders>Shop All Items</NavigationHeaders>
         <p>allitems component here</p>
       </NavigationHeadersDiv>
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+`;
 
 const ImgDiv = styled.div`
   display: flex;
@@ -40,7 +43,7 @@ const ImgDiv = styled.div`
 const BannerImg = styled.img`
   height: auto;
   width: 100%;
-  z-index: 0;
+  z-index: -10;
 `;
 
 const NavigationHeadersDiv = styled.div`
