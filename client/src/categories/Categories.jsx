@@ -12,8 +12,8 @@ export const Categories = () => {
   return (
     <CatDiv>
       <ViewAllDiv>
-        <ViewAllA href="#">
-          View all <FiArrowRight />
+        <ViewAllA aria-label="View all categories" href="#">
+          View all Categories <FiArrowRight />
         </ViewAllA>
       </ViewAllDiv>
 
