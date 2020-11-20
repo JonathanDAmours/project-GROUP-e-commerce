@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { NavBar } from "../navbar/NavBar";
 import Banner from "../../assets/Banner.jpg";
-import { Categories } from "../../categories/Categories";
-import { Brands } from "../../brands/Brands";
-import { AllItems } from "../../all-items/AllItems";
+import { Categories } from "../categories/Categories";
+import { Brands } from "../brands/Brands";
+import { AllItems } from "../all-items/AllItems";
 import { Footer } from "../../footer/Footer";
 
 export const HomePage = () => {

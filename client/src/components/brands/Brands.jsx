@@ -1,15 +1,15 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
 
-import { COLORS } from "../constants";
+import { COLORS } from "../../constants";
 
 import styled from "styled-components";
-import Casio from "../assets/casioLogo.png";
-import Garmin from "../assets/garmin.png";
-import Jawbone from "../assets/jawbone.png";
-import Misfit from "../assets/misfit.png";
-import Polar from "../assets/polar.png";
-import Samsung from "../assets/samsung.png";
+import Casio from "../../assets/casioLogo.png";
+import Garmin from "../../assets/garmin.png";
+import Jawbone from "../../assets/jawbone.png";
+import Misfit from "../../assets/misfit.png";
+import Polar from "../../assets/polar.png";
+import Samsung from "../../assets/samsung.png";
 
 // displays our Brands
 export const Brands = () => {
