@@ -68,10 +68,10 @@ const CatDiv = styled.div`
 
 const FitnessLifestyle = styled.div`
   display: flex;
-  left: 50%;
+  justify-content: center;
+
   align-items: center;
-  justify-content: space-around;
-  width: 65%;
+  width: 100%;
   margin-top: 3rem;
 `;
 
@@ -84,6 +84,7 @@ const FitnessDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 3rem;
 `;
 
 const ImgDiv = styled.div`
