@@ -87,4 +87,5 @@ module.exports = {
   getAllCompanies,
   getCompany,
   getAllCategories,
+  getItemByCompany,
 };
