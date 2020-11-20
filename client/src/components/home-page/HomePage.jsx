@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
+import { NavBar } from "../navbar/NavBar";
 import Banner from "../../assets/homePageBanner.jpg";
 
 export const HomePage = () => {
   return (
     <div>
-      <div>This is home!</div>
+      <NavBar />
       <ImgDiv>
         {/* Placeholder banner unless we like this one */}
         <BannerImg src={Banner} />
@@ -22,6 +23,6 @@ const ImgDiv = styled.div`
 
 const BannerImg = styled.img`
   height: auto;
-  width: 95vw;
+  width: 100%;
   z-index: 0;
 `;
