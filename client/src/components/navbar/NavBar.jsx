@@ -24,7 +24,7 @@ const Bar = styled.div`
   top: 0;
   padding: 0 20px 0 20px;
   width: 100%;
-  height: 4rem;
+  height: 3.8rem;
   background-color: #fff;
   display: flex;
   justify-content: space-between;

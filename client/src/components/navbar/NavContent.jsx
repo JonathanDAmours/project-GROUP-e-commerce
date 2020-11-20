@@ -32,7 +32,7 @@ const Item = styled.a`
   font-size: 1rem;
   text-decoration: none;
   margin-left: 25px;
-  margin-top: 20px;
+  margin-top: 22px;
 
 
   &::after {
