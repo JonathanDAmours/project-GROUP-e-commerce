@@ -22,7 +22,7 @@ margin: 0;`;
 const Bar = styled.div`
   position: sticky;
   top: 0;
-  padding: 0 20px 0 20px;
+  padding: 0 40px 0 40px;
   width: 100%;
   height: 3.8rem;
   background-color: #fff;
