@@ -13,6 +13,7 @@ const {
   getAllCompanies,
   getCompany,
   getAllCategories,
+  getItemByCompany,
 } = require("./handlers");
 
 express()
@@ -41,6 +42,7 @@ express()
   .get("/companies", getAllCompanies)
   .get("/companies/:id", getCompany)
   .get("/categories", getAllCategories)
+  .get("/:companies/items", getItemByCompany)
 
   //catchall for server errors
 
