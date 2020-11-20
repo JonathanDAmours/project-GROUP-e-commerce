@@ -1,11 +1,11 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
 import styled from "styled-components";
-import Fitness from "../assets/fitness.png";
-import Lifestyle from "../assets/lifestyle.png";
-import Entertainment from "../assets/entertainment.png";
-import Medical from "../assets/medical.png";
-import { COLORS } from "../constants";
+import Fitness from "../../assets/fitness.png";
+import Lifestyle from "../../assets/lifestyle.png";
+import Entertainment from "../../assets/entertainment.png";
+import Medical from "../../assets/medical.png";
+import { COLORS } from "../../constants";
 
 // displays our categories
 export const Categories = () => {
