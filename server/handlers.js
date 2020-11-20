@@ -21,6 +21,25 @@ const getItem = (req, res) => {
   }
 };
 
+// ----------------to do
+const updateItem = (req, res) => {
+  let item = items.find((item) => item._id === req.params.id);
+  if (item) {
+    let bodyValue = req.body;
+    item = { ...item, bodyValue };
+    res.status(200).json({
+      status: 200,
+      data: item,
+    });
+  } else {
+    res.status(400).json({
+      status: 400,
+      message: `Item ${id} does not exist`,
+      data: item,
+    });
+  }
+};
+
 const getAllCompanies = (req, res) => {
   res.status(200).json({ status: 200, companies: companies });
 };
@@ -47,10 +66,26 @@ const getAllCategories = (req, res) => {
   res.status(200).json({ status: 200, categories: categories });
 };
 
+const getItemByCompany = (req, res) => {
+  const companyId = req.params.companyId;
+  const items = items.filter((item) => item.companyId === companyId);
+  if (items) {
+    res.status(200).json({ status: 200, items: items });
+  } else {
+    res.status(400).json({
+      status: 200,
+      error: `Item ${items} not found. ${companyId}`,
+      data: items,
+    });
+  }
+};
+
 module.exports = {
   getAllItems,
   getItem,
+  updateItem,
   getAllCompanies,
   getCompany,
   getAllCategories,
+  getItemByCompany,
 };
