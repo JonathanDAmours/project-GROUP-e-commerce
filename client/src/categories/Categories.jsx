@@ -5,49 +5,50 @@ import Fitness from "../assets/fitness.png";
 import Lifestyle from "../assets/lifestyle.png";
 import Entertainment from "../assets/entertainment.png";
 import Medical from "../assets/medical.png";
+import { COLORS } from "../constants";
 
 // displays our categories
 export const Categories = () => {
   return (
     <CatDiv>
       <FitnessLifestyle>
-        <FitnessButton>
-          <FitnessDiv>
+        <FitnessDiv>
+          <FitnessButton>
             <ImgDiv>
               <FitnessImg src={Fitness} />
             </ImgDiv>
             <FitnessText>Fitness</FitnessText>
-          </FitnessDiv>
-        </FitnessButton>
+          </FitnessButton>
+        </FitnessDiv>
 
-        <LifestyleButton>
-          <LifestyleDiv>
+        <LifestyleDiv>
+          <LifestyleButton>
             <ImgDiv>
               <LifestyleImg src={Lifestyle} />
             </ImgDiv>
             <LifestyleText>Lifestyle</LifestyleText>
-          </LifestyleDiv>
-        </LifestyleButton>
+          </LifestyleButton>
+        </LifestyleDiv>
       </FitnessLifestyle>
 
       <MedicalEntertainment>
-        <EntertainmentButton>
-          <EntertainmentDiv>
+        <EntertainmentDiv>
+          <EntertainmentButton>
             <ImgDiv>
               <EntertainmentImg src={Entertainment} />
             </ImgDiv>
             <EntertainmentText>Entertainment</EntertainmentText>
-          </EntertainmentDiv>
-        </EntertainmentButton>
+          </EntertainmentButton>
+        </EntertainmentDiv>
 
-        <MedicalButton>
-          <MedicalDiv>
+        <MedicalDiv>
+          <MedicalButton>
             <ImgDiv>
               <MedicalImg src={Medical} />
             </ImgDiv>
             <MedicalText>Medical</MedicalText>
-          </MedicalDiv>
-        </MedicalButton>
+          </MedicalButton>
+        </MedicalDiv>
       </MedicalEntertainment>
 
       {/* <ViewAllDiv>
@@ -78,6 +79,11 @@ const FitnessLifestyle = styled.div`
 const FitnessButton = styled.button`
   all: unset;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  width: 100%;
 `;
 
 const FitnessDiv = styled.div`
@@ -88,7 +94,8 @@ const FitnessDiv = styled.div`
 `;
 
 const ImgDiv = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 `;
 
@@ -101,7 +108,7 @@ const FitnessImg = styled.img`
 const FitnessText = styled.h3`
   position: absolute;
   z-index: 10;
-  color: white;
+  color: ${COLORS.orange};
   font-size: 2.5rem;
 `;
 
