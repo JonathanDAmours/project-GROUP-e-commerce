@@ -13,7 +13,6 @@ const {
   getAllCompanies,
   getCompany,
   getAllCategories,
-  getCategory,
 } = require("./handlers");
 
 express()
