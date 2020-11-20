@@ -14,8 +14,8 @@ export const NavContent = () => {
 };
 
 const StyledBiCart = styled(BiCart)`
-position: relative;
-top: -3px;
+  position: relative;
+  top: 20px;
   width: 1rem;
   height: 1rem;
   color: #19100d;
@@ -23,6 +23,7 @@ top: -3px;
   
 &:hover{
   color:#D45E09;
+  cursor: pointer;
   }
 
 `;
@@ -47,5 +48,9 @@ const Item = styled.a`
 
   &:hover::after{
     width: 100%;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 `;

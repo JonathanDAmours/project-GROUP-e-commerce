@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import { NavContent } from "./NavContent";
 import DispatchLogo from "../../assets/Dispatch_Logo.png";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export const NavBar = () => {
 
@@ -27,16 +28,22 @@ export const NavBar = () => {
 
   return (
     <Bar>
-      {width > mobilebreakpoint ?  
       <Logo>
         <LogoImg src={DispatchLogo} alt="Dispatch logo" />
-      </Logo>: <div>hello</div>}
+      </Logo>
       <ContentDiv>
-        <NavContent />
+        <NavContentDiv>
+          <NavContent />
+        </NavContentDiv>
       </ContentDiv>
     </Bar>
   );
 };
+
+
+const NavContentDiv = styled.div`
+display: flex;
+`;
 
 const Logo = styled.div`
 margin: 0;`;
