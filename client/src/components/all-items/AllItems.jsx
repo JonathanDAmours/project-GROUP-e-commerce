@@ -8,20 +8,6 @@ import Cyclist from "../../assets/cyclist3.jpg";
 import { useEffect } from "react";
 
 export const AllItems = () => {
-  const fetchItems = async () => {
-    try {
-      let data = await fetch("/items");
-      data = await data.json();
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchItems();
-  }, []);
-
   return (
     <div>
       <AllItemsDiv>
