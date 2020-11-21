@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { HomePage } from "./home-page/HomePage";
 import GlobalStyles from "./GlobalStyles";
+
+import { HomePage } from "./home-page/HomePage";
+import AllItemsPage from "./all-items/AllItemsPage";
+import AllBrandsPage from "./brands/AllBrands";
 
 const App = () => {
   return (
@@ -13,23 +16,17 @@ const App = () => {
             <Route exact path="/">
               <HomePage />
             </Route>
+            <Route exact path="/items">
+              <AllItemsPage />
+            </Route>
+            <Route>
+              <AllBrandsPage exact path="/brands" />
+            </Route>
           </Switch>
         </div>
       </Router>
     </>
   );
 };
-
-// the code that was here originally:
-
-// const [bacon, setBacon] = useState(null);
-
-// useEffect(() => {
-//   fetch('/bacon')
-//     .then(res => res.json())
-//     .then(data => setBacon(data));
-// }, []);
-
-// return <div>{bacon ? bacon : `...where's my stuff?...`}</div>;
 
 export default App;

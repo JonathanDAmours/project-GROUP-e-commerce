@@ -69,6 +69,8 @@ const getAllCategories = (req, res) => {
   res.status(200).json({ status: 200, categories: categories });
 };
 
+//
+
 const getItemByCompany = (req, res) => {
   const companyId = req.params.companyId;
   const items = items.filter((item) => item.companyId === companyId);

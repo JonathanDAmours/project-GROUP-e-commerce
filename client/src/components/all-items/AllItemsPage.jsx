@@ -1,4 +1,6 @@
-const AllItems = () => {
+import React from "react";
+
+const AllItemsPage = () => {
   return <div>All items ...</div>;
 };
-export default AllItems;
+export default AllItemsPage;
