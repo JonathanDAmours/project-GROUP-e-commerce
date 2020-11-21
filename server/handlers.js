@@ -69,7 +69,25 @@ const getAllCategories = (req, res) => {
   res.status(200).json({ status: 200, categories: categories });
 };
 
-//
+//HERE
+
+const getCategoryById = (req, res) => {
+  const categoryId = req.params.category;
+  const results = items.filter((result) => result.categoryId === categoryId);
+  if (results) {
+    res.status(200).json({
+      status: 200,
+      data: results,
+    });
+  } else {
+    res.status(400).json({
+      status: 400,
+      error: `Invalid category`,
+      data: results,
+      categoryId,
+    });
+  }
+};
 
 const getItemByCompany = (req, res) => {
   const companyId = req.params.companyId;
@@ -93,4 +111,5 @@ module.exports = {
   getCompany,
   getAllCategories,
   getItemByCompany,
+  getCategoryById,
 };

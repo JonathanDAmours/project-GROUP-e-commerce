@@ -4,13 +4,18 @@ import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
 import Cart from "../Cart/Cart";
 
-
 export const NavContent = () => {
   return (
     <>
-      <Item to="/categories">Categories</Item>
-      <Item to="/brands">Brands</Item>
-      <Item to="/items">All Items</Item>
+      <Item to="/categories" aria-label="Categories">
+        Categories
+      </Item>
+      <Item to="/brands" aria-label="Brands">
+        Brands
+      </Item>
+      <Item to="/items" aria-label="All items">
+        All Items
+      </Item>
       <Cart />
     </>
   );
