@@ -1,16 +1,23 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Cart from "../Cart/Cart";
 
 export const BurgerContent = () => {
   return (
     <>
-    <Wrapper>
-      <Item href="#">Categories</Item>
-      <Item href="#">Brands</Item>
-      <Item href="#">All Items</Item>
-      <Cart />
-    </Wrapper>
+      <Wrapper>
+        <Item to="/categories" aria-label="Categories">
+          Categories
+        </Item>
+        <Item to="/brands" aria-label="Brands">
+          Brands
+        </Item>
+        <Item to="/items" aria-label="All items">
+          All Items
+        </Item>
+        <Cart />
+      </Wrapper>
     </>
   );
 };
@@ -22,12 +29,11 @@ const Wrapper = styled.div`
   z-index: 1000;
 `;
 
-const Item = styled.a`
+const Item = styled(NavLink)`
   color: #19100d;
   font-size: 1rem;
   text-decoration: none;
   padding: 31px 0;
   border-bottom: 1px solid #d45e09;
   cursor: pointer;
- 
 `;
