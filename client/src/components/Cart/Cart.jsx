@@ -7,7 +7,6 @@ import { getStoreItemArray } from "../../reducers/items-reducer";
 export default function Cart() {
   const storeItems = useSelector(getStoreItemArray);
   const [cart, setCart] = useState(true);
-
   /// CONDITIONAL RENDERING FOR IPAD-MOBILE
   const useViewport = () => {
     const [width, setWidth] = useState(window.innerWidth);
