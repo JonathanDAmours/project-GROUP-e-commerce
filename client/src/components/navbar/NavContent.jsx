@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
 import Cart from "../Cart/Cart";
 
+
 export const NavContent = () => {
   return (
     <>
