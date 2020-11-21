@@ -28,7 +28,7 @@ export const NavBar = () => {
       return { width, height };
     }
     const { width } = useViewport();
-    const mobilebreakpoint = 768;
+    const mobilebreakpoint = 600;
 
     // {width > mobilebreakpoint ? <div></div> : <div></div>}
     ////
