@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { NavBar } from "../navbar/NavBar";
 import Banner from "../../assets/Banner.jpg";
 import { Categories } from "../categories/Categories";
 import { Brands } from "../brands/Brands";
@@ -11,7 +10,6 @@ import { COLORS } from "../../constants";
 export const HomePage = () => {
   return (
     <Wrapper>
-      <NavBar />
       <ImgDiv>
         <BannerImg src={Banner} />
         <Quote>
