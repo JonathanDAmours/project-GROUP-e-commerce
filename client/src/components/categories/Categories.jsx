@@ -95,6 +95,7 @@ border-radius: 10px;
   align-items: center;
   transition: all 0.2s ease-in-out;
   margin-right: 1.5rem;
+  margin-bottom: 10px;
   box-shadow: 0px 4px 12px 2px rgba(0,0,0,0.33);
   &:hover {
     transform: scale(1.05);
