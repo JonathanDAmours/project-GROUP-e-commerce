@@ -37,10 +37,10 @@ export default function Cart() {
         </ButtonWrap>
       ) : (
         <div>
-          <button onClick={toggleCart}>View Cart</button>
+          <BurgerCart onClick={toggleCart}>View Cart</BurgerCart>
         </div>
       )}
-      <CartWrap style={cart ? { width: "250px" } : { width: 0 }}>
+      <CartWrap style={cart ? { right: "-250px" } : { right: 0 }}>
         <div>
           <button onClick={toggleCart}>X</button>
           <h1>Your Cart</h1>
@@ -60,10 +60,23 @@ export default function Cart() {
   );
 }
 
+const BurgerCart = styled.button `
+  color: #19100d;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 31px 0;
+  border: none;
+  border-bottom: 1px solid #d45e09;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+ `;
+
+
 const Wrapper = styled.div `
 display: block;
-
-
 `;
 
 const Button = styled.button`
@@ -75,12 +88,13 @@ const Button = styled.button`
 const CartWrap = styled.div`
   color: white;
   position: fixed;
-  top: 0%;
+  top: 0;
   right: 0;
   background-color: #111;
   overflow-x: hidden;
   transition: 1s;
   height: 100vh;
+  width: 250px;
 `;
 
 const ButtonWrap = styled.div`
