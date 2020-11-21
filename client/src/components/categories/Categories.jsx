@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import styled from "styled-components";
 import Fitness from "../../assets/fitness.png";
@@ -9,6 +10,24 @@ import { COLORS } from "../../constants";
 
 // displays our categories
 export const Categories = () => {
+  let history = useHistory();
+
+  const handleFitness = () => {
+    history.push(`/categories/Fitness`);
+  };
+
+  const handleLifestyle = () => {
+    history.push(`/categories/Lifestyle`);
+  };
+
+  const handleEntertainment = () => {
+    history.push(`/categories/Entertainment`);
+  };
+
+  const handleMedical = () => {
+    history.push(`/categories/Medical`);
+  };
+
   return (
     <CatDiv>
       <ViewAllDiv>
@@ -17,7 +36,7 @@ export const Categories = () => {
         </ViewAllA>
       </ViewAllDiv>
 
-      <FitnessLifestyle>
+      <FitnessLifestyle onClick={handleFitness}>
         <FitnessDiv>
           <FitnessButton>
             <ImgDiv>
@@ -27,7 +46,7 @@ export const Categories = () => {
           </FitnessButton>
         </FitnessDiv>
 
-        <LifestyleDiv>
+        <LifestyleDiv onClick={handleLifestyle}>
           <LifestyleButton>
             <ImgDiv>
               <LifestyleImg src={Lifestyle} />
@@ -37,7 +56,7 @@ export const Categories = () => {
         </LifestyleDiv>
       </FitnessLifestyle>
 
-      <MedicalEntertainment>
+      <MedicalEntertainment onClick={handleEntertainment}>
         <EntertainmentDiv>
           <EntertainmentButton>
             <ImgDiv>
@@ -47,7 +66,7 @@ export const Categories = () => {
           </EntertainmentButton>
         </EntertainmentDiv>
 
-        <MedicalDiv>
+        <MedicalDiv onClick={handleMedical}>
           <MedicalButton>
             <ImgDiv>
               <MedicalImg src={Medical} />
