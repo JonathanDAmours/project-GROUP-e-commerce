@@ -1,8 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { addToCart } from "../../actions";
 import { COLORS } from "../../constants";
 
 const Items = ({ item }) => {
+  const dispatch = useDispatch();
   const { name, price, imageSrc, category, numInStock, _id } = item;
 
   // we need to acces all brands to get the name of the brand matching with companyId
@@ -23,6 +26,9 @@ const Items = ({ item }) => {
       </div>
       <div>
         <p>{price}</p>
+        <button onClick={() => dispatch(addToCart({ _id, name, price }))}>
+          add to cart
+        </button>
       </div>
     </>
   );

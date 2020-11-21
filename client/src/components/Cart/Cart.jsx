@@ -86,11 +86,12 @@ const Button = styled.button`
 `;
 
 const CartWrap = styled.div`
-  color: white;
+  color: black;
   position: fixed;
   top: 0;
   right: 0;
-  background-color: #111;
+  background-color:white;
+  border-left: 4px solid #d45e09;
   overflow-x: hidden;
   transition: 1s;
   height: 100vh;
