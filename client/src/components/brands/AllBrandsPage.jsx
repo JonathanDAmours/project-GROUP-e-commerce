@@ -22,7 +22,7 @@ import { useSelector } from "react-redux";
 
 // import { fetchBrands } from "../../helpers/fetch";
 
-import { receiveAllBrands, requestAllBrands } from "../../actions";
+// import { receiveAllBrands, requestAllBrands } from "../../actions";
 
 // const fetchBrands = async () => {
 //   try {
@@ -36,21 +36,21 @@ import { receiveAllBrands, requestAllBrands } from "../../actions";
 
 // console.log(fetchBrands);
 const AllBrandsPage = () => {
-  const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state);
-  console.log(state);
+  //   const state = useSelector((state) => state);
+  //   console.log(state);
 
-  dispatch(requestAllBrands());
-  fetch("/companies")
-    .then((res) => res.json())
-    .then((json) => {
-      console.log(json);
-      dispatch(receiveAllBrands());
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  //   dispatch(requestAllBrands());
+  //   fetch("/companies")
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       console.log(json);
+  //       dispatch(receiveAllBrands());
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
 
   return <div>All brands ...</div>;
 };
