@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { BiCart } from "react-icons/bi";
 
 export const BurgerContent = () => {
   return (
