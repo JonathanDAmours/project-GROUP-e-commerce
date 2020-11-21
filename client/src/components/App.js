@@ -4,7 +4,8 @@ import GlobalStyles from "./GlobalStyles";
 
 import { HomePage } from "./home-page/HomePage";
 import AllItemsPage from "./all-items/AllItemsPage";
-import AllBrandsPage from "./brands/AllBrands";
+import AllBrandsPage from "./brands/AllBrandsPage";
+import AllCategoriesPage from "./categories/AllCategoriesPage";
 
 const App = () => {
   return (
@@ -15,6 +16,9 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <HomePage />
+            </Route>
+            <Route exact path="/categories">
+              <AllCategoriesPage />
             </Route>
             <Route exact path="/items">
               <AllItemsPage />

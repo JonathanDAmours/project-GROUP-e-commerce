@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
 import Cart from "../Cart/Cart";
@@ -6,9 +7,9 @@ import Cart from "../Cart/Cart";
 export const NavContent = () => {
   return (
     <>
-      <Item href="#">Categories</Item>
-      <Item href="#">Brands</Item>
-      <Item href="#">All Items</Item>
+      <Item to="/categories">Categories</Item>
+      <Item to="/brands">Brands</Item>
+      <Item to="/items">All Items</Item>
       <Cart />
     </>
   );
@@ -32,7 +33,7 @@ const StyledBiCart = styled(BiCart)`
   }
 `;
 
-const Item = styled.a`
+const Item = styled(NavLink)`
   color: #19100d;
   font-size: 1rem;
   text-decoration: none;
