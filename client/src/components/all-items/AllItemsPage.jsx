@@ -26,7 +26,7 @@ const AllItemsPage = () => {
   }
 
   return items.map((item) => {
-    return <Items item={item} />;
+    return <Items key={item._id} item={item} />;
   });
 };
 export default AllItemsPage;
