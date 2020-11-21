@@ -1,21 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import Cart from "../Cart/Cart";
 
 export const BurgerContent = () => {
   return (
-  
     <Wrapper>
-    <Item href="#">Categories</Item>
-    <Item href="#">Brands</Item>
-    <Item href="#">All Items</Item>
-    <Item href="#">View Cart</Item>
-  </Wrapper>
+      <Item href="#">Categories</Item>
+      <Item href="#">Brands</Item>
+      <Item href="#">All Items</Item>
+      <Cart />
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Item = styled.a`

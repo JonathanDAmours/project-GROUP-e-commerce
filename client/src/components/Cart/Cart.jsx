@@ -1,21 +1,45 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
 
 export default function Cart() {
   const [cart, setCart] = useState(false);
 
+  /// CONDITIONAL RENDERING FOR IPAD-MOBILE
+  const useViewport = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(window.innerHeight);
+    useEffect(() => {
+      const handleWindowResize = () => {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+      };
+      window.addEventListener("resize", handleWindowResize);
+      return () => window.removeEventListener("resize", handleWindowResize);
+    }, []);
+    return { width, height };
+  };
+  const { width } = useViewport();
+  const mobilebreakpoint = 600;
+
+  // toggles (cart and burger)
   const toggleCart = () => setCart(!cart);
 
   return (
     <div>
-      <ButtonWrap>
-        <Button onClick={toggleCart}>
-          <StyledBiCart />
-        </Button>
-      </ButtonWrap>
-
+      {" "}
+      {width > mobilebreakpoint ? (
+        <ButtonWrap>
+          <Button onClick={toggleCart}>
+            <StyledBiCart />
+          </Button>
+        </ButtonWrap>
+      ) : (
+        <div>
+          <button onClick={toggleCart}>View Cart</button>
+        </div>
+      )}
       <CartWrap style={cart ? { width: "250px" } : { width: 0 }}>
         <div>
           <button onClick={toggleCart}>X</button>
