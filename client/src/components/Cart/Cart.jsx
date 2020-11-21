@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
 
 export default function Cart() {
-  const [cart, setCart] = useState(false);
+  const [cart, setCart] = useState(true);
 
   /// CONDITIONAL RENDERING FOR IPAD-MOBILE
   const useViewport = () => {
