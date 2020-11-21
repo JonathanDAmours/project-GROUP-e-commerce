@@ -1,40 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-
-// import { fetchBrands } from "../../helpers/fetch";
+import { IndividualBrand } from "./IndividualBrand";
 
 // import { receiveAllBrands, requestAllBrands } from "../../actions";
 
-// const fetchBrands = async () => {
-//   try {
-//     let data = await fetch("/companies");
-//     data = await data.json();
-//     console.log(data);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
 // console.log(fetchBrands);
 const AllBrandsPage = () => {
-  //   const dispatch = useDispatch();
+  const [brands, setBrands] = useState([]);
 
-  //   const state = useSelector((state) => state);
-  //   console.log(state);
+  const fetchBrands = async () => {
+    try {
+      let data = await fetch("/companies");
+      data = await data.json();
+      console.log(data);
+      setBrands(data.companies);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(brands);
+  useEffect(() => {
+    fetchBrands();
+  }, []);
 
-  //   dispatch(requestAllBrands());
-  //   fetch("/companies")
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       console.log(json);
-  //       dispatch(receiveAllBrands());
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-
-  return <div>All brands ...</div>;
+  return brands.map((brand) => {
+    return <IndividualBrand key={brand._id} brand={brand} />;
+    //<IndividualBrand />
+  });
 };
+
 export default AllBrandsPage;

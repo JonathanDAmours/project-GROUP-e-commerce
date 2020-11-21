@@ -12,12 +12,3 @@ export const updateQuantity = (item) => ({
   type: "UPDATE_QUANTITY",
   item,
 });
-
-// Brands:
-//get all brands data
-export const receiveAllBrands = (brands) => {
-  return {
-    type: "RECEIVE_ALL_BRANDS",
-    brands,
-  };
-};
