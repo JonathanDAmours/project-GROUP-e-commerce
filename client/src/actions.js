@@ -3,6 +3,16 @@ export const addToCart = (item) => ({
   item,
 });
 
+export const removeItem = (item) => ({
+  type: "REMOVE_ITEM",
+  item,
+});
+
+export const updateQuantity = (item) => ({
+  type: "UPDATE_QUANTITY",
+  item,
+});
+
 // Brands:
 //get all brands data
 export const receiveAllBrands = (brands) => {
