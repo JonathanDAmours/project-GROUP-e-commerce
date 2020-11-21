@@ -1,10 +1,17 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import { NavContent } from "./NavContent";
+import { BurgerContent } from "./BurgerContent";
 import DispatchLogo from "../../assets/Dispatch_Logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 export const NavBar = () => {
+
+  const [toggle, setToggle] = useState(false);
+
+  const handleToggle = () => {
+    setToggle(!toggle);
+  }
 
     /// CONDITIONAL RENDERING FOR IPAD-MOBILE
     const useViewport = () => {
@@ -26,23 +33,56 @@ export const NavBar = () => {
     // {width > mobilebreakpoint ? <div></div> : <div></div>}
     ////
 
+
+
   return (
+    <>
     <Bar>
       <Logo>
         <LogoImg src={DispatchLogo} alt="Dispatch logo" />
       </Logo>
       <ContentDiv>
         <NavContentDiv>
+           {width > mobilebreakpoint ?
           <NavContent />
+          : <StyledGiHamburgerMenu onClick={handleToggle}/>}
         </NavContentDiv>
       </ContentDiv>
     </Bar>
+    {toggle === true ? 
+      <DropDownDiv>
+      <BurgerContent />
+      </DropDownDiv>
+       : null}
+       </>
   );
 };
 
+const DropDownDiv = styled.div`
+background-color: white;
+position: absolute;
+text-align: center;
+width: 100vw;
+display: none;
+
+@media screen and (max-width: 768px) {
+    display: block;
+  }
+
+@media screen and (max-width: 600px) {
+    display: block;
+  }
+
+`;
+
+
+const StyledGiHamburgerMenu = styled(GiHamburgerMenu)`
+cursor: pointer;
+`;
 
 const NavContentDiv = styled.div`
 display: flex;
+position: relative;
 `;
 
 const Logo = styled.div`
@@ -66,6 +106,7 @@ const Bar = styled.div`
 //div for NavContent compontent
 const ContentDiv = styled.div`
   display: flex;
+  position: relative;
   justify-content: flex-end;
   align-items: center;
   height: 100%;

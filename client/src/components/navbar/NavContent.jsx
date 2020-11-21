@@ -25,6 +25,14 @@ const StyledBiCart = styled(BiCart)`
     color: #d45e09;
     cursor: pointer;
   }
+
+  @media screen and (max-width: 768px) {
+display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+display: none;
+  }
 `;
 
 const Item = styled.a`
@@ -50,5 +58,13 @@ const Item = styled.a`
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+display: none;
   }
 `;
