@@ -6,6 +6,7 @@ import { HomePage } from "./home-page/HomePage";
 import AllItemsPage from "./all-items/AllItemsPage";
 import AllBrandsPage from "./brands/AllBrandsPage";
 import AllCategoriesPage from "./categories/AllCategoriesPage";
+import { NavBar } from "./navbar/NavBar";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Router>
         <GlobalStyles />
         <div>
+          <NavBar />
           <Switch>
             <Route exact path="/">
               <HomePage />

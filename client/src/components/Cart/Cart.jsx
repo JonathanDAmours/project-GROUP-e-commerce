@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
 import { getStoreItemArray } from "../../reducers/items-reducer";
+import {CartItem, cartItem} from "./CartItem";
 
 export default function Cart() {
   const storeItems = useSelector(getStoreItemArray);
@@ -49,8 +50,9 @@ export default function Cart() {
         </div>
         {/* mapping over items in cart */}
         <div>
-          {/* cartItem component */}
-          cartItem component
+          {storeItems.map((item, index) => {
+            return (<CartItem key={index} title={item.name} quantity={item.quantity} _id={item._id} />)
+          })}
         </div>
         <div>
           <p>Total</p>
