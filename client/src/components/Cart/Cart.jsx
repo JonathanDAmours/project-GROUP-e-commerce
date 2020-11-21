@@ -1,10 +1,12 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
+import { getStoreItemArray } from "../../reducers/items-reducer";
 
 export default function Cart() {
-  const [cart, setCart] = useState(false);
+  const storeItems = useSelector(getStoreItemArray);
+  const [cart, setCart] = useState(true);
 
   /// CONDITIONAL RENDERING FOR IPAD-MOBILE
   const useViewport = () => {
@@ -60,7 +62,7 @@ export default function Cart() {
   );
 }
 
-const BurgerCart = styled.button `
+const BurgerCart = styled.button`
   color: #19100d;
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
@@ -72,11 +74,10 @@ const BurgerCart = styled.button `
   background-color: transparent;
   outline: none;
   width: 100%;
- `;
+`;
 
-
-const Wrapper = styled.div `
-display: block;
+const Wrapper = styled.div`
+  display: block;
 `;
 
 const Button = styled.button`
@@ -90,7 +91,7 @@ const CartWrap = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  background-color:white;
+  background-color: white;
   border-left: 4px solid #d45e09;
   overflow-x: hidden;
   transition: 1s;
