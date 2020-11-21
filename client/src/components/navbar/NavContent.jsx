@@ -26,10 +26,6 @@ const StyledBiCart = styled(BiCart)`
     cursor: pointer;
   }
 
-  @media screen and (max-width: 768px) {
-display: none;
-  }
-
   @media screen and (max-width: 600px) {
 display: none;
   }
@@ -60,9 +56,6 @@ const Item = styled.a`
     cursor: pointer;
   }
 
-  @media screen and (max-width: 768px) {
-display: none;
-  }
 
   @media screen and (max-width: 600px) {
 display: none;
