@@ -89,11 +89,13 @@ const FitnessButton = styled.button`
 `;
 
 const FitnessDiv = styled.div`
+border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
   margin-right: 1.5rem;
+  box-shadow: 0px 4px 12px 2px rgba(0,0,0,0.33);
   &:hover {
     transform: scale(1.05);
   }
@@ -112,7 +114,6 @@ const FitnessDiv = styled.div`
 `;
 
 const ImgDiv = styled.div`
-  margin-bottom: 10px;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   display: flex;
