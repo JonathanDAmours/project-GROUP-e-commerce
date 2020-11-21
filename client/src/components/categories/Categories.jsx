@@ -114,17 +114,22 @@ const FitnessDiv = styled.div`
   margin-right: 1.5rem;
   margin-bottom: 10px;
   box-shadow: 0px 4px 12px 2px rgba(0, 0, 0, 0.33);
+
   &:hover {
     transform: scale(1.05);
   }
 
   @media screen and (max-width: 835px) {
+    margin: 1.5rem 1.5rem 10px 0;
+
     &:hover {
       transform: none;
     }
   }
 
   @media screen and (max-width: 600px) {
+    margin: 1.5rem 1.5rem 10px 0;
+
     &:hover {
       transform: none;
     }
