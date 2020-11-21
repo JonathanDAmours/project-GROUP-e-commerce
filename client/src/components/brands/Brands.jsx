@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 
 import { COLORS } from "../../constants";
@@ -13,6 +13,18 @@ import Samsung from "../../assets/samsung.png";
 
 // displays our Brands
 export const Brands = () => {
+  const [hover, setHover] = useState(false);
+
+  const handleMouseEnter = (e) => {
+    const enter = setHover(!hover);
+    return enter;
+  };
+
+  const handleMouseLeave = () => {
+    const leave = setHover(false);
+    return leave;
+  };
+
   return (
     <CatDiv>
       <ViewAllDiv>
@@ -23,18 +35,30 @@ export const Brands = () => {
       </ViewAllDiv>
 
       <FirstRowOfThree>
-        <CasioDiv>
+        <CasioDiv
+          className="casio"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <CasioButton>
             <ImgDiv>
-              <CasioImg src={Casio} />
+              {hover ? <CasioImg src={Casio} /> : <CasioText>Casio</CasioText>}
             </ImgDiv>
           </CasioButton>
         </CasioDiv>
 
-        <JawboneDiv>
+        <JawboneDiv
+          className="jawbone"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <JawboneButton>
             <ImgDiv>
-              <JawboneImg src={Jawbone} />
+              {hover ? (
+                <JawboneImg src={Jawbone} />
+              ) : (
+                <JawboneText>Jawbone</JawboneText>
+              )}
             </ImgDiv>
           </JawboneButton>
         </JawboneDiv>
@@ -110,7 +134,7 @@ const CasioDiv = styled.div`
   transition: all 0.2s ease-in-out;
   margin-right: 1.5rem;
   &:hover {
-    transform: scale(1.05);
+    // transform: scale(1.05);
   }
 `;
 
@@ -118,18 +142,34 @@ const ImgDiv = styled.div`
   margin-bottom: 10px;
   border-radius: 10px;
   display: flex;
+  justify-content: center;
   align-items: center;
+  background: white;
+  height: 150px;
+  width: 250px;
 
   transition: all 0.2s ease-in-out;
   &:hover {
-    background: rgba(0, 0, 0, 0.3);
   }
 `;
 
 const CasioImg = styled.img`
   position: relative;
-  z-index: -10;
   border-radius: 10px;
+  height: 150px;
+  width: 250px;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+  }
+`;
+
+const CasioText = styled.h3`
+  position: absolute;
+  color: black;
+  font-size: 2.5rem;
+
+  &:hover {
+  }
 `;
 
 // view all Brands
@@ -155,6 +195,7 @@ const JawboneDiv = styled(CasioDiv)`
   margin-left: 1.5rem;
 `;
 const JawboneImg = styled(CasioImg)``;
+const JawboneText = styled(CasioText)``;
 
 const GarminButton = styled(CasioButton)``;
 const GarminDiv = styled(CasioDiv)`
