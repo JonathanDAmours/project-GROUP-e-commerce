@@ -45,4 +45,8 @@ const ViewAllA = styled.a`
   &:hover {
     color: #ff852e;
   }
+
+    @media screen and (max-width: 600px) {
+font-size: 2rem;
+flex-wrap: wrap;
 `;

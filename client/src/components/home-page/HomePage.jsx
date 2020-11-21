@@ -90,6 +90,11 @@ const StyledDiv = styled.div`
   height: 1px;
   background-color: ${COLORS.orange};
   margin: 4rem 2rem;
+
+  @media screen and (max-width: 600px) {
+    margin-right: 5rem;
+    margin-left: 5rem;
+  }
 `;
 
 const NavigationHeadersDiv = styled.div`

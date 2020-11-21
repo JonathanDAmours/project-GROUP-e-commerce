@@ -88,6 +88,7 @@ const FirstRowOfThree = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
   width: 100%;
   margin-top: 2rem;
@@ -109,8 +110,23 @@ const CasioDiv = styled.div`
   align-items: center;
   transition: all 0.2s ease-in-out;
   margin-right: 1.5rem;
+
   &:hover {
     transform: scale(1.07);
+  }
+
+  @media screen and (max-width: 835px) {
+    &:hover {
+      transform: none;
+      margin: 1.5rem 1.5rem 10px 0;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    &:hover {
+      transform: none;
+      margin: 1.5rem 1.5rem 0 0;
+    }
   }
 `;
 

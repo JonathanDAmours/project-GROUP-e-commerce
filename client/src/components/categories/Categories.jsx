@@ -74,8 +74,6 @@ const FitnessLifestyle = styled.div`
 
   width: 100%;
   margin-top: 3rem;
-
-
 `;
 
 const FitnessButton = styled.button`
@@ -89,28 +87,33 @@ const FitnessButton = styled.button`
 `;
 
 const FitnessDiv = styled.div`
-border-radius: 10px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
   margin-right: 1.5rem;
   margin-bottom: 10px;
-  box-shadow: 0px 4px 12px 2px rgba(0,0,0,0.33);
+  box-shadow: 0px 4px 12px 2px rgba(0, 0, 0, 0.33);
+
   &:hover {
     transform: scale(1.05);
   }
 
   @media screen and (max-width: 835px) {
+    margin: 1.5rem 1.5rem 10px 0;
+
     &:hover {
-    transform: none;
-  }
+      transform: none;
+    }
   }
 
   @media screen and (max-width: 600px) {
+    margin: 1.5rem 1.5rem 10px 0;
+
     &:hover {
-    transform: none;
-  }
+      transform: none;
+    }
   }
 `;
 
@@ -170,16 +173,16 @@ const LifestyleImg = styled(FitnessImg)``;
 const LifestyleText = styled(FitnessText)``;
 
 const MedicalEntertainment = styled(FitnessLifestyle)`
-flex-wrap: wrap;
+  flex-wrap: wrap;
 
-@media screen and (max-width: 835px) {
-   margin-top: 0;
+  @media screen and (max-width: 835px) {
+    margin-top: 0;
   }
 
   @media screen and (max-width: 600px) {
-    margin-top: 0; 
+    margin-top: 0;
   }
-  `;
+`;
 
 const EntertainmentButton = styled(FitnessButton)``;
 const EntertainmentDiv = styled(FitnessDiv)``;
@@ -191,7 +194,7 @@ const MedicalDiv = styled(FitnessDiv)`
   margin-left: 1.5rem;
 
   @media screen and (max-width: 835px) {
-   margin-left: 0;
+    margin-left: 0;
   }
 
   @media screen and (max-width: 600px) {
