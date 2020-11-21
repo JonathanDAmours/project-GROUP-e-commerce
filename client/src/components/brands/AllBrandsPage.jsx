@@ -1,20 +1,3 @@
-//Brands:
-// from actions
-// get all brands request
-// export const requestAllBrands = () => {
-//   return {
-//     type: "REQUEST_ALL_BRANDS",
-//   };
-// };
-
-// //get all brands data
-// export const receiveAllBrands = (brands) => {
-//   return {
-//     type: "RECEIVE_ALL_BRANDS",
-//     brands,
-//   };
-// };
-
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
