@@ -6,6 +6,7 @@ import { Categories } from "../categories/Categories";
 import { Brands } from "../brands/Brands";
 import { AllItems } from "../all-items/AllItems";
 import { Footer } from "../../footer/Footer";
+import { COLORS } from "../../constants";
 
 export const HomePage = () => {
   return (
@@ -25,8 +26,11 @@ export const HomePage = () => {
       </NavigationHeadersDiv>
 
       <NavigationHeadersDiv>
+        <StyledDiv />
         <NavigationHeaders>Shop by Brand</NavigationHeaders>
+
         <Brands />
+        <StyledDiv />
       </NavigationHeadersDiv>
 
       <NavigationHeadersDiv>
@@ -80,6 +84,12 @@ const BannerImg = styled.img`
   height: auto;
   width: 100%;
   z-index: -10;
+`;
+
+const StyledDiv = styled.div`
+  height: 1px;
+  background-color: ${COLORS.orange};
+  margin: 4rem 2rem;
 `;
 
 const NavigationHeadersDiv = styled.div`

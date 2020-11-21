@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FiArrowRight } from "react-icons/fi";
 
 import { COLORS } from "../../constants";
@@ -13,18 +13,6 @@ import Samsung from "../../assets/samsung.png";
 
 // displays our Brands
 export const Brands = () => {
-  const [hover, setHover] = useState(false);
-
-  const handleMouseEnter = (e) => {
-    const enter = setHover(!hover);
-    return enter;
-  };
-
-  const handleMouseLeave = () => {
-    const leave = setHover(false);
-    return leave;
-  };
-
   return (
     <CatDiv>
       <ViewAllDiv>
@@ -35,30 +23,18 @@ export const Brands = () => {
       </ViewAllDiv>
 
       <FirstRowOfThree>
-        <CasioDiv
-          className="casio"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <CasioDiv>
           <CasioButton>
             <ImgDiv>
-              {hover ? <CasioImg src={Casio} /> : <CasioText>Casio</CasioText>}
+              <CasioImg src={Casio} />
             </ImgDiv>
           </CasioButton>
         </CasioDiv>
 
-        <JawboneDiv
-          className="jawbone"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <JawboneDiv>
           <JawboneButton>
             <ImgDiv>
-              {hover ? (
-                <JawboneImg src={Jawbone} />
-              ) : (
-                <JawboneText>Jawbone</JawboneText>
-              )}
+              <JawboneImg src={Jawbone} />
             </ImgDiv>
           </JawboneButton>
         </JawboneDiv>
@@ -134,7 +110,7 @@ const CasioDiv = styled.div`
   transition: all 0.2s ease-in-out;
   margin-right: 1.5rem;
   &:hover {
-    // transform: scale(1.05);
+    transform: scale(1.07);
   }
 `;
 
@@ -156,8 +132,8 @@ const ImgDiv = styled.div`
 const CasioImg = styled.img`
   position: relative;
   border-radius: 10px;
-  height: 150px;
-  width: 250px;
+  height: 100px;
+
   transition: all 0.2s ease-in-out;
   &:hover {
   }
