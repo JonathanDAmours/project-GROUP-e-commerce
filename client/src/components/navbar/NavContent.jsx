@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
+import Cart from "../Cart/Cart";
 
 export const NavContent = () => {
   return (
@@ -8,7 +9,7 @@ export const NavContent = () => {
       <Item href="#">Categories</Item>
       <Item href="#">Brands</Item>
       <Item href="#">All Items</Item>
-      <StyledBiCart />
+      <Cart />
     </>
   );
 };
@@ -27,7 +28,7 @@ const StyledBiCart = styled(BiCart)`
   }
 
   @media screen and (max-width: 600px) {
-display: none;
+    display: none;
   }
 `;
 
@@ -56,8 +57,7 @@ const Item = styled.a`
     cursor: pointer;
   }
 
-
   @media screen and (max-width: 600px) {
-display: none;
+    display: none;
   }
 `;
