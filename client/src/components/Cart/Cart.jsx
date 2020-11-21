@@ -27,7 +27,7 @@ export default function Cart() {
   const toggleCart = () => setCart(!cart);
 
   return (
-    <div>
+    <Wrapper>
       {" "}
       {width > mobilebreakpoint ? (
         <ButtonWrap>
@@ -56,9 +56,15 @@ export default function Cart() {
           <button>checkout</button>
         </div>
       </CartWrap>
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div `
+display: block;
+
+
+`;
 
 const Button = styled.button`
   border: none;

@@ -65,9 +65,6 @@ text-align: center;
 width: 100vw;
 display: none;
 
-@media screen and (max-width: 768px) {
-    display: block;
-  }
 
 @media screen and (max-width: 600px) {
     display: block;
