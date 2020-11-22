@@ -120,7 +120,7 @@ const FitnessDiv = styled.div`
   }
 
   @media screen and (max-width: 835px) {
-    margin: 1.5rem 1.5rem 10px 0;
+    margin: 1.5rem 0 10px 0;
 
     &:hover {
       transform: none;
@@ -128,7 +128,7 @@ const FitnessDiv = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    margin: 1.5rem 1.5rem 10px 0;
+    margin: 1.5rem 0 10px 0;
 
     &:hover {
       transform: none;
