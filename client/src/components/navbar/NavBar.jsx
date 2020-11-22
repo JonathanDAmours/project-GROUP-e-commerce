@@ -101,6 +101,7 @@ const Bar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 4px 12px 2px rgba(0, 0, 0, 0.33);
 
   // for media, put menu in a hamburglar?
 `;
