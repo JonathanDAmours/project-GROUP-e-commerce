@@ -116,19 +116,23 @@ const CasioDiv = styled.div`
   }
 
   @media screen and (max-width: 835px) {
+    margin: 1.5rem 0 0 0;
     &:hover {
       transform: none;
-      margin: 1.5rem 1.5rem 10px 0;
+      
     }
   }
 
   @media screen and (max-width: 600px) {
+    margin: 1.5rem 0 0 0;
     &:hover {
       transform: none;
-      margin: 1.5rem 1.5rem 0 0;
+      
     }
   }
 `;
+
+
 
 const ImgDiv = styled.div`
   margin-bottom: 10px;
@@ -141,8 +145,7 @@ const ImgDiv = styled.div`
   width: 250px;
 
   transition: all 0.2s ease-in-out;
-  &:hover {
-  }
+
 `;
 
 const CasioImg = styled.img`
@@ -151,8 +154,7 @@ const CasioImg = styled.img`
   height: 100px;
 
   transition: all 0.2s ease-in-out;
-  &:hover {
-  }
+
 `;
 
 const CasioText = styled.h3`
@@ -160,8 +162,6 @@ const CasioText = styled.h3`
   color: black;
   font-size: 2.5rem;
 
-  &:hover {
-  }
 `;
 
 // view all Brands
@@ -185,6 +185,11 @@ const ViewAllA = styled.a`
 const JawboneButton = styled(CasioButton)``;
 const JawboneDiv = styled(CasioDiv)`
   margin-left: 1.5rem;
+
+  @media screen and (max-width: 600px) {
+  margin: 1.5rem 0 0 0;
+}
+
 `;
 const JawboneImg = styled(CasioImg)``;
 const JawboneText = styled(CasioText)``;
@@ -192,6 +197,9 @@ const JawboneText = styled(CasioText)``;
 const GarminButton = styled(CasioButton)``;
 const GarminDiv = styled(CasioDiv)`
   margin-left: 1.5rem;
+  @media screen and (max-width: 600px) {
+  margin: 1.5rem 0 0 0;
+}
 `;
 const GarminImg = styled(CasioImg)``;
 
@@ -204,11 +212,19 @@ const MisfitImg = styled(CasioImg)``;
 const PolarButton = styled(CasioButton)``;
 const PolarDiv = styled(CasioDiv)`
   margin-left: 1.5rem;
+  @media screen and (max-width: 600px) {
+  margin: 1.5rem 0 0 0;
+}
 `;
 const PolarImg = styled(CasioImg)``;
 
 const SamsungButton = styled(CasioButton)``;
 const SamsungDiv = styled(CasioDiv)`
   margin-left: 1.5rem;
+  @media screen and (max-width: 600px) {
+  margin: 1.5rem 0 0 0;
+}
+  
+
 `;
 const SamsungImg = styled(CasioImg)``;

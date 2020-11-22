@@ -42,8 +42,9 @@ export default function Cart() {
           <BurgerCart onClick={toggleCart}>View Cart</BurgerCart>
         </div>
       )}
-      <CartWrap style={cart ? { right: "-250px" } : { right: 0 }}>
-        <div>
+      {width > mobilebreakpoint ? (
+      <CartWrap style={cart ? { right: "-300px" } : { right: 0 }}>
+      <div>
           <button onClick={toggleCart}>X</button>
           <h1>Your Cart</h1>
           <p>number of items</p>
@@ -59,6 +60,24 @@ export default function Cart() {
           <button>checkout</button>
         </div>
       </CartWrap>
+      ) : 
+      <CartWrapMobile style={cart ? { right: "-600px" } : { right: 0 }}>
+        <div>
+          <button onClick={toggleCart}>X</button>
+          <h1>Your Cart</h1>
+          <p>number of items</p>
+        </div>
+        {/* mapping over items in cart */}
+        <div>
+          {storeItems.map((item, index) => {
+            return (<CartItem key={index} title={item.name} quantity={item.quantity} _id={item._id} />)
+          })}
+        </div>
+        <div>
+          <p>Total</p>
+          <button>checkout</button>
+        </div>
+      </CartWrapMobile> }
     </Wrapper>
   );
 }
@@ -79,6 +98,7 @@ const BurgerCart = styled.button`
 
 const Wrapper = styled.div`
   display: block;
+  z-index: 1000;
 `;
 
 const Button = styled.button`
@@ -87,17 +107,30 @@ const Button = styled.button`
   outline: none;
 `;
 
-const CartWrap = styled.div`
-  color: black;
+const CartWrapMobile = styled.div`
+  color: white;
   position: fixed;
   top: 0;
   right: 0;
-  background-color: white;
+  background-color: black;
   border-left: 4px solid #d45e09;
   overflow-x: hidden;
   transition: 1s;
   height: 100vh;
-  width: 250px;
+  width: 100vw;
+`;
+
+const CartWrap = styled.div`
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: black;
+  border-left: 4px solid #d45e09;
+  overflow-x: hidden;
+  transition: 1s;
+  height: 100vh;
+  width: 300px;
 `;
 
 const ButtonWrap = styled.div`
