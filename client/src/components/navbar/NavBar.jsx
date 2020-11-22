@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import { NavContent } from "./NavContent";
 import { BurgerContent } from "./BurgerContent";
@@ -38,7 +39,7 @@ export const NavBar = () => {
   return (
     <>
     <Bar>
-      <Logo>
+      <Logo to="/">
         <LogoImg src={DispatchLogo} alt="Dispatch logo" />
       </Logo>
       <ContentDiv>
@@ -82,7 +83,7 @@ display: flex;
 position: relative;
 `;
 
-const Logo = styled.div`
+const Logo = styled(NavLink)`
 margin: 0;
 
 &:hover {
