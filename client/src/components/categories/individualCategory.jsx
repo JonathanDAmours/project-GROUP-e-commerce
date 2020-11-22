@@ -3,20 +3,20 @@ import styled from "styled-components";
 
 import { COLORS, BOX_SHADOW } from "../../constants";
 
-export const IndividualBrand = ({ brand }) => {
-  const { name } = brand;
+export const IndividualCategory = (props) => {
+  const { category } = props;
   return (
     <>
       <Button>
-        <BrandDiv>
-          <BrandName>{name}</BrandName>
-        </BrandDiv>
+        <CategoryDiv>
+          <CategoryName>{category}</CategoryName>
+        </CategoryDiv>
       </Button>
     </>
   );
 };
 
-const BrandDiv = styled.div`
+const CategoryDiv = styled.div`
   display: flex;
   justify-content: center;
 
@@ -50,4 +50,4 @@ const Button = styled.button`
   }
 `;
 
-const BrandName = styled.h2``;
+const CategoryName = styled.h2``;
