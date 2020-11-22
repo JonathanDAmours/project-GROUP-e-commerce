@@ -25,15 +25,17 @@ export const Footer = () => {
 const FooterDiv = styled.section`
   display: flex;
   justify-content: space-between;
-  height: 10rem;
+  flex-wrap: wrap;
+  height: 100%;
   padding: 0 40px;
-  background-color: #a6a6a6;
+  background-color: black;
 `;
 
 const FootLinks = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 1.5rem;
+  background-color: black;
 `;
 
 const A = styled.a`

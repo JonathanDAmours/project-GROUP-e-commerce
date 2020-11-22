@@ -133,6 +133,15 @@ const FitnessDiv = styled.div`
     }
   }
 
+  @media screen and (max-width: 768px) {
+    margin: 1.5rem 20px 10px 20px;
+    width: 300px;
+
+    &:hover {
+      transform: none;
+    }
+  }
+
   @media screen and (max-width: 600px) {
     margin: 1.5rem 0 10px 0;
 
@@ -173,6 +182,10 @@ const FitnessText = styled.h3`
 
 const ViewAllDiv = styled.div`
   margin-top: 2rem;
+
+  @media screen and (max-width: 375px) {
+margin-top: 1rem;
+  }
 `;
 
 const ViewAllA = styled.a`
