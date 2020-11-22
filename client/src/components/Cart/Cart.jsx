@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
+import { MdClose } from "react-icons/md"
 import { getStoreItemArray } from "../../reducers/items-reducer";
-import {CartItem, cartItem} from "./CartItem";
+import { CartItem } from "./CartItem";
+
 
 export default function Cart() {
   const storeItems = useSelector(getStoreItemArray);
@@ -28,6 +30,14 @@ export default function Cart() {
   // toggles (cart and burger)
   const toggleCart = () => setCart(!cart);
 
+
+let preTotal = [];
+storeItems.map((item) => preTotal.push(Number(item?.quantity) * (item?.price.replace(/[^0-9.-]+/g,""))));
+let total = preTotal?.reduce((a, b) => a + b, 0);
+let totalFormat = (Math.round(total * 100) / 100).toFixed(2);
+
+
+
   return (
     <Wrapper>
       {" "}
@@ -44,43 +54,173 @@ export default function Cart() {
       )}
       {width > mobilebreakpoint ? (
       <CartWrap style={cart ? { right: "-300px" } : { right: 0 }}>
-      <div>
-          <button onClick={toggleCart}>X</button>
-          <h1>Your Cart</h1>
-          <p>number of items</p>
-        </div>
+        <Main>
+      <TopSection>
+        <Top>
+          <div>
+          <YourCart>Your cart</YourCart>
+          </div>
+          <div>
+          <XButton onClick={toggleCart}>X</XButton>
+          </div>
+          </Top>
+          <NumberItems>{storeItems.length} item(s)</NumberItems>
+        </TopSection>
+        
         {/* mapping over items in cart */}
-        <div>
+        <ScrollDiv>
           {storeItems.map((item, index) => {
-            return (<CartItem key={index} title={item.name} quantity={item.quantity} _id={item._id} />)
+            return (<CartItem key={index} price={item.price} title={item.name} quantity={item.quantity} _id={item._id} />)
           })}
-        </div>
-        <div>
-          <p>Total</p>
-          <button>checkout</button>
-        </div>
+        </ScrollDiv>
+        </Main>
+        <PurchaseSection>
+        <Total>
+          Total: <strong>${totalFormat}</strong>
+        </Total>
+        <PurchaseBtn>
+          <Span>Purchase</Span>
+        </PurchaseBtn>
+      </PurchaseSection>
       </CartWrap>
       ) : 
+
+
+
+
+
+      ///////////////////
       <CartWrapMobile style={cart ? { right: "-600px" } : { right: 0 }}>
-        <div>
-          <button onClick={toggleCart}>X</button>
-          <h1>Your Cart</h1>
-          <p>number of items</p>
-        </div>
+      <Main>
+      <TopSection>
+        <Top>
+          <div>
+          <YourCart>Your cart</YourCart>
+          </div>
+          <div>
+          <XButton onClick={toggleCart}>X</XButton>
+          </div>
+          </Top>
+          <NumberItems>{storeItems.length} item(s)</NumberItems>
+        </TopSection>
+        
         {/* mapping over items in cart */}
-        <div>
+        <ScrollDiv>
           {storeItems.map((item, index) => {
-            return (<CartItem key={index} title={item.name} quantity={item.quantity} _id={item._id} />)
+            return (<CartItem key={index} price={item.price} title={item.name} quantity={item.quantity} _id={item._id} />)
           })}
-        </div>
-        <div>
-          <p>Total</p>
-          <button>checkout</button>
-        </div>
+        </ScrollDiv>
+        </Main>
+        <PurchaseSection>
+        <Total>
+          Total: <strong>${totalFormat}</strong>
+        </Total>
+        <PurchaseBtn>
+          <Span>Purchase</Span>
+        </PurchaseBtn>
+      </PurchaseSection>
       </CartWrapMobile> }
     </Wrapper>
   );
 }
+
+const ScrollDiv = styled.div`
+height: 75vh;
+overflow: auto;
+
+@media screen and (max-width: 600px) {
+  }
+`;
+
+const Main = styled.div `
+@media screen and (max-width: 600px) {
+  }
+`;
+
+const Top = styled.div `
+display: flex;
+justify-content: space-between;
+align-items: center;
+@media screen and (max-width: 600px) {
+  }
+`;
+
+const Span = styled.span`
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  position: relative;
+  top: -1px;
+  @media screen and (max-width: 600px) {
+  }
+`;
+
+const Total = styled.p`
+  color: white;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  @media screen and (max-width: 600px) {
+  }
+`;
+
+const PurchaseSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: 600px) {
+  }
+`;
+
+const PurchaseBtn = styled.button`
+  background-color: #d45e09;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  width: 40%;
+  height: 40px;
+  border-radius: 20px;
+  @media screen and (max-width: 600px) {
+  }
+`;
+
+const NumberItems = styled.p`
+color: white;
+font-size: 12px;
+margin-top: 2px;
+@media screen and (max-width: 600px) {
+text-align: left;
+  }
+`;
+
+const YourCart = styled.h1`
+font-size: 30px;
+color: white;
+font-weight: 100;
+@media screen and (max-width: 600px) {
+  }
+`;
+
+const TopSection = styled.div`
+padding-bottom: 15px;
+border-bottom: 1px solid white;
+@media screen and (max-width: 600px) {
+  }
+`;
+
+const XButton = styled(MdClose)`
+color: white;
+width: 20px;
+height: 20px;
+&:hover {
+  cursor: pointer;
+  color: #d45e09;
+}
+@media screen and (max-width: 600px) {
+  }
+`;
 
 const BurgerCart = styled.button`
   color: #19100d;
@@ -94,17 +234,23 @@ const BurgerCart = styled.button`
   background-color: transparent;
   outline: none;
   width: 100%;
+  @media screen and (max-width: 600px) {
+  }
 `;
 
 const Wrapper = styled.div`
   display: block;
   z-index: 1000;
+  @media screen and (max-width: 600px) {
+  }
 `;
 
 const Button = styled.button`
   border: none;
   background-color: transparent;
   outline: none;
+  @media screen and (max-width: 600px) {
+  }
 `;
 
 const CartWrapMobile = styled.div`
@@ -118,6 +264,10 @@ const CartWrapMobile = styled.div`
   transition: 1s;
   height: 100vh;
   width: 100vw;
+  padding: 20px 20px;
+  @media screen and (max-width: 600px) {
+
+  }
 `;
 
 const CartWrap = styled.div`
@@ -127,16 +277,23 @@ const CartWrap = styled.div`
   right: 0;
   background-color: black;
   border-left: 4px solid #d45e09;
-  overflow-x: hidden;
   transition: 1s;
   height: 100vh;
   width: 300px;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media screen and (max-width: 600px) {
+  }
 `;
 
 const ButtonWrap = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  @media screen and (max-width: 600px) {
+  }
 `;
 
 const StyledBiCart = styled(BiCart)`

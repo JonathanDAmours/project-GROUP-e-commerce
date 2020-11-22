@@ -83,7 +83,12 @@ position: relative;
 `;
 
 const Logo = styled.div`
-margin: 0;`;
+margin: 0;
+
+&:hover {
+  cursor: pointer;
+}
+`;
 
 const Bar = styled.div`
   position: sticky;
