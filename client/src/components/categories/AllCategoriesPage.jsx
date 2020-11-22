@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+
 const AllCategoriesPage = () => {
+
   return <Wrapper>All categories ...</Wrapper>;
 };
 
