@@ -173,6 +173,10 @@ const ViewAllA = styled.a`
   &:hover {
     color: #ff852e;
   }
+
+  @media screen and (max-width: 375px) {
+margin-top: 1rem;
+  }
 `;
 
 const JawboneButton = styled(CasioButton)``;

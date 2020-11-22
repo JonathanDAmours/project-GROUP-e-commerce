@@ -69,6 +69,16 @@ const Quote = styled.h1`
     font-size: 20px;
     top: 200px;
   }
+
+  @media screen and (max-width: 375px) {
+    font-size: 20px;
+    top: 230px;
+    left: -40px;
+    width: 100vw;
+    padding: 20px 20px 20px 20px;
+    background-color: black;
+    text-shadow: none;
+  }
 `;
 
 const Wrapper = styled.div``;
@@ -76,6 +86,10 @@ const Wrapper = styled.div``;
 const ImgDiv = styled.div`
   display: flex;
   position: relative;
+
+  @media screen and (max-width: 375px) {
+margin-bottom: 100px;
+  }
 `;
 
 const BannerImg = styled.img`
@@ -103,4 +117,8 @@ const NavigationHeadersDiv = styled.div`
 
 const NavigationHeaders = styled.h2`
   font-size: 3rem;
+
+  @media screen and (max-width: 375px) {
+    font-size: 2rem;
+  }
 `;
