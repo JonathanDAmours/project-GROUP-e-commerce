@@ -26,9 +26,13 @@ const Items = ({ item }) => {
       </div>
       <div>
         <p>{price}</p>
-        <button onClick={() => dispatch(addToCart({ _id, name, price }))}>
-          add to cart
-        </button>
+        {numInStock <= 0 ? (
+          <p>Out of stock</p>
+        ) : (
+          <button onClick={() => dispatch(addToCart({ _id, name, price }))}>
+            add to cart
+          </button>
+        )}
       </div>
     </>
   );

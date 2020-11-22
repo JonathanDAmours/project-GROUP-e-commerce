@@ -2,11 +2,34 @@ const items = require("./data/items.json");
 const companies = require("./data/companies.json");
 
 const getAllItems = (req, res) => {
-  const data = items;
+  let data = [];
+
+  // setting a limit of items per page and the amount of items to skip (offset)
+  //the limit should be passed as a query in the get method (/items?{limit})
+  let limit = parseInt(req.query.limit, 10);
+  let offset = parseInt(req.query.skip);
+  console.log(offset);
+  console.log(limit);
+
+  //taking care of some extreme cases
+  if (limit > items.length) {
+    limit = items.length;
+    offset = 0;
+  }
+  //this doesn't seem to be working
+  if (limit + offset > items.length) {
+    limit = arr.length - offset;
+    console.log(`limit: ${limit}`);
+  }
+
+  //iterating through items and pushing them into data according to limit and offset
+  for (let i = offset; i < limit + offset; i++) {
+    data.push(items[i]);
+  }
 
   res.status(200).json({
     status: 200,
-    data,
+    data: data,
   });
 };
 
@@ -24,7 +47,6 @@ const getItem = (req, res) => {
   }
 };
 
-// ----------------to do
 const updateItem = (req, res) => {
   let item = items.find((item) => item._id === req.params.id);
   if (item) {
