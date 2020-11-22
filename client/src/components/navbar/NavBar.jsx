@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {NavLink} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { NavContent } from "./NavContent";
 import { BurgerContent } from "./BurgerContent";
@@ -7,88 +7,84 @@ import DispatchLogo from "../../assets/Dispatch_Logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 export const NavBar = () => {
-
   const [toggle, setToggle] = useState(false);
 
   const handleToggle = () => {
     setToggle(!toggle);
-  }
+  };
 
-    /// CONDITIONAL RENDERING FOR IPAD-MOBILE
-    const useViewport = () => {
-      const [width, setWidth] = useState(window.innerWidth);
-      const [height, setHeight] = useState(window.innerHeight);
-      useEffect(() => {
-        const handleWindowResize = () => {
-          setWidth(window.innerWidth);
-          setHeight(window.innerHeight);
-        }
-        window.addEventListener("resize", handleWindowResize);
-        return () => window.removeEventListener("resize", handleWindowResize);
-      }, []);
-      return { width, height };
-    }
-    const { width } = useViewport();
-    const mobilebreakpoint = 600;
+  /// CONDITIONAL RENDERING FOR IPAD-MOBILE
+  const useViewport = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(window.innerHeight);
+    useEffect(() => {
+      const handleWindowResize = () => {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+      };
+      window.addEventListener("resize", handleWindowResize);
+      return () => window.removeEventListener("resize", handleWindowResize);
+    }, []);
+    return { width, height };
+  };
+  const { width } = useViewport();
+  const mobilebreakpoint = 600;
 
-    // {width > mobilebreakpoint ? <div></div> : <div></div>}
-    ////
-
-
+  // {width > mobilebreakpoint ? <div></div> : <div></div>}
+  ////
 
   return (
     <>
-    <Bar>
-      <Logo to="/">
-        <LogoImg src={DispatchLogo} alt="Dispatch logo" />
-      </Logo>
-      <ContentDiv>
-        <NavContentDiv>
-           {width > mobilebreakpoint ?
-          <NavContent />
-          : <StyledGiHamburgerMenu onClick={handleToggle}/>}
-        </NavContentDiv>
-      </ContentDiv>
-    </Bar>
-    {toggle === true ? 
-      <DropDownDiv>
-      <BurgerContent />
-      </DropDownDiv>
-       : null}
-       </>
+      <Bar>
+        <Logo to="/">
+          <LogoImg src={DispatchLogo} alt="Dispatch logo" />
+        </Logo>
+        <ContentDiv>
+          <NavContentDiv>
+            {width > mobilebreakpoint ? (
+              <NavContent />
+            ) : (
+              <StyledGiHamburgerMenu onClick={handleToggle} />
+            )}
+          </NavContentDiv>
+        </ContentDiv>
+      </Bar>
+      {toggle === true ? (
+        <DropDownDiv>
+          <BurgerContent />
+        </DropDownDiv>
+      ) : null}
+    </>
   );
 };
 
 const DropDownDiv = styled.div`
-background-color: white;
-position: absolute;
-text-align: center;
-width: 100vw;
-display: none;
+  background-color: white;
+  position: absolute;
+  text-align: center;
+  width: 100vw;
+  display: none;
 
-
-@media screen and (max-width: 600px) {
+  @media screen and (max-width: 600px) {
     display: block;
   }
-
 `;
 
-
 const StyledGiHamburgerMenu = styled(GiHamburgerMenu)`
-cursor: pointer;
+  cursor: pointer;
 `;
 
 const NavContentDiv = styled.div`
-display: flex;
-position: relative;
+  display: flex;
+  position: relative;
 `;
 
 const Logo = styled(NavLink)`
-margin: 0;
+  margin: 0;
 
-&:hover {
-  cursor: pointer;
-}
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Bar = styled.div`
@@ -102,10 +98,10 @@ const Bar = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 4px 12px 2px rgba(0, 0, 0, 0.33);
+  z-index: 1000;
 
   // for media, put menu in a hamburglar?
 `;
-
 
 //div for NavContent compontent
 const ContentDiv = styled.div`
