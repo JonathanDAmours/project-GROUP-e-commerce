@@ -1,7 +1,8 @@
 import React from "react";
+import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
-import Items from "./Items";
+import Items from "./items";
 
 const AllItemsPage = () => {
   const [items, setItems] = useState([]);
@@ -40,31 +41,89 @@ const AllItemsPage = () => {
   }
 
   return (
-    <>
-      <div>
+    <Wrapper>
+      <NextPrevious>
         <span>
-          <button disabled={offset === 0 ? true : false} onClick={previousPage}>
-            previous page
-          </button>
+          <PrevBtn disabled={offset === 0 ? true : false} onClick={previousPage}>←</PrevBtn>
         </span>
         <span>
-          <button onClick={nextPage}>next page</button>
+          <NextBtn onClick={nextPage}>→</NextBtn>
         </span>
-      </div>
+      </NextPrevious>
+      <ItemsWrap>
       {items.map((item) => {
-        return <Items key={item._id} item={item} />;
+        return (
+        <Items key={item._id} item={item} />);
       })}
-      <div>
+      </ItemsWrap>
+      <NextPrevious>
         <span>
-          <button disabled={offset === 0 ? true : false} onClick={previousPage}>
-            previous page
-          </button>
+          <PrevBtn disabled={offset === 0 ? true : false} onClick={previousPage}>←</PrevBtn>
         </span>
         <span>
-          <button onClick={nextPage}>next page</button>
+          <NextBtn onClick={nextPage}>→</NextBtn>
         </span>
-      </div>
-    </>
+      </NextPrevious>
+    </Wrapper>
   );
 };
+
+const PrevBtn = styled.button`
+padding: 5px 10px;
+border: none;
+background-color: black;
+color: white;
+cursor: pointer;
+&:disabled {
+cursor: not-allowed;
+background-color: grey;
+}
+`;
+
+const NextBtn = styled.button`
+padding: 5px 10px;
+border: none;
+background-color: black;
+color: white;
+cursor: pointer;
+`;
+
+const NextPrevious = styled.div `
+margin: 20px 0;
+`;
+
+const Wrapper = styled.div`
+width: 100vw;
+padding: 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+@media screen and (max-width: 1024px) {
+margin: 0 auto;
+  }
+
+@media screen and (max-width: 900px) {
+margin: 0 auto;
+  }  
+
+@media screen and (max-width: 735px) {
+margin: 0 auto;
+  } 
+
+@media screen and (max-width: 600px) {
+margin: 0 auto;
+  }
+
+`;
+
+const ItemsWrap = styled.div`
+display: flex;
+flex-wrap: wrap;
+
+width: 90vw;
+`;
+
+
 export default AllItemsPage;
