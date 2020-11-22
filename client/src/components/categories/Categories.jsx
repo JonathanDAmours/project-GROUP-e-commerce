@@ -28,10 +28,14 @@ export const Categories = () => {
     history.push(`/categories/Medical`);
   };
 
+  const handleCategories = () => {
+    history.push(`/categories/`);
+  };
+
   return (
     <CatDiv>
       <ViewAllDiv>
-        <ViewAllA aria-label="View all categories" href="#">
+        <ViewAllA aria-label="View all categories" onClick={handleCategories}>
           View all Categories <FiArrowRight />
         </ViewAllA>
       </ViewAllDiv>
@@ -115,9 +119,11 @@ const FitnessDiv = styled.div`
   margin-bottom: 10px;
   box-shadow: 0px 4px 12px 2px rgba(0, 0, 0, 0.33);
 
-  &:hover {
+  overflow: hidden;
+
+  /* &:hover {
     transform: scale(1.05);
-  }
+  } */
 
   @media screen and (max-width: 835px) {
     margin: 1.5rem 0 10px 0;
@@ -141,6 +147,11 @@ const ImgDiv = styled.div`
   border-radius: 10px;
   display: flex;
   align-items: center;
+
+  transition: transform 0.4s;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const FitnessImg = styled.img`
