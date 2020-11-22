@@ -129,6 +129,7 @@ height: 75vh;
 overflow: auto;
 
 @media screen and (max-width: 600px) {
+  height: 70vh;
   }
 `;
 
@@ -161,6 +162,7 @@ const Total = styled.p`
   margin: 0;
   padding: 0;
   @media screen and (max-width: 600px) {
+  
   }
 `;
 
@@ -231,9 +233,13 @@ const BurgerCart = styled.button`
   border: none;
   border-bottom: 1px solid #d45e09;
   cursor: pointer;
-  background-color: transparent;
+  background-color: white;
   outline: none;
   width: 100%;
+
+  &:hover {
+    background-color: #d45e09;
+  }
   @media screen and (max-width: 600px) {
   }
 `;
@@ -265,6 +271,9 @@ const CartWrapMobile = styled.div`
   height: 100vh;
   width: 100vw;
   padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   @media screen and (max-width: 600px) {
 
   }
@@ -285,6 +294,7 @@ const CartWrap = styled.div`
   flex-direction: column;
   justify-content: space-between;
   @media screen and (max-width: 600px) {
+
   }
 `;
 
