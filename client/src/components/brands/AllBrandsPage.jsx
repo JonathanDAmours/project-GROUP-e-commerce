@@ -25,10 +25,20 @@ const AllBrandsPage = () => {
     fetchBrands();
   }, []);
 
-  return brands.map((brand) => {
+
+
+  return (
+    <Wrapper>
+{brands.map((brand) => {
     return <IndividualBrand key={brand._id} brand={brand} />;
-    //<IndividualBrand />
-  });
+  })}
+    </Wrapper>
+  )
 };
+
+const Wrapper = styled.div`
+padding: 20px 40px;
+`;
+
 
 export default AllBrandsPage;

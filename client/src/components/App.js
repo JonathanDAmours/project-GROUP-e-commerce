@@ -19,7 +19,7 @@ const App = () => {
             <Route exact path="/">
               <HomePage />
             </Route>
-            <Route exact path="/categories/:category">
+            <Route exact path="/categories">
               <AllCategoriesPage />
             </Route>
             <Route exact path="/items">
