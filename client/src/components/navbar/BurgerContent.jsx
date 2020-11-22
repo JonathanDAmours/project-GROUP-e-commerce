@@ -27,6 +27,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   z-index: 1000;
+  position: fixed;
+  width: 100%;
 `;
 
 const Item = styled(NavLink)`
@@ -34,6 +36,11 @@ const Item = styled(NavLink)`
   font-size: 1rem;
   text-decoration: none;
   padding: 31px 0;
+  background-color: white;
   border-bottom: 1px solid #d45e09;
   cursor: pointer;
+
+  &:hover {
+    background-color: #d45e09;
+  }
 `;
