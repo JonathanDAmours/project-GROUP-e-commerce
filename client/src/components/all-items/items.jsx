@@ -39,7 +39,7 @@ const Items = ({ item }) => {
 };
 
 const Wrapper = styled.div`
-max-width: 25%;
+width: 25%;
 padding-top: 30px;
 display: flex;
 flex-direction: column;
@@ -89,12 +89,16 @@ margin-bottom: 15px;
 
 const ImageDiv = styled.div`
 padding: 10px;
+min-height: 180px;
+min-width: 180px;
 overflow: hidden;
+text-align: center;
 `;
 
 const Image = styled.img`
-min-height: 180px;
 overflow: hidden;
+min-width: auto;
+min-height: 180px;
 `;
 
 const Sub = styled.div`
