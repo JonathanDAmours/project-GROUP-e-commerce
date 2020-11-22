@@ -6,7 +6,7 @@ import { IndividualBrand } from "./IndividualBrand";
 const AllBrandsPage = () => {
   const [brands, setBrands] = useState([]);
 
-  console.log(brands);
+  // console.log(brands);
   useEffect(() => {
     const fetchBrands = async () => {
       try {
@@ -20,10 +20,20 @@ const AllBrandsPage = () => {
     fetchBrands();
   }, []);
 
+  const sortedBrands = brands.sort(function (a, b) {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return +1;
+    }
+    return 0;
+  });
+
   return (
     <Wrapper>
       <MainWrapper>
-        {brands.map((brand) => {
+        {sortedBrands.map((brand) => {
           return <IndividualBrand key={brand._id} brand={brand} />;
         })}
       </MainWrapper>
