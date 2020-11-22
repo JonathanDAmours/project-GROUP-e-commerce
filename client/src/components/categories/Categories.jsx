@@ -166,9 +166,9 @@ const FitnessText = styled.h3`
   color: white;
   font-size: 2.5rem;
 
-  &:hover {
+  /* &:hover {
     color: ${COLORS.orange};
-  }
+  } */
 `;
 
 const ViewAllDiv = styled.div`
