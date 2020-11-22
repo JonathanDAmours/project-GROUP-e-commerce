@@ -135,7 +135,6 @@ const FitnessDiv = styled.div`
 
   @media screen and (max-width: 768px) {
     margin: 1.5rem 20px 10px 20px;
-    width: 300px;
 
     &:hover {
       transform: none;

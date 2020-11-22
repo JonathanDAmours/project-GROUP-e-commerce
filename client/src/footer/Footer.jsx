@@ -29,6 +29,7 @@ const FooterDiv = styled.section`
   height: 100%;
   padding: 0 40px;
   background-color: black;
+  padding-bottom: 20px;
 `;
 
 const FootLinks = styled.div`
