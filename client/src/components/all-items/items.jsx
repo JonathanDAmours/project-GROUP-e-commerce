@@ -16,26 +16,118 @@ const Items = ({ item }) => {
   }
 
   return (
-    <>
-      <div>
-        <h1>{name}</h1>
-        <p>{category}</p>
-      </div>
-      <div>
-        <img src={imageSrc} alt={name} />
-      </div>
-      <div>
-        <p>{price}</p>
+    <Wrapper>
+      <ImageDiv>
+        <Image src={imageSrc} alt={name} />
+      </ImageDiv>
+      <Main>
+        <Name>{name}</Name>
+        <Category>{category}</Category>
+      </Main>
+      <Sub>
+        <Price>{price}</Price>
         {numInStock <= 0 ? (
-          <p>Out of stock</p>
+          <OutofStock>Out of stock</OutofStock>
         ) : (
-          <button onClick={() => dispatch(addToCart({ _id, name, price }))}>
-            add to cart
-          </button>
+          <BuyButton onClick={() => dispatch(addToCart({ _id, name, price }))}>
+            Add to cart
+          </BuyButton>
         )}
-      </div>
-    </>
+      </Sub>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+max-width: 25%;
+padding-top: 30px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+border: 1px solid	#E8E8E8;
+overflow: hidden;
+
+@media screen and (max-width: 1024px) {
+min-width: 25%;
+margin: 0 auto;
+  }
+
+@media screen and (max-width: 900px) {
+min-width: 33%;
+margin: 0 auto;
+  }  
+
+@media screen and (max-width: 735px) {
+min-width: 50%;
+margin: 0 auto;
+  } 
+
+@media screen and (max-width: 600px) {
+min-width: 100%;
+margin: 0 auto;
+  }
+`;
+
+const Main = styled.div`
+padding: 10px;
+overflow: hidden;
+width: 100%;
+`;
+
+const Name = styled.h1`
+font-size: 14px;
+margin-bottom: 5px;
+`;
+
+const Category = styled.p`
+color: #d45e09;
+font-size: 11px;
+font-style: italic;
+margin-bottom: 15px;
+`;
+
+const ImageDiv = styled.div`
+padding: 10px;
+overflow: hidden;
+`;
+
+const Image = styled.img`
+min-height: 180px;
+overflow: hidden;
+`;
+
+const Sub = styled.div`
+width: 100%;
+`;
+
+const Price = styled.h1`
+padding: 0 10px;
+font-size: 25px;
+margin-bottom: 10px;
+`;
+
+const OutofStock = styled.div`
+width: 100%;
+height: 35px;
+padding: 10px 0;
+text-align: center;
+font-size: 13px;
+font-style: italic;
+background-color: grey;
+color: white;
+cursor: not-allowed;
+`;
+
+const BuyButton = styled.button`
+width: 100%;
+padding: 10px 0;
+outline: none;
+border: none;
+text-decoration: none;
+background-color: #d45e09;
+color: white;
+cursor: pointer;
+`;
 
 export default Items;
