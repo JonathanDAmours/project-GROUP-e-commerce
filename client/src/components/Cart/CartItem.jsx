@@ -1,32 +1,36 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import {removeItem, updateQuantity} from "../../actions";
+import { removeItem, updateQuantity } from "../../actions";
 import { VscClose } from "react-icons/vsc";
 
-export const CartItem = ({item, title, quantity, _id, price}) => {
-const dispatch = useDispatch();
+export const CartItem = ({ item, title, quantity, _id, price }) => {
+  const dispatch = useDispatch();
 
-return (
+  return (
     <>
-    <Wrapper>
-      <Header>
-        <Title>{title}</Title>
-        <StyledVscClose onClick={()=> dispatch(removeItem({_id}))}/>
-      </Header>
-      <Price>{price}</Price>
-      <Item>
-        <Span>Quantity:</Span>
-        <Input onChange={(event)=>{
-            dispatch(updateQuantity({_id: _id, quantity: event.target.value}))
-        }}
-          value={quantity}
-        />
-      </Item>
-    </Wrapper>
+      <Wrapper>
+        <Header>
+          <Title>{title}</Title>
+          <StyledVscClose onClick={() => dispatch(removeItem({ _id }))} />
+        </Header>
+        <Price>{price}</Price>
+        <Item>
+          <Span>Quantity:</Span>
+          {/* we need a way to cap the number of items to the max in stock quantity */}
+          <Input
+            onChange={(event) => {
+              dispatch(
+                updateQuantity({ _id: _id, quantity: event.target.value })
+              );
+            }}
+            value={quantity}
+          />
+        </Item>
+      </Wrapper>
     </>
-)
-}
+  );
+};
 
 const Price = styled.p`
   padding-bottom: 5px;
@@ -39,7 +43,6 @@ const Price = styled.p`
     width: 300px;
   }
 `;
-
 
 const Input = styled.input`
   border: none;
@@ -58,17 +61,17 @@ const Input = styled.input`
 `;
 
 const Wrapper = styled.div`
- padding: 10px 0 20px 0;
-border-bottom: 1px solid white;
+  padding: 10px 0 20px 0;
+  border-bottom: 1px solid white;
 
-@media screen and (max-width: 600px) {
+  @media screen and (max-width: 600px) {
   }
 `;
 
 const StyledVscClose = styled(VscClose)`
   width: 15px;
   height: 15px;
-  color:#d45e09;
+  color: #d45e09;
 
   &:hover {
     cursor: pointer;
@@ -118,4 +121,3 @@ const Item = styled.div`
     justify-content: center;
   }
 `;
-

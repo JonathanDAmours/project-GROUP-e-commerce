@@ -13,6 +13,7 @@ const Auth = () => {
   const updateStock = (e, _id, quantity) => {
     e.preventDefault();
     storeItems.map(async (item) => {
+      console.log(item);
       quantity = item.quantity;
       try {
         let update = await fetch(`/items/${item._id}`, {
@@ -73,7 +74,7 @@ const Auth = () => {
           <label htmlFor="expiration">
             <input type="text" placeholder="Expiration date" required />
           </label>
-          <button type="submit" onSubmit={(e) => updateStock(e)}>
+          <button type="submit" onClick={updateStock}>
             proceed with payment
           </button>
         </form>
