@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import Items from "../all-items/Items";
+
+import Items from "../../components/all-items/Items";
+
 
 export const ItemsByCategory = () => {
   const { categoryName } = useParams();
@@ -26,17 +28,16 @@ export const ItemsByCategory = () => {
   }, [categoryName]);
 
   if (!items) {
-    return <p>loading...</p>;
+    return <p>loading...</p>
   }
 
   return (
     <Wrapper>
       <NextPrevious></NextPrevious>
       <ItemsWrap>
-        {itemsByCategory.map((item) => {
-          return <Items key={item._id} item={item} />;
-        })}
-        ;
+      {itemsByCategory.map((item) => {
+        return <Items key={item._id} item={item} />
+      })}
       </ItemsWrap>
     </Wrapper>
   );

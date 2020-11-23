@@ -23,7 +23,7 @@ const AllCategoriesPage = () => {
     <Wrapper>
       <MainWrapper>
         {categories.map((category) => {
-          return <IndividualCategory key={category} category={category} />;
+          return <IndividualCategory key={category} category={category} />
         })}
       </MainWrapper>
     </Wrapper>
