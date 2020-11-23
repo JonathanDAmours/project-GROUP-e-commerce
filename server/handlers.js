@@ -51,12 +51,13 @@ const getItem = (req, res) => {
   }
 };
 
-// this need some change since we are getting an array maybe not if we map on the front end
+// this need some change since we are getting an array mabe not if we map on the front end
 const updateItem = (req, res) => {
   let item = items.find((item) => item._id === Number(req.params.id));
+
   if (item) {
     let bodyValue = req.body;
-    item = { ...item, bodyValue };
+    item = { ...item, ...bodyValue };
     res.status(200).json({
       status: 200,
       data: item,
@@ -69,6 +70,7 @@ const updateItem = (req, res) => {
       data: item,
     });
   }
+  console.log(bodyValue);
 };
 
 const getAllCompanies = (req, res) => {

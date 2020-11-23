@@ -12,6 +12,7 @@ const Auth = () => {
   //handlers
   const updateStock = (e) => {
     e.preventDefault();
+    console.log(storeItems);
     storeItems.map(async (item) => {
       console.log(item);
       try {
@@ -19,12 +20,12 @@ const Auth = () => {
           headers: { "Content-Type": "application/json; charset=utf-8" },
           method: "PATCH",
           body: JSON.stringify({
-            numInStock: `${item.numInStock} - ${item.quantity}`,
+            numInStock: `${item.numInStock}` - `${item.quantity}`,
           }),
         });
-        update = await update.json();
-        console.log(update);
+        update = await update.json();        
         dispatch(resetCart());
+         //Dispatch to update the specific items or just refecth everything
       } catch (err) {
         console.log(err);
         dispatch(updateError());

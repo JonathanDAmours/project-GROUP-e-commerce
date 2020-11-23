@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import Items from "../all-items/items";
+import Items from "../all-items/Items";
 
 export const ItemsByCategory = () => {
   const { categoryName } = useParams();

@@ -34,22 +34,22 @@ export default function Cart() {
   const toggleCart = () => setCart(!cart);
 
   let preTotal = [];
-  if (storeItems.length > 0) {
-    storeItems.map((item) =>
+  storeItems.map((item) =>
       preTotal.push(
         Number(item?.quantity) * item?.price?.replace(/[^0-9.-]+/g, "")
       )
     );
-  }
   let total = preTotal?.reduce((a, b) => a + b, 0);
   let totalFormat = (Math.round(total * 100) / 100).toFixed(2);
 
-  const preSum = [];
-  storeItems.map((item) =>
-  preSum.push(item?.quantity))
-  const sum = preSum?.reduce((a, b) => a + b, 0);
 
-  console.log(sum);
+
+let preSum = [];
+storeItems.map((item) => preSum.push(item?.quantity))
+let sum = preSum?.reduce((a, b) => a + b, 0);
+
+console.log(storeItems);
+  
   return (
     <Wrapper>
       {" "}

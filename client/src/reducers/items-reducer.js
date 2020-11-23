@@ -27,9 +27,7 @@ export default function cartReducer(state = initialState, action) {
       };
     }
     case "RESET_CART": {
-      return {
-        initialState,
-      };
+      return initialState;
     }
     case "UPDATE_ERROR": {
       return {
@@ -43,7 +41,6 @@ export default function cartReducer(state = initialState, action) {
 }
 
 export const getStoreItemArray = (state) => {
-  const storeItems = Object.values(state);
-  console.log(storeItems);
+  const storeItems = Object.values(state.cartReducer);
   return storeItems;
 };
