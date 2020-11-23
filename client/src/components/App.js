@@ -9,6 +9,7 @@ import AllCategoriesPage from "./categories/AllCategoriesPage";
 import { NavBar } from "./navbar/NavBar";
 import PaymentConf from "./Cart/PaymentConf";
 import { ItemsByBrand } from "./brands/ItemsByBrand";
+import { ItemsByCategory } from "./categories/ItemsByCategory";
 
 const App = () => {
   return (
@@ -24,6 +25,10 @@ const App = () => {
             <Route exact path="/categories">
               <AllCategoriesPage />
             </Route>
+            <Route>
+              <ItemsByCategory exact path="/categories/:id" />
+            </Route>
+
             <Route exact path="/items">
               <AllItemsPage />
             </Route>
@@ -31,7 +36,7 @@ const App = () => {
               <AllBrandsPage exact path="/brands" />
             </Route>
             <Route>
-              <ItemsByBrand exact path="/items/:brands" />
+              <ItemsByBrand exact path="/items/:companyId" />
             </Route>
           </Switch>
         </div>

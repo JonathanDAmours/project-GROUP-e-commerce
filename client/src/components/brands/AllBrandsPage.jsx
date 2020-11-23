@@ -34,7 +34,9 @@ const AllBrandsPage = () => {
     <Wrapper>
       <MainWrapper>
         {sortedBrands.map((brand) => {
-          return <IndividualBrand key={brand._id} brand={brand} />;
+          return (
+            <IndividualBrand key={brand._id} id={brand._id} brand={brand} />
+          );
         })}
       </MainWrapper>
     </Wrapper>
