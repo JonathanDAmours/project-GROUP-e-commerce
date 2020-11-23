@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
-import { MdClose } from "react-icons/md"
+import { MdClose } from "react-icons/md";
 import { getStoreItemArray } from "../../reducers/items-reducer";
 import { CartItem } from "./CartItem";
-
+import PaymentConf from "./PaymentConf";
+import { NavLink } from "react-router-dom";
 
 export default function Cart() {
   const storeItems = useSelector(getStoreItemArray);
+  // cart open/close
   const [cart, setCart] = useState(true);
+
   /// CONDITIONAL RENDERING FOR IPAD-MOBILE
   const useViewport = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -30,13 +33,14 @@ export default function Cart() {
   // toggles (cart and burger)
   const toggleCart = () => setCart(!cart);
 
-
-let preTotal = [];
-storeItems.map((item) => preTotal.push(Number(item?.quantity) * (item?.price.replace(/[^0-9.-]+/g,""))));
-let total = preTotal?.reduce((a, b) => a + b, 0);
-let totalFormat = (Math.round(total * 100) / 100).toFixed(2);
-
-
+  let preTotal = [];
+  storeItems.map((item) =>
+    preTotal.push(
+      Number(item?.quantity) * item?.price.replace(/[^0-9.-]+/g, "")
+    )
+  );
+  let total = preTotal?.reduce((a, b) => a + b, 0);
+  let totalFormat = (Math.round(total * 100) / 100).toFixed(2);
 
   return (
     <Wrapper>
@@ -53,96 +57,111 @@ let totalFormat = (Math.round(total * 100) / 100).toFixed(2);
         </div>
       )}
       {width > mobilebreakpoint ? (
-      <CartWrap style={cart ? { right: "-300px" } : { right: 0 }}>
-        <Main>
-      <TopSection>
-        <Top>
-          <div>
-          <YourCart>Your cart</YourCart>
-          </div>
-          <div>
-          <XButton onClick={toggleCart}>X</XButton>
-          </div>
-          </Top>
-          <NumberItems>{storeItems.length} item(s)</NumberItems>
-        </TopSection>
-        
-        {/* mapping over items in cart */}
-        <ScrollDiv>
-          {storeItems.map((item, index) => {
-            return (<CartItem key={index} price={item.price} title={item.name} quantity={item.quantity} _id={item._id} />)
-          })}
-        </ScrollDiv>
-        </Main>
-        <PurchaseSection>
-        <Total>
-          Total: <strong>${totalFormat}</strong>
-        </Total>
-        <PurchaseBtn>
-          <Span>Purchase</Span>
-        </PurchaseBtn>
-      </PurchaseSection>
-      </CartWrap>
-      ) : 
+        <CartWrap style={cart ? { right: "-300px" } : { right: 0 }}>
+          <Main>
+            <TopSection>
+              <Top>
+                <div>
+                  <YourCart>Your cart</YourCart>
+                </div>
+                <div>
+                  <XButton onClick={toggleCart}>X</XButton>
+                </div>
+              </Top>
+              <NumberItems>{storeItems.length} item(s)</NumberItems>
+            </TopSection>
 
+            {/* mapping over items in cart */}
+            <ScrollDiv>
+              {storeItems.map((item, index) => {
+                return (
+                  <CartItem
+                    key={index}
+                    price={item.price}
+                    title={item.name}
+                    quantity={item.quantity}
+                    _id={item._id}
+                  />
+                );
+              })}
+            </ScrollDiv>
+          </Main>
+          <PurchaseSection>
+            <Total>
+              Total: <strong>${totalFormat}</strong>
+            </Total>
+            <PurchaseBtn>
+              <Span>
+                {/* ---------------------------------the button of Payment confirmation opens the modal-------------------------- */}
+                <PaymentConf />
+              </Span>
+            </PurchaseBtn>
+          </PurchaseSection>
+        </CartWrap>
+      ) : (
+        ///////////////////
+        <CartWrapMobile style={cart ? { right: "-600px" } : { right: 0 }}>
+          <Main>
+            <TopSection>
+              <Top>
+                <div>
+                  <YourCart>Your cart</YourCart>
+                </div>
+                <div>
+                  <XButton onClick={toggleCart}>X</XButton>
+                </div>
+              </Top>
+              <NumberItems>{storeItems.length} item(s)</NumberItems>
+            </TopSection>
 
-
-
-
-      ///////////////////
-      <CartWrapMobile style={cart ? { right: "-600px" } : { right: 0 }}>
-      <Main>
-      <TopSection>
-        <Top>
-          <div>
-          <YourCart>Your cart</YourCart>
-          </div>
-          <div>
-          <XButton onClick={toggleCart}>X</XButton>
-          </div>
-          </Top>
-          <NumberItems>{storeItems.length} item(s)</NumberItems>
-        </TopSection>
-        
-        {/* mapping over items in cart */}
-        <ScrollDiv>
-          {storeItems.map((item, index) => {
-            return (<CartItem key={index} price={item.price} title={item.name} quantity={item.quantity} _id={item._id} />)
-          })}
-        </ScrollDiv>
-        </Main>
-        <PurchaseSection>
-        <Total>
-          Total: <strong>${totalFormat}</strong>
-        </Total>
-        <PurchaseBtn>
-          <Span>Purchase</Span>
-        </PurchaseBtn>
-      </PurchaseSection>
-      </CartWrapMobile> }
+            {/* mapping over items in cart */}
+            <ScrollDiv>
+              {storeItems.map((item, index) => {
+                return (
+                  <CartItem
+                    key={index}
+                    price={item.price}
+                    title={item.name}
+                    quantity={item.quantity}
+                    _id={item._id}
+                  />
+                );
+              })}
+            </ScrollDiv>
+          </Main>
+          <PurchaseSection>
+            <Total>
+              Total: <strong>${totalFormat}</strong>
+            </Total>
+            <PurchaseBtn>
+              <Span>Purchase</Span>
+            </PurchaseBtn>
+          </PurchaseSection>
+        </CartWrapMobile>
+      )}
     </Wrapper>
   );
 }
 
 const ScrollDiv = styled.div`
-height: 75vh;
-overflow: auto;
+  height: 75vh;
+  overflow: auto;
 
-@media screen and (max-width: 600px) {
-  height: 70vh;
+  @media screen and (max-width: 600px) {
+    height: 70vh;
   }
 `;
 
-const Main = styled.div `
-@media screen and (max-width: 600px) {
+const Main = styled.div`
+  @media screen and (max-width: 600px) {
   }
 `;
 
-const Top = styled.div `
-display: flex;
-justify-content: space-between;
-align-items: center;
-@media screen and (max-width: 600px) {
+const Top = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: 600px) {
   }
 `;
 
@@ -162,7 +181,6 @@ const Total = styled.p`
   margin: 0;
   padding: 0;
   @media screen and (max-width: 600px) {
-  
   }
 `;
 
@@ -189,38 +207,38 @@ const PurchaseBtn = styled.button`
 `;
 
 const NumberItems = styled.p`
-color: white;
-font-size: 12px;
-margin-top: 2px;
-@media screen and (max-width: 600px) {
-text-align: left;
+  color: white;
+  font-size: 12px;
+  margin-top: 2px;
+  @media screen and (max-width: 600px) {
+    text-align: left;
   }
 `;
 
 const YourCart = styled.h1`
-font-size: 30px;
-color: white;
-font-weight: 100;
-@media screen and (max-width: 600px) {
+  font-size: 30px;
+  color: white;
+  font-weight: 100;
+  @media screen and (max-width: 600px) {
   }
 `;
 
 const TopSection = styled.div`
-padding-bottom: 15px;
-border-bottom: 1px solid white;
-@media screen and (max-width: 600px) {
+  padding-bottom: 15px;
+  border-bottom: 1px solid white;
+  @media screen and (max-width: 600px) {
   }
 `;
 
 const XButton = styled(MdClose)`
-color: white;
-width: 20px;
-height: 20px;
-&:hover {
-  cursor: pointer;
-  color: #d45e09;
-}
-@media screen and (max-width: 600px) {
+  color: white;
+  width: 20px;
+  height: 20px;
+  &:hover {
+    cursor: pointer;
+    color: #d45e09;
+  }
+  @media screen and (max-width: 600px) {
   }
 `;
 
@@ -275,7 +293,6 @@ const CartWrapMobile = styled.div`
   flex-direction: column;
   justify-content: space-between;
   @media screen and (max-width: 600px) {
-
   }
 `;
 
@@ -294,7 +311,6 @@ const CartWrap = styled.div`
   flex-direction: column;
   justify-content: space-between;
   @media screen and (max-width: 600px) {
-
   }
 `;
 

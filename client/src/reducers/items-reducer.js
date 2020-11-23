@@ -26,6 +26,16 @@ export default function cartReducer(state = initialState, action) {
         },
       };
     }
+    case "RESET_CART": {
+      return {
+        initialState,
+      };
+    }
+    case "UPDATE_ERROR": {
+      return {
+        ...state,
+      };
+    }
     default: {
       return state;
     }
