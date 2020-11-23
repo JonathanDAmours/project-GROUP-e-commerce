@@ -37,7 +37,7 @@ const AllItemsPage = () => {
   }, [offset, setOffset]);
 
   if (!items) {
-    return <p>loading...</p>
+    return <p>loading...</p>;
   }
 
   return (
@@ -57,7 +57,7 @@ const AllItemsPage = () => {
       </NextPrevious>
       <ItemsWrap>
         {items.map((item) => {
-          return <Items key={item._id} item={item} />
+          return <Items key={item._id} item={item} />;
         })}
       </ItemsWrap>
       <NextPrevious>

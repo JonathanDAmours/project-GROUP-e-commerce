@@ -44,7 +44,7 @@ express()
   .get("/companies/:id", getCompany)
   .get("/categories", getAllCategories)
   .get("/categories/:categoryName", getCategoryByCategoryName)
-  .get("/:companies/items", getItemByCompany)
+  .get("/items/company/:id", getItemByCompany)
 
   //catchall for server errors
 
