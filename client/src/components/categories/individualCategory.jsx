@@ -1,13 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 import { COLORS, BOX_SHADOW } from "../../constants";
 
 export const IndividualCategory = (props) => {
   const { category } = props;
+  let history = useHistory();
+
+  const handleCategory = () => {
+    history.push(`/categories/${category}`);
+  };
   return (
     <>
-      <Button>
+      <Button onClick={handleCategory}>
         <CategoryDiv>
           <CategoryName>{category}</CategoryName>
         </CategoryDiv>
