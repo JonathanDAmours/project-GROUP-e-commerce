@@ -1,11 +1,14 @@
 import Modal from "./Modal";
 import React, { useState } from "react";
+import {useSelector} from "react-redux";
+import { getStoreItemArray } from "../../reducers/items-reducer";
 import styled from "styled-components";
 import Checkout from "./Checkout";
 
-const PaymentConf = ({ storeItems }) => {
+const PaymentConf = () => {
   //payment confirmation modal open/close
   const [modalState, setModalState] = useState(false);
+  const storeItems = useSelector(getStoreItemArray);
 
   //handlers
   const toggleModal = () => {

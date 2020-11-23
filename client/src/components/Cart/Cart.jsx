@@ -42,14 +42,14 @@ export default function Cart() {
   let total = preTotal?.reduce((a, b) => a + b, 0);
   let totalFormat = (Math.round(total * 100) / 100).toFixed(2);
 
-  console.log(storeItems.length);
+  console.log(storeItems);
   return (
     <Wrapper>
       {" "}
       {width > mobilebreakpoint ? (
         <ButtonWrap>
           <Button onClick={toggleCart}>
-            {storeItems.length <= 0 ? <StyledBiCart /> : <StyledBiCartOrange />}
+            {storeItems.length <= 0 ? <StyledBiCart /> : <StyledBiCartOrange data-count={storeItems.length}/>}
           </Button>
         </ButtonWrap>
       ) : (
@@ -354,6 +354,25 @@ const StyledBiCartOrange = styled(BiCart)`
   &:hover {
     color: brown;
     cursor: pointer;
+  }
+
+  &:after{
+  content: attr(data-count);
+  position: absolute;
+  background: #ff6600;
+  height: 2rem;
+  top: 1rem;
+  right: 1.5rem;
+  width: 2rem;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  color: white;
+  border: 1px solid #ff6600;
+  font-family: sans-serif;
+  font-weight: bold;
+  z-index: 5000;
   }
 
   @media screen and (max-width: 600px) {
