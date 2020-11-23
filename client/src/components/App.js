@@ -25,18 +25,18 @@ const App = () => {
             <Route exact path="/categories">
               <AllCategoriesPage />
             </Route>
-            <Route>
-              <ItemsByCategory exact path="/categories/:id" />
+            <Route exact path="/categories/:id">
+              <ItemsByCategory />
             </Route>
 
             <Route exact path="/items">
               <AllItemsPage />
             </Route>
-            <Route>
-              <AllBrandsPage exact path="/brands" />
+            <Route exact path="/brands">
+              <AllBrandsPage />
             </Route>
-            <Route>
-              <ItemsByBrand exact path="/items/:companyId" />
+            <Route exact path="/items/:companyId">
+              <ItemsByBrand />
             </Route>
           </Switch>
         </div>
