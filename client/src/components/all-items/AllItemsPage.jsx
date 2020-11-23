@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
-import Items from "./Items";
+import Items from "./items";
 
 const AllItemsPage = () => {
   const [items, setItems] = useState([]);
-  //limit is the amount of items per page
+  //limit is the amount of items per page right now we don't need a state but if ever we want the user to control the number of items per page it wil be necessary
   const [limit, setLimit] = useState(50);
   // offset is the index we have to start rendering items at for pages 2,3, etc.
   const [offset, setOffset] = useState(0);
@@ -52,7 +52,12 @@ const AllItemsPage = () => {
           </PrevBtn>
         </span>
         <span>
-          <NextBtn onClick={nextPage}>→</NextBtn>
+          <NextBtn
+            disabled={items.length < limit ? true : false}
+            onClick={nextPage}
+          >
+            →
+          </NextBtn>
         </span>
       </NextPrevious>
       <ItemsWrap>
@@ -70,7 +75,12 @@ const AllItemsPage = () => {
           </PrevBtn>
         </span>
         <span>
-          <NextBtn onClick={nextPage}>→</NextBtn>
+          <NextBtn
+            disabled={items.length < limit ? true : false}
+            onClick={nextPage}
+          >
+            →
+          </NextBtn>
         </span>
       </NextPrevious>
     </Wrapper>
@@ -95,6 +105,10 @@ const NextBtn = styled.button`
   background-color: black;
   color: white;
   cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+    background-color: grey;
+  }
 `;
 
 const NextPrevious = styled.div`

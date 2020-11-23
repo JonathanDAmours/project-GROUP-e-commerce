@@ -18,7 +18,7 @@ const getAllItems = (req, res) => {
   }
   //this doesn't seem to be working
   if (limit + offset > items.length) {
-    limit = arr.length - offset;
+    limit = items.length - offset;
     // console.log(`limit: ${limit}`);
   }
 
