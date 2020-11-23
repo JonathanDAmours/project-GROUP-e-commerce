@@ -134,7 +134,9 @@ export default function Cart() {
               Total: <strong>${totalFormat}</strong>
             </Total>
             <PurchaseBtn>
-              <Span>Purchase</Span>
+              <Span>
+              <PaymentConf />
+              </Span>
             </PurchaseBtn>
           </PurchaseSection>
         </CartWrapMobile>

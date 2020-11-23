@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { IndividualCategory } from "./IndividualCategory";
+import { IndividualCategory } from "./individualCategory";
 
 const AllCategoriesPage = () => {
   const [categories, setCategories] = useState([]);
