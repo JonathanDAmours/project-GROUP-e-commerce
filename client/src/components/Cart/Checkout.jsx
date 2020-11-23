@@ -4,8 +4,7 @@ import styled from "styled-components";
 import { resetCart, updateError } from "../../actions";
 import { getStoreItemArray } from "../../reducers/items-reducer";
 
-const Auth = () => {
-  const [success, setSuccess] = useState(false);
+const Auth = ({ success, setSuccess, firstName, setFirstname }) => {
   const dispatch = useDispatch();
   const storeItems = useSelector(getStoreItemArray);
 
@@ -23,9 +22,10 @@ const Auth = () => {
             numInStock: `${item.numInStock}` - `${item.quantity}`,
           }),
         });
-        update = await update.json();        
+        update = await update.json();
+        setSuccess(true);
         dispatch(resetCart());
-         //Dispatch to update the specific items or just refecth everything
+        //Dispatch to update the specific items or just refecth everything
       } catch (err) {
         console.log(err);
         dispatch(updateError());
@@ -33,50 +33,70 @@ const Auth = () => {
     });
   };
 
+  const handleFirstName = (e) => {
+    setFirstname(e.target.value);
+  };
+
   return (
     <Wrapper>
-      <div>
-        <h1>Contact information</h1>
-      </div>
-      <div>
-        <form onSubmit={updateStock}>
-          <label htmlFor="firstName">
-            <input type="text" placeholder="first name" required />
-          </label>
-          <label htmlFor="lastName">
-            <input type="text" placeholder="last name" required />
-          </label>
-          <label htmlFor="email">
-            <input type="email" placeholder="email" required />
-          </label>
-          <label htmlFor="address">
-            <input type="text" placeholder="address" required />
-          </label>
-          <label htmlFor="app.">
-            <input type="text" placeholder="App. / Office" />
-          </label>
-          <label htmlFor="city">
-            <input type="text" placeholder="City" required />
-          </label>
-          <label htmlFor="province">
-            <input type="text" placeholder="Province / State" required />
-          </label>
-          <label htmlFor="zip">
-            <input type="text" placeholder="Postal / Zip code" required />
-          </label>
-          <label htmlFor="country">
-            <input type="text" placeholder="Country" required />
-          </label>
-          <h1>Payment information</h1>
-          <label htmlFor="creditCard">
-            <input type="text" placeholder="Credit Card Number" required />
-          </label>
-          <label htmlFor="expiration">
-            <input type="text" placeholder="Expiration date" required />
-          </label>
-          <button type="submit">proceed with payment</button>
-        </form>
-      </div>
+      {success ? (
+        <div>
+          <h1>
+            Thank you {firstName} your ordered has been processed successfully!
+          </h1>
+        </div>
+      ) : (
+        <div>
+          <div>
+            <h1>Contact information</h1>
+          </div>
+          <div>
+            <form onSubmit={updateStock}>
+              <label htmlFor="firstName">
+                <input
+                  value={firstName}
+                  onChange={handleFirstName}
+                  type="text"
+                  placeholder="first name"
+                  required
+                />
+              </label>
+              <label htmlFor="lastName">
+                <input type="text" placeholder="last name" required />
+              </label>
+              <label htmlFor="email">
+                <input type="email" placeholder="email" required />
+              </label>
+              <label htmlFor="address">
+                <input type="text" placeholder="address" required />
+              </label>
+              <label htmlFor="app.">
+                <input type="text" placeholder="App. / Office" />
+              </label>
+              <label htmlFor="city">
+                <input type="text" placeholder="City" required />
+              </label>
+              <label htmlFor="province">
+                <input type="text" placeholder="Province / State" required />
+              </label>
+              <label htmlFor="zip">
+                <input type="text" placeholder="Postal / Zip code" required />
+              </label>
+              <label htmlFor="country">
+                <input type="text" placeholder="Country" required />
+              </label>
+              <h1>Payment information</h1>
+              <label htmlFor="creditCard">
+                <input type="text" placeholder="Credit Card Number" required />
+              </label>
+              <label htmlFor="expiration">
+                <input type="text" placeholder="Expiration date" required />
+              </label>
+              <button type="submit">proceed with payment</button>
+            </form>
+          </div>
+        </div>
+      )}
     </Wrapper>
   );
 };

@@ -1,6 +1,6 @@
 import Modal from "./Modal";
 import React, { useState } from "react";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import { getStoreItemArray } from "../../reducers/items-reducer";
 import styled from "styled-components";
 import Checkout from "./Checkout";
@@ -8,11 +8,15 @@ import Checkout from "./Checkout";
 const PaymentConf = () => {
   //payment confirmation modal open/close
   const [modalState, setModalState] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [firstName, setFirstname] = useState("");
   const storeItems = useSelector(getStoreItemArray);
 
   //handlers
   const toggleModal = () => {
     setModalState(!modalState);
+    setSuccess(false);
+    setFirstname("");
   };
 
   return (
@@ -23,8 +27,17 @@ const PaymentConf = () => {
       >
         Purchase
       </Button>
-      <Modal modalState={modalState} toggleModal={toggleModal}>
-        <Checkout />
+      <Modal
+        modalState={modalState}
+        toggleModal={toggleModal}
+        setSuccess={setSuccess}
+      >
+        <Checkout
+          success={success}
+          setSuccess={setSuccess}
+          setFirstname={setFirstname}
+          firstName={firstName}
+        />
       </Modal>
     </div>
   );
