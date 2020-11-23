@@ -25,7 +25,7 @@ const App = () => {
             <Route exact path="/categories">
               <AllCategoriesPage />
             </Route>
-            <Route exact path="/categories/:id">
+            <Route exact path="/categories/:categoryName">
               <ItemsByCategory />
             </Route>
 

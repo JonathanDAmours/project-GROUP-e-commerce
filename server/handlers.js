@@ -95,9 +95,9 @@ const getAllCategories = (req, res) => {
 
 //HERE
 
-const getCategoryById = (req, res) => {
-  const categoryId = req.params.category;
-  const results = items.filter((result) => result.categoryId === categoryId);
+const getCategoryByCategoryName = (req, res) => {
+  const categoryName = req.params.categoryName;
+  const results = items.filter((result) => result.category === categoryName);
   if (results) {
     res.status(200).json({
       status: 200,
@@ -135,5 +135,5 @@ module.exports = {
   getCompany,
   getAllCategories,
   getItemByCompany,
-  getCategoryById,
+  getCategoryByCategoryName,
 };

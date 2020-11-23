@@ -20,5 +20,5 @@ export const ItemsByBrand = () => {
     fetchBrandbyId();
   }, [companyId]);
 
-  return <div>items here</div>;
+  return <div>items by brand here</div>;
 };
