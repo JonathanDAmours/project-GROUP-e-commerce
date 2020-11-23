@@ -10,17 +10,16 @@ const Auth = () => {
   const storeItems = useSelector(getStoreItemArray);
 
   //handlers
-  const updateStock = (e, _id, quantity) => {
+  const updateStock = (e) => {
     e.preventDefault();
     storeItems.map(async (item) => {
       console.log(item);
-      quantity = item.quantity;
       try {
         let update = await fetch(`/items/${item._id}`, {
           headers: { "Content-Type": "application/json; charset=utf-8" },
-          method: "PUT",
+          method: "PATCH",
           body: JSON.stringify({
-            numInStock: `${item.numInStock} - ${quantity}`,
+            numInStock: `${item.numInStock} - ${item.quantity}`,
           }),
         });
         update = await update.json();
@@ -39,7 +38,7 @@ const Auth = () => {
         <h1>Contact information</h1>
       </div>
       <div>
-        <form>
+        <form onSubmit={updateStock}>
           <label htmlFor="firstName">
             <input type="text" placeholder="first name" required />
           </label>
@@ -74,9 +73,7 @@ const Auth = () => {
           <label htmlFor="expiration">
             <input type="text" placeholder="Expiration date" required />
           </label>
-          <button type="submit" onClick={updateStock}>
-            proceed with payment
-          </button>
+          <button type="submit">proceed with payment</button>
         </form>
       </div>
     </Wrapper>
