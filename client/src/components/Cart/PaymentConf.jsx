@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Checkout from "./Checkout";
 
-const PaymentConf = () => {
+const PaymentConf = ({ storeItems }) => {
   //payment confirmation modal open/close
   const [modalState, setModalState] = useState(false);
 
@@ -14,7 +14,12 @@ const PaymentConf = () => {
 
   return (
     <div>
-      <Button onClick={toggleModal}>Purchase</Button>
+      <Button
+        onClick={toggleModal}
+        disabled={storeItems.length <= 0 ? true : false}
+      >
+        Purchase
+      </Button>
       <Modal modalState={modalState} toggleModal={toggleModal}>
         <Checkout />
       </Modal>
