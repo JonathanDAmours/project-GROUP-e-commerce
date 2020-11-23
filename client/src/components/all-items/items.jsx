@@ -29,14 +29,26 @@ const Items = ({ item }) => {
         {numInStock <= 0 ? (
           <OutofStock>Out of stock</OutofStock>
         ) : (
+          <Div>
           <BuyButton onClick={() => dispatch(addToCart({ _id, name, price }))}>
             Add to cart
           </BuyButton>
+         </Div>
         )}
       </Sub>
     </Wrapper>
   );
 };
+
+const Div = styled.div`
+background-color: #d45e09;
+overflow: hidden;
+
+&:active {
+  background-color: brown;
+}
+`;
+
 
 const Wrapper = styled.div`
   width: 25%;
@@ -132,6 +144,11 @@ const BuyButton = styled.button`
   background-color: #d45e09;
   color: white;
   cursor: pointer;
+
+  &:active{
+    transform: scale(0.9);
+    background-color: brown;
+  }
 `;
 
 export default Items;
