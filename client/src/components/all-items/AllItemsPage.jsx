@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
-import Items from "./items";
+import Items from "./Items";
 
 const AllItemsPage = () => {
   const [items, setItems] = useState([]);
