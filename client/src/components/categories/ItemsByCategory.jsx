@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import Items from "../all-items/items";
+import Items from "../../components/all-items/Items";
 
 export const ItemsByCategory = () => {
   const { categoryName } = useParams();
@@ -40,7 +40,6 @@ export const ItemsByCategory = () => {
       {itemsByCategory.map((item) => {
         return <Items key={item._id} item={item} />
       })}
-      ;
       </ItemsWrap>
     </Wrapper>
   );
