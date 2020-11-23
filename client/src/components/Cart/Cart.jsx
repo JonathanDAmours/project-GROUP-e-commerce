@@ -34,11 +34,13 @@ export default function Cart() {
   const toggleCart = () => setCart(!cart);
 
   let preTotal = [];
-  storeItems.map((item) =>
-    preTotal.push(
-      Number(item?.quantity) * item?.price.replace(/[^0-9.-]+/g, "")
-    )
-  );
+  if (storeItems.length > 0) {
+    storeItems.map((item) =>
+      preTotal.push(
+        Number(item?.quantity) * item?.price?.replace(/[^0-9.-]+/g, "")
+      )
+    );
+  }
   let total = preTotal?.reduce((a, b) => a + b, 0);
   let totalFormat = (Math.round(total * 100) / 100).toFixed(2);
 

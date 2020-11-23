@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import Items from "../all-items/items";
+import Items from "../all-items/Items";
 
 export const ItemsByCategory = () => {
   const { categoryName } = useParams();
@@ -10,9 +10,8 @@ export const ItemsByCategory = () => {
   console.log(itemsByCategory);
   const [items, setItems] = useState([]);
 
-  
   useEffect(() => {
-  const fetchCategoryByCategoryName = async () => {
+    const fetchCategoryByCategoryName = async () => {
       try {
         let data = await fetch(`/categories/${categoryName}`);
         data = await data.json();
@@ -26,21 +25,18 @@ export const ItemsByCategory = () => {
     fetchCategoryByCategoryName();
   }, [categoryName]);
 
-
-
   if (!items) {
     return <p>loading...</p>;
   }
 
   return (
     <Wrapper>
-      <NextPrevious>
-      </NextPrevious>
+      <NextPrevious></NextPrevious>
       <ItemsWrap>
-      {itemsByCategory.map((item) => {
-        return <Items key={item._id} item={item} />;
-      })}
-      ;
+        {itemsByCategory.map((item) => {
+          return <Items key={item._id} item={item} />;
+        })}
+        ;
       </ItemsWrap>
     </Wrapper>
   );
