@@ -1,11 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 import { COLORS, BOX_SHADOW } from "../../constants";
 // import { IndividualBrand } from "./Indi";
 
 export const IndividualBrand = ({ brand, id }) => {
   const { name } = brand;
+  let history = useHistory();
+
+  const handleBrand = () => {
+    history.push(`/items/brands/${id}`);
+  };
 
   // const handleRenderBrand = () => {
   //   return <IndividualBrand />;
@@ -13,7 +19,7 @@ export const IndividualBrand = ({ brand, id }) => {
 
   return (
     <>
-      <Button>
+      <Button onClick={handleBrand}>
         <BrandDiv>
           <BrandName>{name}</BrandName>
         </BrandDiv>

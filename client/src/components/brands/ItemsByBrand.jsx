@@ -3,18 +3,18 @@ import { useParams } from "react-router-dom";
 
 import styled from "styled-components";
 
-import Items from "../all-items/Items";
+import Items from "../all-items/items";
 
 export const ItemsByBrand = () => {
   const [itemsByBrand, setItemsByBrand] = useState([]);
 
-  const { companyId } = useParams();
-  console.log(companyId);
+  const { id } = useParams();
+  console.log({ itembybrandcomp: IDBFactory });
 
   useEffect(() => {
     const fetchBrandbyId = async () => {
       try {
-        let data = await fetch(`/items/company/${companyId}`);
+        let data = await fetch(`/items/brands/${id}`);
         data = await data.json();
         // console.log(data.items);
         const items = data.items;
@@ -24,7 +24,7 @@ export const ItemsByBrand = () => {
       }
     };
     fetchBrandbyId();
-  }, [companyId]);
+  }, [id]);
 
   if (!itemsByBrand) {
     return <p>loading...</p>;
