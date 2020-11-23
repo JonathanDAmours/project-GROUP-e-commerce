@@ -8,6 +8,7 @@ import AllBrandsPage from "./brands/AllBrandsPage";
 import AllCategoriesPage from "./categories/AllCategoriesPage";
 import { NavBar } from "./navbar/NavBar";
 import PaymentConf from "./Cart/PaymentConf";
+import { ItemsByBrand } from "./brands/ItemsByBrand";
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
             </Route>
             <Route>
               <AllBrandsPage exact path="/brands" />
+            </Route>
+            <Route>
+              <ItemsByBrand exact path="/items/:brands" />
             </Route>
           </Switch>
         </div>
