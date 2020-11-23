@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { FiArrowRight } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 
 import { COLORS } from "../../constants";
 
@@ -16,66 +17,80 @@ export const Brands = () => {
   return (
     <CatDiv>
       <ViewAllDiv>
-        <ViewAllA aria-label="view all brands" href="#">
+        <ViewAllA aria-label="view all brands" to="/brands">
           View all Brands
           <FiArrowRight />
         </ViewAllA>
       </ViewAllDiv>
 
       <FirstRowOfThree>
-        <CasioDiv>
-          <CasioButton>
-            <ImgDiv>
-              <CasioImg src={Casio} />
-            </ImgDiv>
-          </CasioButton>
-        </CasioDiv>
+        <NavWrapper to="/items/brands/13334">
+          <CasioDiv>
+            <CasioButton>
+              <ImgDiv>
+                <CasioImg src={Casio} />
+              </ImgDiv>
+            </CasioButton>
+          </CasioDiv>
+        </NavWrapper>
 
-        <JawboneDiv>
-          <JawboneButton>
-            <ImgDiv>
-              <JawboneImg src={Jawbone} />
-            </ImgDiv>
-          </JawboneButton>
-        </JawboneDiv>
+        <NavWrapper to="/items/brands/18834">
+          <JawboneDiv>
+            <JawboneButton>
+              <ImgDiv>
+                <JawboneImg src={Jawbone} />
+              </ImgDiv>
+            </JawboneButton>
+          </JawboneDiv>
+        </NavWrapper>
 
-        <GarminDiv>
-          <GarminButton>
-            <ImgDiv>
-              <GarminImg src={Garmin} />
-            </ImgDiv>
-          </GarminButton>
-        </GarminDiv>
+        <NavWrapper to="/items/brands/10713">
+          <GarminDiv>
+            <GarminButton>
+              <ImgDiv>
+                <GarminImg src={Garmin} />
+              </ImgDiv>
+            </GarminButton>
+          </GarminDiv>
+        </NavWrapper>
       </FirstRowOfThree>
 
       <SecondRowOfThree>
-        <MisfitDiv>
-          <MisfitButton>
-            <ImgDiv>
-              <MisfitImg src={Misfit} />
-            </ImgDiv>
-          </MisfitButton>
-        </MisfitDiv>
+        <NavWrapper to="/items/brands/11932">
+          <MisfitDiv>
+            <MisfitButton>
+              <ImgDiv>
+                <MisfitImg src={Misfit} />
+              </ImgDiv>
+            </MisfitButton>
+          </MisfitDiv>
+        </NavWrapper>
 
-        <PolarDiv>
-          <PolarButton>
-            <ImgDiv>
-              <PolarImg src={Polar} />
-            </ImgDiv>
-          </PolarButton>
-        </PolarDiv>
+        <NavWrapper to="/items/brands/11837">
+          <PolarDiv>
+            <PolarButton>
+              <ImgDiv>
+                <PolarImg src={Polar} />
+              </ImgDiv>
+            </PolarButton>
+          </PolarDiv>
+        </NavWrapper>
 
-        <SamsungDiv>
-          <SamsungButton>
-            <ImgDiv>
-              <SamsungImg src={Samsung} />
-            </ImgDiv>
-          </SamsungButton>
-        </SamsungDiv>
+        <NavWrapper to="/items/brands/18432">
+          <SamsungDiv>
+            <SamsungButton>
+              <ImgDiv>
+                <SamsungImg src={Samsung} />
+              </ImgDiv>
+            </SamsungButton>
+          </SamsungDiv>
+        </NavWrapper>
       </SecondRowOfThree>
     </CatDiv>
   );
 };
+
+const NavWrapper = styled(NavLink)``;
 
 const CatDiv = styled.div`
   display: flex;
@@ -162,7 +177,7 @@ const ViewAllDiv = styled.div`
   margin-top: 2rem;
 `;
 
-const ViewAllA = styled.a`
+const ViewAllA = styled(NavLink)`
   all: unset;
   display: flex;
   align-items: center;
@@ -175,7 +190,7 @@ const ViewAllA = styled.a`
   }
 
   @media screen and (max-width: 375px) {
-margin-top: 1rem;
+    margin-top: 1rem;
   }
 `;
 
