@@ -12,3 +12,11 @@ export const updateQuantity = (item) => ({
   type: "UPDATE_QUANTITY",
   item,
 });
+
+export const resetCart = () => ({
+  type: "RESET_CART",
+});
+
+export const updateError = () => ({
+  type: "UPDATE_ERROR",
+});

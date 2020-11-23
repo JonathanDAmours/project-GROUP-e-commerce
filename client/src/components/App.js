@@ -7,6 +7,7 @@ import AllItemsPage from "./all-items/AllItemsPage";
 import AllBrandsPage from "./brands/AllBrandsPage";
 import AllCategoriesPage from "./categories/AllCategoriesPage";
 import { NavBar } from "./navbar/NavBar";
+import PaymentConf from "./Cart/PaymentConf";
 
 const App = () => {
   return (

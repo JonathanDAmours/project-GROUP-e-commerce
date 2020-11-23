@@ -47,6 +47,7 @@ const getItem = (req, res) => {
   }
 };
 
+// this need some change since we are getting an array maybe not if we map on the front end
 const updateItem = (req, res) => {
   let item = items.find((item) => item._id === req.params.id);
   if (item) {
@@ -55,6 +56,7 @@ const updateItem = (req, res) => {
     res.status(200).json({
       status: 200,
       data: item,
+      message: "success",
     });
   } else {
     res.status(400).json({
