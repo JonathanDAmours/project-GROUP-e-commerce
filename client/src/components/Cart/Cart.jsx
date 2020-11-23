@@ -44,7 +44,12 @@ export default function Cart() {
   let total = preTotal?.reduce((a, b) => a + b, 0);
   let totalFormat = (Math.round(total * 100) / 100).toFixed(2);
 
-  console.log(storeItems);
+  const preSum = [];
+  storeItems.map((item) =>
+  preSum.push(item?.quantity))
+  const sum = preSum?.reduce((a, b) => a + b, 0);
+
+  console.log(sum);
   return (
     <Wrapper>
       {" "}
@@ -71,7 +76,7 @@ export default function Cart() {
                   <XButton onClick={toggleCart}>X</XButton>
                 </div>
               </Top>
-              <NumberItems>{storeItems.length} item(s)</NumberItems>
+              <NumberItems>{sum} item(s)</NumberItems>
             </TopSection>
 
             {/* mapping over items in cart */}
@@ -114,7 +119,7 @@ export default function Cart() {
                   <XButton onClick={toggleCart}>X</XButton>
                 </div>
               </Top>
-              <NumberItems>{storeItems.length} item(s)</NumberItems>
+              <NumberItems>{sum} item(s)</NumberItems>
             </TopSection>
 
             {/* mapping over items in cart */}

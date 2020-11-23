@@ -25,6 +25,7 @@ export const CartItem = ({ item, title, quantity, _id, price }) => {
               );
             }}
             value={quantity}
+            min={1}
           />
         </Item>
       </Wrapper>
