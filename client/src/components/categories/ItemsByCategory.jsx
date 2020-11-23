@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import Items from "../all-items/Items";
+import Items from "../all-items/items";
 
 export const ItemsByCategory = () => {
   const { categoryName } = useParams();
