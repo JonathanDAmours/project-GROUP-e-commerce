@@ -40,9 +40,9 @@ export const Categories = () => {
         </ViewAllA>
       </ViewAllDiv>
 
-      <FitnessLifestyle onClick={handleFitness}>
+      <FitnessLifestyle>
         <FitnessDiv>
-          <FitnessButton>
+          <FitnessButton onClick={handleFitness}>
             <ImgDiv>
               <FitnessImg src={Fitness} />
             </ImgDiv>
@@ -50,8 +50,8 @@ export const Categories = () => {
           </FitnessButton>
         </FitnessDiv>
 
-        <LifestyleDiv onClick={handleLifestyle}>
-          <LifestyleButton>
+        <LifestyleDiv>
+          <LifestyleButton onClick={handleLifestyle}>
             <ImgDiv>
               <LifestyleImg src={Lifestyle} />
             </ImgDiv>
@@ -60,9 +60,9 @@ export const Categories = () => {
         </LifestyleDiv>
       </FitnessLifestyle>
 
-      <MedicalEntertainment onClick={handleEntertainment}>
+      <MedicalEntertainment>
         <EntertainmentDiv>
-          <EntertainmentButton>
+          <EntertainmentButton onClick={handleEntertainment}>
             <ImgDiv>
               <EntertainmentImg src={Entertainment} />
             </ImgDiv>
@@ -70,8 +70,8 @@ export const Categories = () => {
           </EntertainmentButton>
         </EntertainmentDiv>
 
-        <MedicalDiv onClick={handleMedical}>
-          <MedicalButton>
+        <MedicalDiv>
+          <MedicalButton onClick={handleMedical}>
             <ImgDiv>
               <MedicalImg src={Medical} />
             </ImgDiv>
@@ -105,6 +105,7 @@ const FitnessButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.5);
 
   width: 100%;
 `;
@@ -151,12 +152,12 @@ const FitnessDiv = styled.div`
 `;
 
 const ImgDiv = styled.div`
-  background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   display: flex;
   align-items: center;
 
   transition: transform 0.4s;
+
   &:hover {
     transform: scale(1.05);
   }
@@ -183,7 +184,7 @@ const ViewAllDiv = styled.div`
   margin-top: 2rem;
 
   @media screen and (max-width: 375px) {
-margin-top: 1rem;
+    margin-top: 1rem;
   }
 `;
 

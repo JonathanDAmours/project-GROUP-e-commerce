@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { COLORS, BOX_SHADOW } from "../../constants";
 
-export const IndividualBrand = ({ brand }) => {
+export const IndividualBrand = ({ brand, id }) => {
   const { name } = brand;
   return (
     <>
