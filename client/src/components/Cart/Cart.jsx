@@ -93,7 +93,7 @@ export default function Cart() {
             <PurchaseBtn>
               <Span>
                 {/* ---------------------------------the button of Payment confirmation opens the modal-------------------------- */}
-                <PaymentConf />
+                <PaymentConf storeItems={storeItems} />
               </Span>
             </PurchaseBtn>
           </PurchaseSection>
@@ -135,7 +135,7 @@ export default function Cart() {
             </Total>
             <PurchaseBtn>
               <Span>
-              <PaymentConf />
+                <PaymentConf />
               </Span>
             </PurchaseBtn>
           </PurchaseSection>
