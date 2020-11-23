@@ -6,7 +6,6 @@ import { VscClose } from "react-icons/vsc";
 
 export const CartItem = ({ item, title, quantity, _id, price }) => {
   const dispatch = useDispatch();
-
   return (
     <>
       <Wrapper>
@@ -20,12 +19,12 @@ export const CartItem = ({ item, title, quantity, _id, price }) => {
           {/* we need a way to cap the number of items to the max in stock quantity */}
           <Input
             onChange={(event) => {
+              const quantityByUser = event.target.value
               dispatch(
-                updateQuantity({ _id: _id, quantity: event.target.value })
+                updateQuantity({ _id: _id, quantity: Number(quantityByUser) })
               );
             }}
             value={quantity}
-            min={1}
           />
         </Item>
       </Wrapper>
