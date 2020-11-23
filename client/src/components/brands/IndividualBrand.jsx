@@ -2,9 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 import { COLORS, BOX_SHADOW } from "../../constants";
+// import { IndividualBrand } from "./Indi";
 
 export const IndividualBrand = ({ brand, id }) => {
   const { name } = brand;
+
+  // const handleRenderBrand = () => {
+  //   return <IndividualBrand />;
+  // };
+
   return (
     <>
       <Button>

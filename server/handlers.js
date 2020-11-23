@@ -8,8 +8,8 @@ const getAllItems = (req, res) => {
   //the limit should be passed as a query in the get method (/items?{limit})
   let limit = parseInt(req.query.limit, 10);
   let offset = parseInt(req.query.skip);
-  console.log(offset);
-  console.log(limit);
+  // console.log(offset);
+  // console.log(limit);
 
   //taking care of some extreme cases
   if (limit > items.length) {
@@ -19,7 +19,7 @@ const getAllItems = (req, res) => {
   //this doesn't seem to be working
   if (limit + offset > items.length) {
     limit = arr.length - offset;
-    console.log(`limit: ${limit}`);
+    // console.log(`limit: ${limit}`);
   }
 
   //iterating through items and pushing them into data according to limit and offset
@@ -35,14 +35,14 @@ const getAllItems = (req, res) => {
 
 const getItem = (req, res) => {
   const _id = Number(req.params.id);
-  console.log(_id);
+  // console.log(_id);
   // const item = items[_id];
   const item = items.find((results) => {
-    console.log(typeof results._id);
+    // console.log(typeof results._id);
     return _id === results._id;
   });
 
-  console.log(item);
+  // console.log(item);
 
   if (item) {
     res.status(200).json({ status: 200, item: item });
@@ -54,7 +54,6 @@ const getItem = (req, res) => {
 // this need some change since we are getting an array maybe not if we map on the front end
 const updateItem = (req, res) => {
   let item = items.find((item) => item._id === Number(req.params.id));
-  console.log(item);
   if (item) {
     let bodyValue = req.body;
     item = { ...item, bodyValue };
@@ -119,10 +118,15 @@ const getCategoryByCategoryName = (req, res) => {
 };
 
 const getItemByCompany = (req, res) => {
-  const companyId = req.params.companyId;
-  const items = items.filter((item) => item.companyId === companyId);
-  if (items) {
-    res.status(200).json({ status: 200, items: items });
+  const companyId = Number(req.params.id);
+  console.log(req.params);
+
+  console.log(companyId);
+  console.log(typeof companyId);
+
+  const newItems = items.filter((item) => item.companyId === companyId);
+  if (newItems) {
+    res.status(200).json({ status: 200, items: newItems });
   } else {
     res.status(400).json({
       status: 200,

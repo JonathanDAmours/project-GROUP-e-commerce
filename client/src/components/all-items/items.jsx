@@ -30,10 +30,12 @@ const Items = ({ item }) => {
           <OutofStock>Out of stock</OutofStock>
         ) : (
           <Div>
-          <BuyButton onClick={() => dispatch(addToCart({ _id, name, price }))}>
-            Add to cart
-          </BuyButton>
-         </Div>
+            <BuyButton
+              onClick={() => dispatch(addToCart({ _id, name, price }))}
+            >
+              Add to cart
+            </BuyButton>
+          </Div>
         )}
       </Sub>
     </Wrapper>
@@ -41,14 +43,13 @@ const Items = ({ item }) => {
 };
 
 const Div = styled.div`
-background-color: #d45e09;
-overflow: hidden;
+  background-color: #d45e09;
+  overflow: hidden;
 
-&:active {
-  background-color: brown;
-}
+  &:active {
+    background-color: brown;
+  }
 `;
-
 
 const Wrapper = styled.div`
   width: 25%;
@@ -145,7 +146,7 @@ const BuyButton = styled.button`
   color: white;
   cursor: pointer;
 
-  &:active{
+  &:active {
     transform: scale(0.9);
     background-color: brown;
   }
