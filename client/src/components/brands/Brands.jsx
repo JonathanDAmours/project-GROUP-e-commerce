@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { FiArrowRight } from "react-icons/fi";
-
+import { useHistory } from "react-router-dom";
 import { COLORS } from "../../constants";
 
 import styled from "styled-components";
@@ -13,10 +13,15 @@ import Samsung from "../../assets/samsung.png";
 
 // displays our Brands
 export const Brands = () => {
+  const history = useHistory();
+
+  const handleAllBrands = () => {
+    history.push(`/brands`);
+  };
   return (
     <CatDiv>
       <ViewAllDiv>
-        <ViewAllA aria-label="view all brands" href="#">
+        <ViewAllA aria-label="view all brands" onClick={handleAllBrands}>
           View all Brands
           <FiArrowRight />
         </ViewAllA>
@@ -175,7 +180,7 @@ const ViewAllA = styled.a`
   }
 
   @media screen and (max-width: 375px) {
-margin-top: 1rem;
+    margin-top: 1rem;
   }
 `;
 
