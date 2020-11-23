@@ -49,7 +49,7 @@ export default function Cart() {
       {width > mobilebreakpoint ? (
         <ButtonWrap>
           <Button onClick={toggleCart}>
-            {storeItems.length <= 0 ? <StyledBiCart /> : <StyledBiCartOrange data-count={storeItems.length}/>}
+            {storeItems.length <= 0 ? <StyledBiCart /> : <Div><StyledBiCartOrange /><Notification /></Div>}
           </Button>
         </ButtonWrap>
       ) : (
@@ -348,34 +348,27 @@ const StyledBiCartOrange = styled(BiCart)`
   top: 20px;
   width: 1rem;
   height: 1rem;
-  color: #d45e09;
   margin-left: 35px;
 
   &:hover {
-    color: brown;
     cursor: pointer;
-  }
-
-  &:after{
-  content: attr(data-count);
-  position: absolute;
-  background: #ff6600;
-  height: 2rem;
-  top: 1rem;
-  right: 1.5rem;
-  width: 2rem;
-  text-align: center;
-  line-height: 2rem;
-  font-size: 1rem;
-  border-radius: 50%;
-  color: white;
-  border: 1px solid #ff6600;
-  font-family: sans-serif;
-  font-weight: bold;
-  z-index: 5000;
   }
 
   @media screen and (max-width: 600px) {
     display: none;
   }
+`;
+
+const Notification = styled.div`
+background-color: #d45e09;
+width: 8px;
+height: 8px;
+border-radius: 50%;
+position: absolute;
+left: 46px;
+`;
+
+
+const Div = styled.div`
+position: relative;
 `;
