@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { IndividualCategory } from "./IndividualCategory";
+import { IndividualCategory } from "./individualCategory";
 
 const AllCategoriesPage = () => {
   const [categories, setCategories] = useState([]);
@@ -23,7 +23,7 @@ const AllCategoriesPage = () => {
     <Wrapper>
       <MainWrapper>
         {categories.map((category) => {
-          return <IndividualCategory key={category} category={category} />;
+          return <IndividualCategory key={category} category={category} />
         })}
       </MainWrapper>
     </Wrapper>

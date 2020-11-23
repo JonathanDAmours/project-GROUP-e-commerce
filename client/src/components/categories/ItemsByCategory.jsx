@@ -29,7 +29,7 @@ export const ItemsByCategory = () => {
 
 
   if (!items) {
-    return <p>loading...</p>;
+    return <p>loading...</p>
   }
 
   return (
@@ -38,7 +38,7 @@ export const ItemsByCategory = () => {
       </NextPrevious>
       <ItemsWrap>
       {itemsByCategory.map((item) => {
-        return <Items key={item._id} item={item} />;
+        return <Items key={item._id} item={item} />
       })}
       ;
       </ItemsWrap>
