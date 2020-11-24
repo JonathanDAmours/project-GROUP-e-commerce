@@ -4,10 +4,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
+
+import { Loading } from "../Loading";
 import { requestAllBrands, responseAllBrands } from "../../actions";
 import Items from "./Items";
 
 const AllItemsPage = () => {
+  const [status, setStatus] = useState("loading");
+
   const [items, setItems] = useState([]);
   //limit is the amount of items per page right now we don't need a state but if ever we want the user to control the number of items per page it wil be necessary
   const [limit, setLimit] = useState(50);
@@ -23,6 +27,7 @@ const AllItemsPage = () => {
       data = await data.json();
       let items = data.data;
       setItems(items);
+      setStatus("idle");
       let reducerData = await fetch("/items");
       reducerData = await reducerData.json();
       let reducerItems = reducerData.data;
@@ -44,8 +49,8 @@ const AllItemsPage = () => {
     fetchItems(limit, offset);
   }, [offset, setOffset]);
 
-  if (!items) {
-    return <p>loading...</p>;
+  if (!items || status === "loading") {
+    return <Loading />;
   }
 
   return (
@@ -70,7 +75,7 @@ const AllItemsPage = () => {
       </NextPrevious>
       <ItemsWrap>
         {items.map((item) => {
-          return <Items key={item._id} item={item} />;
+          return <Items key={item._id} item={item} status={status} />;
         })}
       </ItemsWrap>
       <NextPrevious>

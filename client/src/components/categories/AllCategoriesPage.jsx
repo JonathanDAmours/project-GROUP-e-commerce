@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { IndividualCategory } from "./individualCategory";
+import { Loading } from "../Loading";
 
 const AllCategoriesPage = () => {
   const [categories, setCategories] = useState([]);
+  const [status, setStatus] = useState("loading");
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -12,6 +14,7 @@ const AllCategoriesPage = () => {
         let data = await fetch("/categories");
         data = await data.json();
         setCategories(data.categories);
+        setStatus("idle");
       } catch (err) {
         console.log(err);
       }
@@ -19,11 +22,15 @@ const AllCategoriesPage = () => {
     fetchCategories();
   }, []);
 
+  if (!categories || status === "loading") {
+    return <Loading />;
+  }
+
   return (
     <Wrapper>
       <MainWrapper>
         {categories.map((category) => {
-          return <IndividualCategory key={category} category={category} />
+          return <IndividualCategory key={category} category={category} />;
         })}
       </MainWrapper>
     </Wrapper>

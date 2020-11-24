@@ -26,10 +26,9 @@ export const Loading = () => {
 const IconDiv = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
 
   animation: ${rotate} 2s linear infinite;
 
-  margin-top: 3rem;
+  margin-top: 5rem;
   opacity: 0.5;
 `;
