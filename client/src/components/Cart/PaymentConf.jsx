@@ -27,6 +27,7 @@ const PaymentConf = () => {
       >
         Purchase
       </Button>
+      {}
       <Modal
         modalState={modalState}
         toggleModal={toggleModal}

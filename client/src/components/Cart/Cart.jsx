@@ -35,28 +35,33 @@ export default function Cart() {
 
   let preTotal = [];
   storeItems.map((item) =>
-      preTotal.push(
-        Number(item?.quantity) * item?.price?.replace(/[^0-9.-]+/g, "")
-      )
-    );
+    preTotal.push(
+      Number(item?.quantity) * item?.price?.replace(/[^0-9.-]+/g, "")
+    )
+  );
   let total = preTotal?.reduce((a, b) => a + b, 0);
   let totalFormat = (Math.round(total * 100) / 100).toFixed(2);
 
+  let preSum = [];
+  storeItems.map((item) => preSum.push(item?.quantity));
+  let sum = preSum?.reduce((a, b) => a + b, 0);
 
+  console.log(storeItems);
 
-let preSum = [];
-storeItems.map((item) => preSum.push(item?.quantity))
-let sum = preSum?.reduce((a, b) => a + b, 0);
-
-console.log(storeItems);
-  
   return (
     <Wrapper>
       {" "}
       {width > mobilebreakpoint ? (
         <ButtonWrap>
           <Button onClick={toggleCart}>
-            {storeItems.length <= 0 ? <StyledBiCart /> : <Div><StyledBiCartOrange /><Notification /></Div>}
+            {storeItems.length <= 0 ? (
+              <StyledBiCart />
+            ) : (
+              <Div>
+                <StyledBiCartOrange />
+                <Notification />
+              </Div>
+            )}
           </Button>
         </ButtonWrap>
       ) : (
@@ -101,7 +106,7 @@ console.log(storeItems);
             <PurchaseBtn>
               <Span>
                 {/* ---------------------------------the button of Payment confirmation opens the modal-------------------------- */}
-                <PaymentConf storeItems={storeItems} />
+                <PaymentConf />
               </Span>
             </PurchaseBtn>
           </PurchaseSection>
@@ -214,8 +219,8 @@ const PurchaseBtn = styled.button`
   border-radius: 20px;
 
   &:hover {
-  background-color: brown;
-}
+    background-color: brown;
+  }
   @media screen and (max-width: 600px) {
   }
 `;
@@ -371,15 +376,14 @@ const StyledBiCartOrange = styled(BiCart)`
 `;
 
 const Notification = styled.div`
-background-color: #d45e09;
-width: 8px;
-height: 8px;
-border-radius: 50%;
-position: absolute;
-left: 46px;
+  background-color: #d45e09;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  left: 46px;
 `;
 
-
 const Div = styled.div`
-position: relative;
+  position: relative;
 `;
