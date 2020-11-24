@@ -109,6 +109,7 @@ const PrevBtn = styled.button`
   &:disabled {
     cursor: not-allowed;
     background-color: grey;
+    visibility: hidden;
   }
 `;
 
@@ -121,6 +122,7 @@ const NextBtn = styled.button`
   &:disabled {
     cursor: not-allowed;
     background-color: grey;
+    visibility: hidden;
   }
 `;
 
