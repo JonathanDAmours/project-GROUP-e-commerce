@@ -28,9 +28,11 @@ const FooterDiv = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  height: 70px;
   width: 100%;
   background-color: black;
   position: absolute;
   bottom: 0;
+  margin-top: 80px;
+  padding: 15px 0 15px 0;
 `;
