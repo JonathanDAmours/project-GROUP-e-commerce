@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { resetCart, updateError } from "../../actions";
 import { getStoreItemArray } from "../../reducers/items-reducer";
+import { COLORS, BOX_SHADOW } from "../../constants";
+
 
 const Auth = ({ success, setSuccess, firstName, setFirstname }) => {
   const dispatch = useDispatch();
@@ -42,57 +44,72 @@ const Auth = ({ success, setSuccess, firstName, setFirstname }) => {
       {success ? (
         <div>
           <h1>
-            Thank you {firstName} your ordered has been processed successfully!
+            Thank you <strong>{firstName}</strong> your ordered has been processed successfully!
           </h1>
         </div>
       ) : (
         <div>
-          <div>
-            <h1>Contact information</h1>
-          </div>
+          <Title>
+            <Contact>Contact information</Contact>
+          </Title>
           <div>
             <form onSubmit={updateStock}>
+              <Naming>
               <label htmlFor="firstName">
-                <input
+                <FirstName
                   value={firstName}
                   onChange={handleFirstName}
                   type="text"
-                  placeholder="first name"
+                  placeholder="First name"
                   required
                 />
               </label>
               <label htmlFor="lastName">
-                <input type="text" placeholder="last name" required />
+                <LastName type="text" placeholder="Last name" required />
               </label>
               <label htmlFor="email">
-                <input type="email" placeholder="email" required />
+                <Email type="email" placeholder="Email" required />
               </label>
+              </Naming>
+              <Title>
+            <Contact>Location information</Contact>
+          </Title>
+              <Info>
               <label htmlFor="address">
-                <input type="text" placeholder="address" required />
+                <Add type="text" placeholder="Address" required />
               </label>
               <label htmlFor="app.">
-                <input type="text" placeholder="App. / Office" />
+                <App type="text" placeholder="App. / Office" />
               </label>
               <label htmlFor="city">
-                <input type="text" placeholder="City" required />
+                <City type="text" placeholder="City" required />
               </label>
+              </Info>
+              <MoreInfo>
               <label htmlFor="province">
-                <input type="text" placeholder="Province / State" required />
+                <Province type="text" placeholder="Province / State" required />
               </label>
               <label htmlFor="zip">
-                <input type="text" placeholder="Postal / Zip code" required />
+                <Zip type="text" placeholder="Postal / Zip code" required />
               </label>
               <label htmlFor="country">
-                <input type="text" placeholder="Country" required />
+                <Country type="text" placeholder="Country" required />
               </label>
-              <h1>Payment information</h1>
+              </MoreInfo>
+              <SubTitle>
+              <PaymentInfo>Payment information</PaymentInfo>
+              </SubTitle>
+              <CreditInfo>
               <label htmlFor="creditCard">
-                <input type="text" placeholder="Credit Card Number" required />
+                <Credit type="text" placeholder="Credit Card Number" required />
               </label>
               <label htmlFor="expiration">
-                <input type="text" placeholder="Expiration date" required />
+                <Expiration type="text" placeholder="Expiration date" required />
               </label>
-              <button type="submit">proceed with payment</button>
+              </CreditInfo>
+              <ButtonDiv>
+              <Button type="submit">Proceed with payment</Button>
+              </ButtonDiv>
             </form>
           </div>
         </div>
@@ -102,7 +119,106 @@ const Auth = ({ success, setSuccess, firstName, setFirstname }) => {
 };
 
 const Wrapper = styled.div`
-  color: black;
+  color: white;
+`;
+
+const Title = styled.div `
+`;
+
+const Contact = styled.h1 `
+font-size: 16px;
+margin-bottom: 10px;
+`;
+
+const Naming = styled.div `
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 10px;
+`;
+
+const FirstName = styled.input `
+border-radius: 5px;
+border: 2px solid ${COLORS.orange};
+padding: 3px 6px;
+`;
+
+const LastName = styled(FirstName) ``;
+
+const Email = styled(FirstName) ``;
+
+const Info = styled.div `
+display: flex;
+justify-content: center;
+margin-bottom: 10px;
+flex-wrap: wrap;
+`;
+
+const Add = styled(FirstName) ``;
+
+const App = styled(FirstName) ``;
+
+const City = styled(FirstName) ``;
+
+const MoreInfo = styled.div `
+display: flex;
+justify-content: center;
+margin-bottom: 10px;
+flex-wrap: wrap;
+`;
+
+const Province = styled(FirstName) ``;
+
+const Zip = styled(FirstName) ``;
+
+const Country = styled(FirstName) ``;
+
+const SubTitle = styled.div ``;
+
+const PaymentInfo = styled.h1`
+font-size: 16px;
+margin-bottom: 10px;
+`;
+
+const CreditInfo = styled.div `
+display: flex;
+justify-content: center;
+margin-bottom: 10px;
+flex-wrap: wrap;
+`;
+
+const Credit = styled(FirstName) `
+
+`;
+
+const Expiration = styled(FirstName) `
+`;
+
+const ButtonDiv = styled.div `
+display: flex;
+padding: 10px;
+justify-content: center;
+`;
+
+const Button = styled.button `
+  background-color: #d45e09;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  width: 40%;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+
+&:hover {
+  background-color: brown;
+}
+  @media screen and (max-width: 600px) {
+  width: 60%;
+  }
 `;
 
 export default Auth;
