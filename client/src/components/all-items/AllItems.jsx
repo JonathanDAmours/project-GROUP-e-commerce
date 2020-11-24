@@ -1,5 +1,6 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -10,7 +11,7 @@ export const AllItems = () => {
     <div>
       <AllItemsDiv>
         <ViewAllDiv>
-          <ViewAllA aria-label="view all store items" href="#">
+          <ViewAllA aria-label="view all store items" to="/items">
             Shop All Items <FiArrowRight />
           </ViewAllA>
         </ViewAllDiv>
@@ -31,7 +32,7 @@ const AllItemsDiv = styled.div`
 
 const ViewAllDiv = styled.div``;
 
-const ViewAllA = styled.a`
+const ViewAllA = styled(NavLink)`
   all: unset;
   display: flex;
   align-items: center;
@@ -44,7 +45,8 @@ const ViewAllA = styled.a`
     color: #ff852e;
   }
 
-    @media screen and (max-width: 600px) {
-font-size: 2rem;
-flex-wrap: wrap;
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
+    flex-wrap: wrap;
+  }
 `;
