@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
+import styled from "styled-components";
 
 import { HomePage } from "./home-page/HomePage";
 import AllItemsPage from "./all-items/AllItemsPage";
@@ -10,6 +11,7 @@ import { NavBar } from "./navbar/NavBar";
 import PaymentConf from "./Cart/PaymentConf";
 import { ItemsByBrand } from "./brands/ItemsByBrand";
 import { ItemsByCategory } from "./categories/ItemsByCategory";
+import { Footer } from "../footer/Footer";
 
 const App = () => {
   return (
@@ -39,10 +41,17 @@ const App = () => {
               <ItemsByBrand />
             </Route>
           </Switch>
+          <FooterDiv>
+            <Footer />
+          </FooterDiv>
         </div>
       </Router>
     </>
   );
 };
+const FooterDiv = styled.div`
+  position: relative;
+  margin-top: 40px;
+`;
 
 export default App;

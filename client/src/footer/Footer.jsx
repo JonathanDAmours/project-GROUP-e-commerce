@@ -1,50 +1,39 @@
 import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../constants";
+import DispatchLogoWhite from "./../assets/Dispatch_LogoWhite.png";
 
 export const Footer = () => {
-  const Links = (
-    <FootLinks>
-      <A href="#">About us</A>
-      <A href="#">Privacy Policy</A>
-      <A href="#">Legal Notes</A>
-      <A href="#">Copyright</A>
-    </FootLinks>
-  );
 
   return (
     <FooterDiv>
-      {Links}
-      {Links}
-      {Links}
-      {Links}
+    <Logo src={DispatchLogoWhite} alt="Dispatch logo"/>
+    <Span>All right reserved - Dispatch 2020</Span>
     </FooterDiv>
   );
 };
+const Span = styled.p`
+color: white;
+font-size: 12px;
+padding-bottom: 20px;
+`;
+
+const Logo = styled.img`
+width: 100px;
+height: auto;
+padding: 20px 0 10px 0;
+`;
 
 const FooterDiv = styled.section`
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  height: 100%;
-  padding: 0 40px;
-  background-color: black;
-  padding-bottom: 20px;
-`;
-
-const FootLinks = styled.div`
-  display: flex;
   flex-direction: column;
-  padding-top: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100%;
   background-color: black;
+  position: absolute;
+  bottom: 0;
+
 `;
 
-const A = styled.a`
-  text-decoration: none;
-  color: white;
-  line-height: 1.7rem;
-
-  &:hover {
-    color: ${COLORS.orange};
-  }
-`;

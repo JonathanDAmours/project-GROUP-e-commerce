@@ -212,6 +212,10 @@ const PurchaseBtn = styled.button`
   width: 40%;
   height: 40px;
   border-radius: 20px;
+
+  &:hover {
+  background-color: brown;
+}
   @media screen and (max-width: 600px) {
   }
 `;

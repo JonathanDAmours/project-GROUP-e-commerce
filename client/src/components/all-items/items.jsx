@@ -78,7 +78,7 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: 600px) {
     min-width: 100%;
-    margin: 0 auto;
+    margin: 10px auto;
   }
 `;
 
