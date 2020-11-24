@@ -24,10 +24,12 @@ export const Loading = () => {
 };
 
 const IconDiv = styled.div`
-  animation: ${rotate} 2s linear infinite;
-  opacity: 0.5;
-  width: 60vw;
-  margin-top: 5rem;
   display: flex;
   justify-content: center;
+  align-items: center;
+
+  animation: ${rotate} 2s linear infinite;
+
+  margin-top: 3rem;
+  opacity: 0.5;
 `;

@@ -44,7 +44,6 @@ const AllItemsPage = () => {
     fetchItems(limit, offset);
   }, [offset, setOffset]);
 
-  
   if (!items) {
     return <p>loading...</p>;
   }

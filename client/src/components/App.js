@@ -18,40 +18,59 @@ const App = () => {
     <>
       <Router>
         <GlobalStyles />
-        <div>
+        <Wrapper>
           <NavBar />
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/categories">
-              <AllCategoriesPage />
-            </Route>
-            <Route exact path="/categories/:categoryName">
-              <ItemsByCategory />
-            </Route>
+          <Content>
+            <Switch>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+              <Route exact path="/categories">
+                <AllCategoriesPage />
+              </Route>
+              <Route exact path="/categories/:categoryName">
+                <ItemsByCategory />
+              </Route>
 
-            <Route exact path="/items">
-              <AllItemsPage />
-            </Route>
-            <Route exact path="/brands">
-              <AllBrandsPage />
-            </Route>
-            <Route exact path="/items/brands/:id">
-              <ItemsByBrand />
-            </Route>
-          </Switch>
+              <Route exact path="/items">
+                <AllItemsPage />
+              </Route>
+              <Route exact path="/brands">
+                <AllBrandsPage />
+              </Route>
+              <Route exact path="/items/brands/:id">
+                <ItemsByBrand />
+              </Route>
+            </Switch>
+          </Content>
           <FooterDiv>
             <Footer />
           </FooterDiv>
-        </div>
+        </Wrapper>
       </Router>
     </>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+`;
+
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const FooterDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  margin-top: 40px;
+  margin-top: 4rem;
 `;
 
 export default App;
