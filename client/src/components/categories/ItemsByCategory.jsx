@@ -3,12 +3,15 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
+import { Loading } from "../Loading";
 import Items from "../all-items/Items";
 
 export const ItemsByCategory = () => {
   const { categoryName } = useParams();
   const [itemsByCategory, setItemsByCategory] = useState([]);
   console.log(itemsByCategory);
+  const [status, setStatus] = useState("loading");
+
   const [items, setItems] = useState([]);
   const [limit, setLimit] = useState(50);
   // offset is the index we have to start rendering items at for pages 2,3, etc.
@@ -20,6 +23,7 @@ export const ItemsByCategory = () => {
       data = await data.json();
       let items = data.data;
       setItems(items);
+      setStatus("idle");
       console.log(items);
     } catch (err) {
       console.log(err);
@@ -53,8 +57,8 @@ export const ItemsByCategory = () => {
     fetchCategoryByCategoryName();
   }, [categoryName]);
 
-  if (!items) {
-    return <p>loading...</p>;
+  if (!items || status === "loading") {
+    return <Loading />;
   }
 
   return (

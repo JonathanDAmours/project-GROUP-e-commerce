@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { IndividualBrand } from "./IndividualBrand";
 
+import { IndividualBrand } from "./IndividualBrand";
+import { Loading } from "../Loading";
 // console.log(fetchBrands);
 const AllBrandsPage = () => {
   const [brands, setBrands] = useState([]);
-
+  const [status, setStatus] = useState("loading");
   // console.log(brands);
   useEffect(() => {
     const fetchBrands = async () => {
@@ -13,6 +14,7 @@ const AllBrandsPage = () => {
         let data = await fetch("/companies");
         data = await data.json();
         setBrands(data.companies);
+        setStatus("idle");
       } catch (err) {
         console.log(err);
       }
@@ -29,6 +31,10 @@ const AllBrandsPage = () => {
     }
     return 0;
   });
+
+  if (!brands || status === "loading") {
+    return <Loading />;
+  }
 
   return (
     <Wrapper>

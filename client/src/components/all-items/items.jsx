@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { addToCart } from "../../actions";
 import { COLORS } from "../../constants";
+import { Loading } from "../Loading";
 
-const Items = ({ item }) => {
+const Items = ({ item, status }) => {
   const dispatch = useDispatch();
   const { name, price, imageSrc, category, numInStock, _id } = item;
 
@@ -13,6 +14,10 @@ const Items = ({ item }) => {
 
   if (!item) {
     return null;
+  }
+
+  if (status === "loading") {
+    return <Loading />;
   }
 
   return (
