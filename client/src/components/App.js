@@ -20,30 +20,30 @@ const App = () => {
         <GlobalStyles />
         <Wrapper>
           <NavBar />
-          <Content>
-            <Switch>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route exact path="/categories">
-                <AllCategoriesPage />
-              </Route>
-              <Route exact path="/categories/:categoryName">
-                <ItemsByCategory />
-              </Route>
-
-              <Route exact path="/items">
-                <AllItemsPage />
-              </Route>
-              <Route exact path="/brands">
-                <AllBrandsPage />
-              </Route>
-              <Route exact path="/items/brands/:id">
-                <ItemsByBrand />
-              </Route>
-            </Switch>
-          </Content>
           <FooterDiv>
+            <Content>
+              <Switch>
+                <Route exact path="/">
+                  <HomePage />
+                </Route>
+                <Route exact path="/categories">
+                  <AllCategoriesPage />
+                </Route>
+                <Route exact path="/categories/:categoryName">
+                  <ItemsByCategory />
+                </Route>
+
+                <Route exact path="/items">
+                  <AllItemsPage />
+                </Route>
+                <Route exact path="/brands">
+                  <AllBrandsPage />
+                </Route>
+                <Route exact path="/items/brands/:id">
+                  <ItemsByBrand />
+                </Route>
+              </Switch>
+            </Content>
             <Footer />
           </FooterDiv>
         </Wrapper>
@@ -63,6 +63,7 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 80px;
 `;
 
 const FooterDiv = styled.div`
@@ -70,7 +71,6 @@ const FooterDiv = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-top: 4rem;
 `;
 
 export default App;
