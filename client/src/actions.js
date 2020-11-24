@@ -31,3 +31,17 @@ export const responseAllBrands = (item) => ({
   type: "RESPONSE_ALL_BRANDS",
   item,
 });
+
+export const requestUpdateStock = () => ({
+  type: "REQUEST_UPDATE_STOCK",
+});
+
+export const updatCartQuantity = (item) => ({
+  type: "UPDATE_CART_QUANTITY",
+  item,
+});
+
+export const updateStockConfirmed = (item) => ({
+  type: "UPDATE_STOCK_CONFIRMED",
+  item,
+});
