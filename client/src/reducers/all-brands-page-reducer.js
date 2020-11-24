@@ -5,6 +5,13 @@ export default function allBrandsReducer(state = initialState, action) {
     case "REQUEST_ALL_BRANDS": {
       return {
         ...state,
+        status: "loading",
+      };
+    }
+    case "RESPONSE_ALL_BRANDS": {
+      return {
+        ...state,
+        ...action.item,
       };
     }
 
