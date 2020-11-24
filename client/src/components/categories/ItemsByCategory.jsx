@@ -3,13 +3,40 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import Items from "../all-items/items";
+import Items from "../all-items/Items";
 
 export const ItemsByCategory = () => {
   const { categoryName } = useParams();
   const [itemsByCategory, setItemsByCategory] = useState([]);
   console.log(itemsByCategory);
   const [items, setItems] = useState([]);
+  const [limit, setLimit] = useState(50);
+  // offset is the index we have to start rendering items at for pages 2,3, etc.
+  const [offset, setOffset] = useState(0);
+
+  const fetchItems = async (limit, offset) => {
+    try {
+      let data = await fetch(`/items?limit=${limit}&skip=${offset}`);
+      data = await data.json();
+      let items = data.data;
+      setItems(items);
+      console.log(items);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const nextPage = () => {
+    setOffset(offset + 50);
+  };
+
+  const previousPage = () => {
+    setOffset(offset - 50);
+  };
+
+  useEffect(() => {
+    fetchItems(limit, offset);
+  }, [offset, setOffset]);
 
   useEffect(() => {
     const fetchCategoryByCategoryName = async () => {
@@ -32,12 +59,47 @@ export const ItemsByCategory = () => {
 
   return (
     <Wrapper>
-      <NextPrevious></NextPrevious>
+      {/* <NextPrevious>
+      <span>
+          <PrevBtn
+            disabled={offset === 0 ? true : false}
+            onClick={previousPage}
+          >
+            ←
+          </PrevBtn>
+        </span>
+        <span>
+          <NextBtn
+            disabled={items.length < limit ? true : false}
+            onClick={nextPage}
+          >
+            →
+          </NextBtn>
+        </span>
+      </NextPrevious> */}
       <ItemsWrap>
         {itemsByCategory.map((item) => {
           return <Items key={item._id} item={item} />;
         })}
       </ItemsWrap>
+      {/* <NextPrevious>
+      <span>
+          <PrevBtn
+            disabled={offset === 0 ? true : false}
+            onClick={previousPage}
+          >
+            ←
+          </PrevBtn>
+        </span>
+        <span>
+          <NextBtn
+            disabled={items.length < limit ? true : false}
+            onClick={nextPage}
+          >
+            →
+          </NextBtn>
+        </span>
+      </NextPrevious> */}
     </Wrapper>
   );
 };

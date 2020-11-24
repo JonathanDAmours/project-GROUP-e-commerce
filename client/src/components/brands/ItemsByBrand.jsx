@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import styled from "styled-components";
 
-import Items from "../all-items/items";
+import Items from "../all-items/Items";
 
 export const ItemsByBrand = () => {
   const [itemsByBrand, setItemsByBrand] = useState([]);

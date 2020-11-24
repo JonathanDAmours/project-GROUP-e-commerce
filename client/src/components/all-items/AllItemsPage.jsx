@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
-import Items from "./items";
+
 import { useDispatch } from "react-redux";
 import { requestAllBrands, responseAllBrands } from "../../actions";
+import Items from "./Items";
 
 const AllItemsPage = () => {
   const [items, setItems] = useState([]);
@@ -43,6 +44,7 @@ const AllItemsPage = () => {
     fetchItems(limit, offset);
   }, [offset, setOffset]);
 
+  
   if (!items) {
     return <p>loading...</p>;
   }
