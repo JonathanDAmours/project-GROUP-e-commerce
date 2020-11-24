@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import styled from "styled-components";
 import Fitness from "../../assets/fitness.png";
@@ -10,78 +10,66 @@ import { COLORS } from "../../constants";
 
 // displays our categories
 export const Categories = () => {
-  let history = useHistory();
-
-  const handleFitness = () => {
-    history.push(`/categories/Fitness`);
-  };
-
-  const handleLifestyle = () => {
-    history.push(`/categories/Lifestyle`);
-  };
-
-  const handleEntertainment = () => {
-    history.push(`/categories/Entertainment`);
-  };
-
-  const handleMedical = () => {
-    history.push(`/categories/Medical`);
-  };
-
-  const handleCategories = () => {
-    history.push(`/categories/`);
-  };
-
   return (
     <CatDiv>
       <ViewAllDiv>
-        <ViewAllA aria-label="View all categories" onClick={handleCategories}>
+        <ViewAllA aria-label="View all categories" to="/categories">
           View all Categories <FiArrowRight />
         </ViewAllA>
       </ViewAllDiv>
 
       <FitnessLifestyle>
-        <FitnessDiv>
-          <FitnessButton onClick={handleFitness}>
-            <ImgDiv>
-              <FitnessImg src={Fitness} />
-            </ImgDiv>
-            <FitnessText>Fitness</FitnessText>
-          </FitnessButton>
-        </FitnessDiv>
+        <NavWrapper to="/categories/Fitness">
+          <FitnessDiv>
+            <FitnessButton>
+              <ImgDiv>
+                <FitnessImg src={Fitness} />
+              </ImgDiv>
+              <FitnessText>Fitness</FitnessText>
+            </FitnessButton>
+          </FitnessDiv>
+        </NavWrapper>
 
-        <LifestyleDiv>
-          <LifestyleButton onClick={handleLifestyle}>
-            <ImgDiv>
-              <LifestyleImg src={Lifestyle} />
-            </ImgDiv>
-            <LifestyleText>Lifestyle</LifestyleText>
-          </LifestyleButton>
-        </LifestyleDiv>
+        <NavWrapper to="/categories/Lifestyle">
+          <LifestyleDiv>
+            <LifestyleButton>
+              <ImgDiv>
+                <LifestyleImg src={Lifestyle} />
+              </ImgDiv>
+              <LifestyleText>Lifestyle</LifestyleText>
+            </LifestyleButton>
+          </LifestyleDiv>
+        </NavWrapper>
       </FitnessLifestyle>
 
       <MedicalEntertainment>
-        <EntertainmentDiv>
-          <EntertainmentButton onClick={handleEntertainment}>
-            <ImgDiv>
-              <EntertainmentImg src={Entertainment} />
-            </ImgDiv>
-            <EntertainmentText>Entertainment</EntertainmentText>
-          </EntertainmentButton>
-        </EntertainmentDiv>
+        <NavWrapper to="/categories/Entertainment">
+          <EntertainmentDiv>
+            <EntertainmentButton>
+              <ImgDiv>
+                <EntertainmentImg src={Entertainment} />
+              </ImgDiv>
+              <EntertainmentText>Entertainment</EntertainmentText>
+            </EntertainmentButton>
+          </EntertainmentDiv>
+        </NavWrapper>
 
-        <MedicalDiv>
-          <MedicalButton onClick={handleMedical}>
-            <ImgDiv>
-              <MedicalImg src={Medical} />
-            </ImgDiv>
-            <MedicalText>Medical</MedicalText>
-          </MedicalButton>
-        </MedicalDiv>
+        <NavWrapper to="/categories/Medical">
+          <MedicalDiv>
+            <MedicalButton>
+              <ImgDiv>
+                <MedicalImg src={Medical} />
+              </ImgDiv>
+              <MedicalText>Medical</MedicalText>
+            </MedicalButton>
+          </MedicalDiv>
+        </NavWrapper>
       </MedicalEntertainment>
     </CatDiv>
   );
 };
+
+const NavWrapper = styled(NavLink)``;
 
 const CatDiv = styled.div`
   display: flex;
@@ -188,7 +176,7 @@ const ViewAllDiv = styled.div`
   }
 `;
 
-const ViewAllA = styled.a`
+const ViewAllA = styled(NavLink)`
   all: unset;
   display: flex;
   align-items: center;
