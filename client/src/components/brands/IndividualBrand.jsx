@@ -13,10 +13,6 @@ export const IndividualBrand = ({ brand, id }) => {
     history.push(`/items/brands/${id}`);
   };
 
-  // const handleRenderBrand = () => {
-  //   return <IndividualBrand />;
-  // };
-
   return (
     <>
       <Button onClick={handleBrand}>
