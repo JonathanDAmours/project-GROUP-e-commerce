@@ -104,16 +104,43 @@ const getAllCategories = (req, res) => {
 const getCategoryByCategoryName = (req, res) => {
   const categoryName = req.params.categoryName;
   const results = items.filter((result) => result.category === categoryName);
-  if (results) {
+
+  let limit = parseInt(req.query.limit, 10);
+  let offset = parseInt(req.query.skip);
+  let data = [];
+
+  ////////////////////////////
+  if (limit > results.length) {
+    limit = results.length;
+    offset = 0;
+  }
+  if (limit + offset > results.length) {
+    limit = results.length - offset;
+  }
+
+  if (!limit && !offset) {
+    data = results;
+  }
+
+  ////////////////////////////
+
+  ////////////////////////////
+  //iterating through items and pushing them into data according to limit and offset
+  for (let i = offset; i < limit + offset; i++) {
+    data.push(results[i]);
+  }
+  ////////////////////////////
+
+  if (data) {
     res.status(200).json({
       status: 200,
-      data: results,
+      data: data,
     });
   } else {
     res.status(400).json({
       status: 400,
       error: `Invalid category`,
-      data: results,
+      data: data,
       categoryId,
     });
   }
