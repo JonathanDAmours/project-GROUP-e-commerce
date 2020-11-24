@@ -4,24 +4,23 @@ import { COLORS } from "../constants";
 import DispatchLogoWhite from "./../assets/Dispatch_LogoWhite.png";
 
 export const Footer = () => {
-
   return (
     <FooterDiv>
-    <Logo src={DispatchLogoWhite} alt="Dispatch logo"/>
-    <Span>All right reserved - Dispatch 2020</Span>
+      <Logo src={DispatchLogoWhite} alt="Dispatch logo" />
+      <Span>All right reserved - Dispatch 2020</Span>
     </FooterDiv>
   );
 };
 const Span = styled.p`
-color: white;
-font-size: 12px;
-padding-bottom: 20px;
+  color: white;
+  font-size: 12px;
+  padding-bottom: 20px;
 `;
 
 const Logo = styled.img`
-width: 100px;
-height: auto;
-padding: 20px 0 10px 0;
+  width: 100px;
+  height: auto;
+  padding: 20px 0 10px 0;
 `;
 
 const FooterDiv = styled.section`
@@ -34,6 +33,4 @@ const FooterDiv = styled.section`
   background-color: black;
   position: absolute;
   bottom: 0;
-
 `;
-

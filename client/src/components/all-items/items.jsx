@@ -31,7 +31,9 @@ const Items = ({ item }) => {
         ) : (
           <Div>
             <BuyButton
-              onClick={() => dispatch(addToCart({ _id, name, price, numInStock }))}
+              onClick={() =>
+                dispatch(addToCart({ _id, name, price, numInStock }))
+              }
             >
               Add to cart
             </BuyButton>

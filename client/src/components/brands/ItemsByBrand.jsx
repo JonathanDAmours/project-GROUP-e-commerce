@@ -4,9 +4,12 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import Items from "../all-items/Items";
+import { Loading } from "../Loading";
 
 export const ItemsByBrand = () => {
   const [itemsByBrand, setItemsByBrand] = useState([]);
+
+  const [status, setStatus] = useState("loading");
 
   const { id } = useParams();
   console.log({ itembybrandcomp: IDBFactory });
@@ -19,6 +22,7 @@ export const ItemsByBrand = () => {
         // console.log(data.items);
         const items = data.items;
         setItemsByBrand(items);
+        setStatus("idle");
       } catch (err) {
         console.log(err);
       }
@@ -26,8 +30,8 @@ export const ItemsByBrand = () => {
     fetchBrandbyId();
   }, [id]);
 
-  if (!itemsByBrand) {
-    return <p>loading...</p>;
+  if (!itemsByBrand || status === "loading") {
+    return <Loading />;
   }
 
   return (
