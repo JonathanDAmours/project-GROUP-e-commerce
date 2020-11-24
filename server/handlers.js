@@ -8,18 +8,18 @@ const getAllItems = (req, res) => {
   //the limit should be passed as a query in the get method (/items?{limit})
   let limit = parseInt(req.query.limit, 10);
   let offset = parseInt(req.query.skip);
-  // console.log(offset);
-  // console.log(limit);
 
   //taking care of some extreme cases
   if (limit > items.length) {
     limit = items.length;
     offset = 0;
   }
-  //this doesn't seem to be working
   if (limit + offset > items.length) {
     limit = items.length - offset;
-    // console.log(`limit: ${limit}`);
+  }
+
+  if (!limit && !offset) {
+    data = items;
   }
 
   //iterating through items and pushing them into data according to limit and offset

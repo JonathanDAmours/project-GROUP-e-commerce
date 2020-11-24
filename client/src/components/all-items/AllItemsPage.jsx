@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
 import Items from "./items";
+import { useDispatch } from "react-redux";
+import { requestAllBrands, responseAllBrands } from "../../actions";
 
 const AllItemsPage = () => {
   const [items, setItems] = useState([]);
@@ -10,15 +12,20 @@ const AllItemsPage = () => {
   const [limit, setLimit] = useState(50);
   // offset is the index we have to start rendering items at for pages 2,3, etc.
   const [offset, setOffset] = useState(0);
+  const dispatch = useDispatch();
 
   //handlers
   const fetchItems = async (limit, offset) => {
+    dispatch(requestAllBrands());
     try {
       let data = await fetch(`/items?limit=${limit}&skip=${offset}`);
       data = await data.json();
       let items = data.data;
       setItems(items);
-      console.log(items);
+      let reducerData = await fetch("/items");
+      reducerData = await reducerData.json();
+      let reducerItems = reducerData.data;
+      dispatch(responseAllBrands(reducerItems));
     } catch (err) {
       console.log(err);
     }
