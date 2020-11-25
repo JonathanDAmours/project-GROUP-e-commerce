@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import styled from "styled-components";
 
-import Items from "../all-items/Items";
+import Items from "../all-items/items";
 import { Loading } from "../Loading";
 
 export const ItemsByBrand = () => {

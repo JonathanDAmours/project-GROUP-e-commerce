@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import Items from "../all-items/Items";
+import Items from "../all-items/items";
 
 export const ItemsByCategory = () => {
   const { categoryName } = useParams();
@@ -17,7 +17,6 @@ export const ItemsByCategory = () => {
   // offset is the index we have to start rendering items at for pages 2,3, etc.
   const [offset, setOffset] = useState(0);
 
-
   const nextPage = () => {
     console.log("INSIDE NEXTPAGE LOG");
     setOffset(offset + 50);
@@ -27,14 +26,15 @@ export const ItemsByCategory = () => {
     setOffset(offset - 50);
   };
 
-
   const fetchCategoryByCategoryName = async (categoryName, limit, offset) => {
     try {
-      let data = await fetch(`/categories/${categoryName}?limit=${limit}&skip=${offset}`);
+      let data = await fetch(
+        `/categories/${categoryName}?limit=${limit}&skip=${offset}`
+      );
       data = await data.json();
       console.log(data);
       const items = data.data;
-      console.log({limit: limit, categoryName: categoryName, offset: offset});
+      console.log({ limit: limit, categoryName: categoryName, offset: offset });
       setItemsByCategory(items);
       setStatus("idle");
     } catch (err) {
@@ -57,7 +57,7 @@ export const ItemsByCategory = () => {
   return (
     <Wrapper>
       <NextPrevious>
-      <span>
+        <span>
           <PrevBtn
             disabled={offset === 0 ? true : false}
             onClick={previousPage}
@@ -80,7 +80,7 @@ export const ItemsByCategory = () => {
         })}
       </ItemsWrap>
       <NextPrevious>
-      <span>
+        <span>
           <PrevBtn
             disabled={offset === 0 ? true : false}
             onClick={previousPage}

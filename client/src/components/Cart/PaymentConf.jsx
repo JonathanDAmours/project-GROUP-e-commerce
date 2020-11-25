@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { getStoreItemArray } from "../../reducers/items-reducer";
 import styled from "styled-components";
 import Checkout from "./Checkout";
+import { useEffect } from "react";
 
 const PaymentConf = () => {
   //payment confirmation modal open/close
@@ -19,6 +20,17 @@ const PaymentConf = () => {
     setFirstname("");
   };
 
+  //checking order doesn't exceed num in stock
+  useEffect(() => {
+    storeItems.forEach((item) => {
+      if (item.quantity > item.numInStock) {
+        window.alert(
+          `there are only ${item.numInStock} ${item.name} in stock. Please adjust your order accordingly.`
+        );
+      }
+    });
+  }, [storeItems]);
+
   return (
     <div>
       <Button
@@ -27,7 +39,6 @@ const PaymentConf = () => {
       >
         Purchase
       </Button>
-      {}
       <Modal
         modalState={modalState}
         toggleModal={toggleModal}
