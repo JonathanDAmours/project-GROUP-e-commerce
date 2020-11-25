@@ -6,7 +6,14 @@ import styled from "styled-components";
 import Checkout from "./Checkout";
 import { useEffect } from "react";
 
-const PaymentConf = () => {
+const PaymentConf = ({
+  fetchItems,
+  setOffset,
+  offset,
+  limit,
+  items,
+  status,
+}) => {
   //payment confirmation modal open/close
   const [modalState, setModalState] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -45,6 +52,14 @@ const PaymentConf = () => {
         setSuccess={setSuccess}
       >
         <Checkout
+          fetchItems={() => {
+            fetchItems(limit, offset);
+          }}
+          setOffset={setOffset}
+          offset={offset}
+          limit={limit}
+          items={items}
+          status={status}
           success={success}
           setSuccess={setSuccess}
           setFirstname={setFirstname}

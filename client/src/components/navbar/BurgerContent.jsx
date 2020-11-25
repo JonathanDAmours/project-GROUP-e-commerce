@@ -3,7 +3,14 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Cart from "../Cart/Cart";
 
-export const BurgerContent = () => {
+export const BurgerContent = ({
+  fetchItems,
+  setOffset,
+  offset,
+  limit,
+  items,
+  status,
+}) => {
   return (
     <>
       <Wrapper>
@@ -16,7 +23,16 @@ export const BurgerContent = () => {
         <Item to="/items" aria-label="All items">
           All Items
         </Item>
-        <Cart />
+        <Cart
+          fetchItems={() => {
+            fetchItems(limit, offset);
+          }}
+          setOffset={setOffset}
+          offset={offset}
+          limit={limit}
+          items={items}
+          status={status}
+        />
       </Wrapper>
     </>
   );

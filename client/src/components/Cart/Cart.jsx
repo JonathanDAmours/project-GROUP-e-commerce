@@ -8,7 +8,14 @@ import { CartItem } from "./CartItem";
 import PaymentConf from "./PaymentConf";
 import { NavLink } from "react-router-dom";
 
-export default function Cart() {
+export default function Cart({
+  fetchItems,
+  setOffset,
+  offset,
+  limit,
+  items,
+  status,
+}) {
   const storeItems = useSelector(getStoreItemArray);
   // cart open/close
   const [cart, setCart] = useState(true);
@@ -112,7 +119,16 @@ export default function Cart() {
             <PurchaseBtn tabIndex="0" aria-label="Purchase">
               <Span>
                 {/* ---------------------------------the button of Payment confirmation opens the modal-------------------------- */}
-                <PaymentConf />
+                <PaymentConf
+                  fetchItems={() => {
+                    fetchItems(limit, offset);
+                  }}
+                  setOffset={setOffset}
+                  offset={offset}
+                  limit={limit}
+                  items={items}
+                  status={status}
+                />
               </Span>
             </PurchaseBtn>
           </PurchaseSection>
@@ -154,7 +170,16 @@ export default function Cart() {
             </Total>
             <PurchaseBtn>
               <Span>
-                <PaymentConf />
+                <PaymentConf
+                  fetchItems={() => {
+                    fetchItems(limit, offset);
+                  }}
+                  setOffset={setOffset}
+                  offset={offset}
+                  limit={limit}
+                  items={items}
+                  status={status}
+                />
               </Span>
             </PurchaseBtn>
           </PurchaseSection>

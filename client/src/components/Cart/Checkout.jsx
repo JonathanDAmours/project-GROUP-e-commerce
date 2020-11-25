@@ -5,8 +5,18 @@ import { resetCart, updateError } from "../../actions";
 import { getStoreItemArray } from "../../reducers/items-reducer";
 import { COLORS, BOX_SHADOW } from "../../constants";
 
-
-const Auth = ({ success, setSuccess, firstName, setFirstname }) => {
+const Auth = ({
+  success,
+  setSuccess,
+  firstName,
+  setFirstname,
+  fetchItems,
+  setOffset,
+  offset,
+  limit,
+  items,
+  status,
+}) => {
   const dispatch = useDispatch();
   const storeItems = useSelector(getStoreItemArray);
 
@@ -27,6 +37,7 @@ const Auth = ({ success, setSuccess, firstName, setFirstname }) => {
         update = await update.json();
         setSuccess(true);
         dispatch(resetCart());
+        await fetchItems();
         //Dispatch to update the specific items or just refecth everything
       } catch (err) {
         console.log(err);
@@ -44,7 +55,8 @@ const Auth = ({ success, setSuccess, firstName, setFirstname }) => {
       {success ? (
         <div>
           <h1>
-            Thank you <strong>{firstName}</strong> your ordered has been processed successfully!
+            Thank you <strong>{firstName}</strong> your ordered has been
+            processed successfully!
           </h1>
         </div>
       ) : (
@@ -55,60 +67,72 @@ const Auth = ({ success, setSuccess, firstName, setFirstname }) => {
           <div>
             <form onSubmit={updateStock}>
               <Naming>
-              <label htmlFor="firstName">
-                <FirstName
-                  value={firstName}
-                  onChange={handleFirstName}
-                  type="text"
-                  placeholder="First name"
-                  required
-                />
-              </label>
-              <label htmlFor="lastName">
-                <LastName type="text" placeholder="Last name" required />
-              </label>
-              <label htmlFor="email">
-                <Email type="email" placeholder="Email" required />
-              </label>
+                <label htmlFor="firstName">
+                  <FirstName
+                    value={firstName}
+                    onChange={handleFirstName}
+                    type="text"
+                    placeholder="First name"
+                    required
+                  />
+                </label>
+                <label htmlFor="lastName">
+                  <LastName type="text" placeholder="Last name" required />
+                </label>
+                <label htmlFor="email">
+                  <Email type="email" placeholder="Email" required />
+                </label>
               </Naming>
               <Title>
-            <Contact>Location information</Contact>
-          </Title>
+                <Contact>Location information</Contact>
+              </Title>
               <Info>
-              <label htmlFor="address">
-                <Add type="text" placeholder="Address" required />
-              </label>
-              <label htmlFor="app.">
-                <App type="text" placeholder="App. / Office" />
-              </label>
-              <label htmlFor="city">
-                <City type="text" placeholder="City" required />
-              </label>
+                <label htmlFor="address">
+                  <Add type="text" placeholder="Address" required />
+                </label>
+                <label htmlFor="app.">
+                  <App type="text" placeholder="App. / Office" />
+                </label>
+                <label htmlFor="city">
+                  <City type="text" placeholder="City" required />
+                </label>
               </Info>
               <MoreInfo>
-              <label htmlFor="province">
-                <Province type="text" placeholder="Province / State" required />
-              </label>
-              <label htmlFor="zip">
-                <Zip type="text" placeholder="Postal / Zip code" required />
-              </label>
-              <label htmlFor="country">
-                <Country type="text" placeholder="Country" required />
-              </label>
+                <label htmlFor="province">
+                  <Province
+                    type="text"
+                    placeholder="Province / State"
+                    required
+                  />
+                </label>
+                <label htmlFor="zip">
+                  <Zip type="text" placeholder="Postal / Zip code" required />
+                </label>
+                <label htmlFor="country">
+                  <Country type="text" placeholder="Country" required />
+                </label>
               </MoreInfo>
               <SubTitle>
-              <PaymentInfo>Payment information</PaymentInfo>
+                <PaymentInfo>Payment information</PaymentInfo>
               </SubTitle>
               <CreditInfo>
-              <label htmlFor="creditCard">
-                <Credit type="text" placeholder="Credit Card Number" required />
-              </label>
-              <label htmlFor="expiration">
-                <Expiration type="text" placeholder="Expiration date" required />
-              </label>
+                <label htmlFor="creditCard">
+                  <Credit
+                    type="text"
+                    placeholder="Credit Card Number"
+                    required
+                  />
+                </label>
+                <label htmlFor="expiration">
+                  <Expiration
+                    type="text"
+                    placeholder="Expiration date"
+                    required
+                  />
+                </label>
               </CreditInfo>
               <ButtonDiv>
-              <Button type="submit">Proceed with payment</Button>
+                <Button type="submit">Proceed with payment</Button>
               </ButtonDiv>
             </form>
           </div>
@@ -122,85 +146,81 @@ const Wrapper = styled.div`
   color: white;
 `;
 
-const Title = styled.div `
+const Title = styled.div``;
+
+const Contact = styled.h1`
+  font-size: 16px;
+  margin-bottom: 10px;
 `;
 
-const Contact = styled.h1 `
-font-size: 16px;
-margin-bottom: 10px;
+const Naming = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
 `;
 
-const Naming = styled.div `
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-margin-bottom: 10px;
+const FirstName = styled.input`
+  border-radius: 5px;
+  border: 2px solid ${COLORS.orange};
+  padding: 3px 6px;
 `;
 
-const FirstName = styled.input `
-border-radius: 5px;
-border: 2px solid ${COLORS.orange};
-padding: 3px 6px;
+const LastName = styled(FirstName)``;
+
+const Email = styled(FirstName)``;
+
+const Info = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 `;
 
-const LastName = styled(FirstName) ``;
+const Add = styled(FirstName)``;
 
-const Email = styled(FirstName) ``;
+const App = styled(FirstName)``;
 
-const Info = styled.div `
-display: flex;
-justify-content: center;
-margin-bottom: 10px;
-flex-wrap: wrap;
+const City = styled(FirstName)``;
+
+const MoreInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 `;
 
-const Add = styled(FirstName) ``;
+const Province = styled(FirstName)``;
 
-const App = styled(FirstName) ``;
+const Zip = styled(FirstName)``;
 
-const City = styled(FirstName) ``;
+const Country = styled(FirstName)``;
 
-const MoreInfo = styled.div `
-display: flex;
-justify-content: center;
-margin-bottom: 10px;
-flex-wrap: wrap;
-`;
-
-const Province = styled(FirstName) ``;
-
-const Zip = styled(FirstName) ``;
-
-const Country = styled(FirstName) ``;
-
-const SubTitle = styled.div ``;
+const SubTitle = styled.div``;
 
 const PaymentInfo = styled.h1`
-font-size: 16px;
-margin-bottom: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
 `;
 
-const CreditInfo = styled.div `
-display: flex;
-justify-content: center;
-margin-bottom: 10px;
-flex-wrap: wrap;
+const CreditInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 `;
 
-const Credit = styled(FirstName) `
+const Credit = styled(FirstName)``;
 
+const Expiration = styled(FirstName)``;
+
+const ButtonDiv = styled.div`
+  display: flex;
+  padding: 10px;
+  justify-content: center;
 `;
 
-const Expiration = styled(FirstName) `
-`;
-
-const ButtonDiv = styled.div `
-display: flex;
-padding: 10px;
-justify-content: center;
-`;
-
-const Button = styled.button `
+const Button = styled.button`
   background-color: #d45e09;
   color: white;
   display: flex;
@@ -213,11 +233,11 @@ const Button = styled.button `
   border-radius: 20px;
   cursor: pointer;
 
-&:hover {
-  background-color: brown;
-}
+  &:hover {
+    background-color: brown;
+  }
   @media screen and (max-width: 600px) {
-  width: 60%;
+    width: 60%;
   }
 `;
 
