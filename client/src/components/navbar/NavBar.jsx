@@ -36,7 +36,7 @@ export const NavBar = () => {
   return (
     <>
       <Bar>
-        <Logo to="/">
+        <Logo to="/" tabIndex="0" aria-label="Home">
           <LogoImg src={DispatchLogo} alt="Dispatch logo" />
         </Logo>
         <ContentDiv>

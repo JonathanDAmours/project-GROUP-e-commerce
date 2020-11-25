@@ -15,7 +15,7 @@ export const IndividualBrand = ({ brand, id }) => {
 
   return (
     <>
-      <Button onClick={handleBrand}>
+      <Button onClick={handleBrand} tabIndex="0" aria-label={name}>
         <BrandDiv>
           <BrandName>{name}</BrandName>
         </BrandDiv>

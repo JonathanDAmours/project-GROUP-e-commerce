@@ -53,12 +53,12 @@ export default function Cart() {
       {" "}
       {width > mobilebreakpoint ? (
         <ButtonWrap>
-          <Button onClick={toggleCart}>
+          <Button onClick={toggleCart} tabIndex="0" aria-label="Open cart">
             {storeItems.length <= 0 ? (
               <StyledBiCart />
             ) : (
               <Div>
-                <StyledBiCartOrange />
+                <StyledBiCartOrange tabIndex="0" aria-label="Open cart" />
                 <Notification />
               </Div>
             )}
@@ -78,7 +78,13 @@ export default function Cart() {
                   <YourCart>Your cart</YourCart>
                 </div>
                 <div>
-                  <XButton onClick={toggleCart}>X</XButton>
+                  <XButton
+                    onClick={toggleCart}
+                    tabIndex="0"
+                    aria-label="Close cart"
+                  >
+                    X
+                  </XButton>
                 </div>
               </Top>
               <NumberItems>{sum} item(s)</NumberItems>
@@ -103,7 +109,7 @@ export default function Cart() {
             <Total>
               Total: <strong>${totalFormat}</strong>
             </Total>
-            <PurchaseBtn>
+            <PurchaseBtn tabIndex="0" aria-label="Purchase">
               <Span>
                 {/* ---------------------------------the button of Payment confirmation opens the modal-------------------------- */}
                 <PaymentConf />

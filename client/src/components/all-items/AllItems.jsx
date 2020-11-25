@@ -11,7 +11,7 @@ export const AllItems = () => {
     <div>
       <AllItemsDiv>
         <ViewAllDiv>
-          <ViewAllA aria-label="view all store items" to="/items">
+          <ViewAllA aria-label="view all store items" tabIndex="0" to="/items">
             Shop All Items <FiArrowRight />
           </ViewAllA>
         </ViewAllDiv>

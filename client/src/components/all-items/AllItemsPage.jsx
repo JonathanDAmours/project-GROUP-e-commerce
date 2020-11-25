@@ -60,6 +60,8 @@ const AllItemsPage = () => {
           <PrevBtn
             disabled={offset === 0 ? true : false}
             onClick={previousPage}
+            tabIndex="0"
+            aria-label="back one page"
           >
             ←
           </PrevBtn>
@@ -68,6 +70,8 @@ const AllItemsPage = () => {
           <NextBtn
             disabled={items.length < limit ? true : false}
             onClick={nextPage}
+            tabIndex="0"
+            aria-label="forward one page"
           >
             →
           </NextBtn>
@@ -83,6 +87,8 @@ const AllItemsPage = () => {
           <PrevBtn
             disabled={offset === 0 ? true : false}
             onClick={previousPage}
+            tabIndex="0"
+            aria-label="back one page"
           >
             ←
           </PrevBtn>
@@ -91,6 +97,8 @@ const AllItemsPage = () => {
           <NextBtn
             disabled={items.length < limit ? true : false}
             onClick={nextPage}
+            tabIndex="0"
+            aria-label="forward one page"
           >
             →
           </NextBtn>

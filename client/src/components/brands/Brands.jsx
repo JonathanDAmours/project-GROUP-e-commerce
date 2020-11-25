@@ -24,7 +24,7 @@ export const Brands = () => {
       </ViewAllDiv>
 
       <FirstRowOfThree>
-        <NavWrapper to="/items/brands/13334">
+        <NavWrapper to="/items/brands/13334" aria-label="Go to brand Casio">
           <CasioDiv>
             <CasioButton>
               <ImgDiv>
@@ -34,7 +34,7 @@ export const Brands = () => {
           </CasioDiv>
         </NavWrapper>
 
-        <NavWrapper to="/items/brands/18834">
+        <NavWrapper to="/items/brands/18834" aria-label="Go to brand Jawbone">
           <JawboneDiv>
             <JawboneButton>
               <ImgDiv>
@@ -44,7 +44,7 @@ export const Brands = () => {
           </JawboneDiv>
         </NavWrapper>
 
-        <NavWrapper to="/items/brands/10713">
+        <NavWrapper to="/items/brands/10713" aria-label="Go to brand Garmin">
           <GarminDiv>
             <GarminButton>
               <ImgDiv>
@@ -56,7 +56,7 @@ export const Brands = () => {
       </FirstRowOfThree>
 
       <SecondRowOfThree>
-        <NavWrapper to="/items/brands/11932">
+        <NavWrapper to="/items/brands/11932" aria-label="Go to brand Misfit">
           <MisfitDiv>
             <MisfitButton>
               <ImgDiv>
@@ -66,7 +66,7 @@ export const Brands = () => {
           </MisfitDiv>
         </NavWrapper>
 
-        <NavWrapper to="/items/brands/11837">
+        <NavWrapper to="/items/brands/11837" aria-label="Go to brand Polar">
           <PolarDiv>
             <PolarButton>
               <ImgDiv>
@@ -76,7 +76,7 @@ export const Brands = () => {
           </PolarDiv>
         </NavWrapper>
 
-        <NavWrapper to="/items/brands/18432">
+        <NavWrapper to="/items/brands/18432" aria-label="Go to brand Samsung">
           <SamsungDiv>
             <SamsungButton>
               <ImgDiv>

@@ -26,19 +26,23 @@ const Items = ({ item, status }) => {
         <Image src={imageSrc} alt={name} />
       </ImageDiv>
       <Main>
-        <Name>{name}</Name>
+        <Name aria-label={name}>{name}</Name>
         <Category>{category}</Category>
       </Main>
       <Sub>
         <Price>{price}</Price>
         {numInStock <= 0 ? (
-          <OutofStock>Out of stock</OutofStock>
+          <OutofStock tabIndex="0" aria-label="out of stock">
+            Out of stock
+          </OutofStock>
         ) : (
           <Div>
             <BuyButton
               onClick={() =>
                 dispatch(addToCart({ _id, name, price, numInStock }))
               }
+              tabIndex="0"
+              aria-label="add to cart"
             >
               Add to cart
             </BuyButton>
