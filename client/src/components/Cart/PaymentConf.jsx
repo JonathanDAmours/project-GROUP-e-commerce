@@ -27,7 +27,8 @@ const PaymentConf = () => {
       >
         Purchase
       </Button>
-      {}
+      {/* {storeItems.forEach((item) => {
+        item.quantity <= item.numInStock ? ( */}
       <Modal
         modalState={modalState}
         toggleModal={toggleModal}
@@ -40,6 +41,8 @@ const PaymentConf = () => {
           firstName={firstName}
         />
       </Modal>
+      {/* ) */}
+      {/* })} */}
     </div>
   );
 };

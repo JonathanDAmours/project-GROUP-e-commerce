@@ -3,32 +3,39 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Loading } from "../Loading";
-import { requestAllBrands, responseAllBrands } from "../../actions";
-import Items from "./Items";
+import {
+  requestAllBrands,
+  responseAllBrands,
+  updatePagination,
+} from "../../actions";
+import Items from "./items";
+import { getPagination } from "../../reducers/pagination-reducer";
+import { getItemArray } from "../../reducers/all-brands-page-reducer";
 
 const AllItemsPage = () => {
-  const [status, setStatus] = useState("loading");
+  // const [status, setStatus] = useState("loading");
 
-  const [items, setItems] = useState([]);
-  //limit is the amount of items per page right now we don't need a state but if ever we want the user to control the number of items per page it wil be necessary
-  const [limit, setLimit] = useState(50);
-  // offset is the index we have to start rendering items at for pages 2,3, etc.
-  const [offset, setOffset] = useState(0);
+  // const [items, setItems] = useState([]);
+
   const dispatch = useDispatch();
+  const { limit, offset } = useSelector(getPagination);
+  const items = useSelector(getItemArray);
+  console.log(items);
 
   //handlers
   const fetchItems = async (limit, offset) => {
     dispatch(requestAllBrands());
     try {
-      let data = await fetch(`/items?limit=${limit}&skip=${offset}`);
-      data = await data.json();
-      let items = data.data;
-      setItems(items);
-      setStatus("idle");
-      let reducerData = await fetch("/items");
+      // let data = await fetch(`/items?limit=${limit}&skip=${offset}`);
+      // data = await data.json();
+      // let items = data.data;
+      // setItems(items);
+      // setStatus("idle");
+      //allbrands fetch
+      let reducerData = await fetch(`/items?limit=${limit}&skip=${offset}`);
       reducerData = await reducerData.json();
       let reducerItems = reducerData.data;
       dispatch(responseAllBrands(reducerItems));
@@ -38,18 +45,18 @@ const AllItemsPage = () => {
   };
 
   const nextPage = () => {
-    setOffset(offset + 50);
+    dispatch(updatePagination({ offset: offset + 50 }));
   };
 
   const previousPage = () => {
-    setOffset(offset - 50);
+    dispatch(updatePagination({ offset: offset - 50 }));
   };
 
   useEffect(() => {
     fetchItems(limit, offset);
-  }, [offset, setOffset]);
+  }, [offset]);
 
-  if (!items || status === "loading") {
+  if (!items) {
     return <Loading />;
   }
 
@@ -75,7 +82,7 @@ const AllItemsPage = () => {
       </NextPrevious>
       <ItemsWrap>
         {items.map((item) => {
-          return <Items key={item._id} item={item} status={status} />;
+          return <Items key={item._id} item={item} />;
         })}
       </ItemsWrap>
       <NextPrevious>

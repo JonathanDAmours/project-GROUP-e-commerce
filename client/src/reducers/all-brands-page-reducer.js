@@ -1,4 +1,4 @@
-const initialState = {};
+const initialState = { status: "idle" };
 
 export default function allBrandsReducer(state = initialState, action) {
   switch (action.type) {
@@ -49,3 +49,8 @@ export default function allBrandsReducer(state = initialState, action) {
     }
   }
 }
+
+export const getItemArray = (state) => {
+  const items = Object.values(state.brandReducer);
+  return items;
+};

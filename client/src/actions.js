@@ -45,3 +45,9 @@ export const updateStockConfirmed = (item) => ({
   type: "UPDATE_STOCK_CONFIRMED",
   item,
 });
+
+//paginationReducer
+export const updatePagination = (payload) => ({
+  type: "UPDATE_PAGINATION",
+  payload,
+});
