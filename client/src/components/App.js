@@ -14,12 +14,44 @@ import { ItemsByCategory } from "./categories/ItemsByCategory";
 import { Footer } from "../footer/Footer";
 
 const App = () => {
+  const [items, setItems] = useState([]);
+  //limit is the amount of items per page right now we don't need a state but if ever we want the user to control the number of items per page it wil be necessary
+  const [limit, setLimit] = useState(50);
+  const [offset, setOffset] = useState(0);
+  const [status, setStatus] = useState("loading");
+
+  //handlers
+  const fetchItems = async (limit, offset) => {
+    try {
+      let data = await fetch(`/items?limit=${limit}&skip=${offset}`);
+      data = await data.json();
+      let items = data.data;
+      setItems(items);
+      setStatus("idle");
+      // let reducerData = await fetch("/items");
+      // reducerData = await reducerData.json();
+      // let reducerItems = reducerData.data;
+      // dispatch(responseAllBrands(reducerItems));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <Router>
         <GlobalStyles />
         <Wrapper>
-          <NavBar />
+          <NavBar
+            fetchItems={() => {
+              fetchItems(limit, offset);
+            }}
+            setOffset={setOffset}
+            offset={offset}
+            limit={limit}
+            items={items}
+            status={status}
+          />
           <FooterDiv>
             <Content>
               <Switch>
@@ -34,7 +66,16 @@ const App = () => {
                 </Route>
 
                 <Route exact path="/items">
-                  <AllItemsPage />
+                  <AllItemsPage
+                    fetchItems={() => {
+                      fetchItems(limit, offset);
+                    }}
+                    setOffset={setOffset}
+                    offset={offset}
+                    limit={limit}
+                    items={items}
+                    status={status}
+                  />
                 </Route>
                 <Route exact path="/brands">
                   <AllBrandsPage />

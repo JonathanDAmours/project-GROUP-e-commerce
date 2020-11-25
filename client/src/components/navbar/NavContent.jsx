@@ -4,7 +4,14 @@ import styled from "styled-components";
 import { BiCart } from "react-icons/bi";
 import Cart from "../Cart/Cart";
 
-export const NavContent = () => {
+export const NavContent = ({
+  fetchItems,
+  setOffset,
+  offset,
+  limit,
+  items,
+  status,
+}) => {
   return (
     <>
       <Item to="/categories" aria-label="Categories">
@@ -16,7 +23,16 @@ export const NavContent = () => {
       <Item to="/items" aria-label="All items">
         All Items
       </Item>
-      <Cart />
+      <Cart
+        fetchItems={() => {
+          fetchItems(limit, offset);
+        }}
+        setOffset={setOffset}
+        offset={offset}
+        limit={limit}
+        items={items}
+        status={status}
+      />
     </>
   );
 };

@@ -6,7 +6,14 @@ import { BurgerContent } from "./BurgerContent";
 import DispatchLogo from "../../assets/Dispatch_Logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-export const NavBar = () => {
+export const NavBar = ({
+  fetchItems,
+  setOffset,
+  offset,
+  limit,
+  items,
+  status,
+}) => {
   const [toggle, setToggle] = useState(false);
 
   const handleToggle = () => {
@@ -42,7 +49,16 @@ export const NavBar = () => {
         <ContentDiv>
           <NavContentDiv>
             {width > mobilebreakpoint ? (
-              <NavContent />
+              <NavContent
+                fetchItems={() => {
+                  fetchItems(limit, offset);
+                }}
+                setOffset={setOffset}
+                offset={offset}
+                limit={limit}
+                items={items}
+                status={status}
+              />
             ) : (
               <StyledGiHamburgerMenu onClick={handleToggle} />
             )}
@@ -51,7 +67,16 @@ export const NavBar = () => {
       </Bar>
       {toggle === true ? (
         <DropDownDiv>
-          <BurgerContent />
+          <BurgerContent
+            fetchItems={() => {
+              fetchItems(limit, offset);
+            }}
+            setOffset={setOffset}
+            offset={offset}
+            limit={limit}
+            items={items}
+            status={status}
+          />
         </DropDownDiv>
       ) : null}
     </>

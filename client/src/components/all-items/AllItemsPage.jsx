@@ -9,33 +9,33 @@ import { Loading } from "../Loading";
 import { requestAllBrands, responseAllBrands } from "../../actions";
 import Items from "./items";
 
-const AllItemsPage = () => {
-  const [status, setStatus] = useState("loading");
+const AllItemsPage = (props) => {
+  const { setOffset, offset, limit, items, status, fetchItems } = props;
 
-  const [items, setItems] = useState([]);
-  //limit is the amount of items per page right now we don't need a state but if ever we want the user to control the number of items per page it wil be necessary
-  const [limit, setLimit] = useState(50);
-  // offset is the index we have to start rendering items at for pages 2,3, etc.
-  const [offset, setOffset] = useState(0);
+  // const [items, setItems] = useState([]);
+  // //limit is the amount of items per page right now we don't need a state but if ever we want the user to control the number of items per page it wil be necessary
+  // const [limit, setLimit] = useState(50);
+  // // offset is the index we have to start rendering items at for pages 2,3, etc.
+  // const [offset, setOffset] = useState(0);
   const dispatch = useDispatch();
 
-  //handlers
-  const fetchItems = async (limit, offset) => {
-    dispatch(requestAllBrands());
-    try {
-      let data = await fetch(`/items?limit=${limit}&skip=${offset}`);
-      data = await data.json();
-      let items = data.data;
-      setItems(items);
-      setStatus("idle");
-      let reducerData = await fetch("/items");
-      reducerData = await reducerData.json();
-      let reducerItems = reducerData.data;
-      dispatch(responseAllBrands(reducerItems));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // //handlers
+  // const fetchItems = async (limit, offset) => {
+  //   dispatch(requestAllBrands());
+  //   try {
+  //     let data = await fetch(`/items?limit=${limit}&skip=${offset}`);
+  //     data = await data.json();
+  //     let items = data.data;
+  //     setItems(items);
+  //     setStatus("idle");
+  //     // let reducerData = await fetch("/items");
+  //     // reducerData = await reducerData.json();
+  //     // let reducerItems = reducerData.data;
+  //     // dispatch(responseAllBrands(reducerItems));
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const nextPage = () => {
     setOffset(offset + 50);
@@ -46,7 +46,7 @@ const AllItemsPage = () => {
   };
 
   useEffect(() => {
-    fetchItems(limit, offset);
+    fetchItems();
   }, [offset, setOffset]);
 
   if (!items || status === "loading") {
