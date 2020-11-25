@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 
 import { Loading } from "../Loading";
 import { requestAllBrands, responseAllBrands } from "../../actions";
-import Items from "./Items";
+import Items from "./items";
 
 const AllItemsPage = () => {
   const [status, setStatus] = useState("loading");
