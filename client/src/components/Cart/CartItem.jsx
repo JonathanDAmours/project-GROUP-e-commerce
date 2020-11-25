@@ -19,7 +19,7 @@ export const CartItem = ({ item, title, quantity, _id, price }) => {
           {/* we need a way to cap the number of items to the max in stock quantity */}
           <Input
             onChange={(event) => {
-              const quantityByUser = event.target.value;
+              const quantityByUser = event.target.value
               dispatch(
                 updateQuantity({ _id: _id, quantity: Number(quantityByUser) })
               );
